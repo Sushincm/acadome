@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. Initialize Lenis Smooth Scroll
   const lenis = new Lenis({
     lerp: 0.1,
-    wheelMultiplier: 1.0, 
-    smoothWheel: true, 
+    wheelMultiplier: 1.0,
+    smoothWheel: true,
     syncTouch: true,
   });
 
@@ -130,23 +130,27 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
 
-    wwoTl.to(
-      wwoContainer,
-      {
-        width: "100%",
-        maxWidth: "100%",
-        ease: "none",
-      },
-      0,
-    );
+    const wwoBgImg = wwoBg.querySelector("img");
 
     wwoTl.to(
       wwoBg,
       {
+        scaleX: 1,
         borderRadius: "0px",
         ease: "none",
       },
       0,
     );
+
+    if (wwoBgImg) {
+      wwoTl.to(
+        wwoBgImg,
+        {
+          scaleX: 1,
+          ease: "none",
+        },
+        0,
+      );
+    }
   }
 });
