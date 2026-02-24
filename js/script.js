@@ -5,10 +5,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Initialize Lenis Smooth Scroll
   const lenis = new Lenis({
-    lerp: 0.1, // The smaller the value, the smoother/slower it is (0 to 1). Awwwards sites generally use ~0.08
-    wheelMultiplier: 1.0, // Scroll wheel sensitivity
-    smoothWheel: true, // Enable scroll smoothing
-    syncTouch: true, // Sync touch scrolling
+    lerp: 0.1,
+    wheelMultiplier: 1.0, 
+    smoothWheel: true, 
+    syncTouch: true,
   });
 
   lenis.on("scroll", ScrollTrigger.update);
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const target = this.getAttribute("href");
       if (target && target !== "#") {
-        lenis.scrollTo(target, { offset: -80 }); // offset for the fixed navbar
+        lenis.scrollTo(target, { offset: -80 });
       }
     });
   });
