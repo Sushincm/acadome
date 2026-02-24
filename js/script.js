@@ -5,7 +5,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Initialize Lenis Smooth Scroll
   const lenis = new Lenis({
-    lerp: 0.08, // The smaller the value, the smoother/slower it is (0 to 1). Awwwards sites generally use ~0.08
+    lerp: 0.1, // The smaller the value, the smoother/slower it is (0 to 1). Awwwards sites generally use ~0.08
     wheelMultiplier: 1.0, // Scroll wheel sensitivity
     smoothWheel: true, // Enable scroll smoothing
     syncTouch: true, // Sync touch scrolling
@@ -18,6 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   gsap.ticker.lagSmoothing(0);
+
+  // Smooth scroll for all anchor links using Lenis
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = this.getAttribute("href");
+      if (target && target !== "#") {
+        lenis.scrollTo(target, { offset: -80 }); // offset for the fixed navbar
+      }
+    });
+  });
 
   // 2. Mobile navigation toggle
   const mobileToggle = document.getElementById("mobile-toggle");
@@ -79,11 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Scroll styling for navbar
   window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
-      navbar.style.padding = "10px 0";
-      navbar.classList.add("shadow-sm");
+      navbar.classList.add("nav-floating");
+      navbar.style.padding = "";
     } else {
-      navbar.style.padding = "16px 0";
-      navbar.classList.remove("shadow-sm");
+      navbar.classList.remove("nav-floating");
+      navbar.style.padding = "";
     }
   });
 
@@ -102,5 +113,40 @@ document.addEventListener("DOMContentLoaded", () => {
         scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
       },
     });
+  }
+
+  // 4. What We Offer Section Expand Animation
+  const wwoSection = document.querySelector("#wwo-section");
+  const wwoContainer = document.querySelector("#wwo-container");
+  const wwoBg = document.querySelector("#wwo-bg");
+
+  if (wwoSection && wwoContainer && wwoBg) {
+    let wwoTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: wwoSection,
+        start: "top 85%", // Starts expanding when top of section hits 85% of viewport
+        end: "top 20%", // Finishes expanding when top hit 20%
+        scrub: 1,
+      },
+    });
+
+    wwoTl.to(
+      wwoContainer,
+      {
+        width: "100%",
+        maxWidth: "100%",
+        ease: "none",
+      },
+      0,
+    );
+
+    wwoTl.to(
+      wwoBg,
+      {
+        borderRadius: "0px",
+        ease: "none",
+      },
+      0,
+    );
   }
 });

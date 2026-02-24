@@ -59,15 +59,7 @@
       };
     </script>
 
-    <style>
-      /* Smooth hide/show for mobile menu */
-      .mobile-menu-active {
-        clip-path: circle(150% at 100% 0);
-      }
-      .mobile-menu-inactive {
-        clip-path: circle(0px at 100% 0);
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body
     class="font-body text-[16px] leading-[1.6] text-dark-text bg-white overflow-x-hidden"
@@ -75,16 +67,13 @@
     <!-- Navigation Menu -->
     <nav
       id="navbar"
-      class="fixed top-0 left-0 w-full bg-white z-50 transition-all duration-300 py-4"
+      class="fixed top-0 left-0 right-0 mx-auto w-full bg-white z-50 transition-all duration-300 py-4"
     >
       <div
         class="container mx-auto px-6 flex justify-between items-center relative"
       >
         <!-- Logo -->
-        <a
-          href="index.html"
-          class="flex items-center flex-shrink-0 relative z-20"
-        >
+        <a href="#home" class="flex items-center flex-shrink-0 relative z-20">
           <img
             src="src/images/ACADOME-LOGO.png"
             alt="Acadome Logo"
@@ -92,35 +81,31 @@
           />
         </a>
 
-        <!-- Desktop Links (Center) -->
-        <div
-          class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2"
-        >
-          <a
-            href="#programs"
-            class="font-body text-[15px] font-medium text-gray-400 hover:text-gray-800 transition-colors"
-          >
-            Programs
-          </a>
-          <a
-            href="#about"
-            class="font-body text-[15px] font-medium text-gray-400 hover:text-gray-800 transition-colors"
-          >
-            About
-          </a>
-          <a
-            href="#contact"
-            class="font-body text-[15px] font-medium text-gray-400 hover:text-gray-800 transition-colors"
-          >
-            Contact
-          </a>
-        </div>
-
-        <!-- Desktop CTA (Right) -->
-        <div class="hidden md:block flex-shrink-0 relative z-20">
+        <!-- Desktop Links & CTA (Right) -->
+        <div class="hidden md:flex items-center gap-8 relative z-20">
+          <div class="flex items-center gap-8">
+            <a
+              href="#programs"
+              class="font-body text-[15px] font-medium text-gray-600 hover:text-primary-navy transition-colors"
+            >
+              Programs
+            </a>
+            <a
+              href="#about"
+              class="font-body text-[15px] font-medium text-gray-600 hover:text-primary-navy transition-colors"
+            >
+              About
+            </a>
+            <a
+              href="#contact"
+              class="font-body text-[15px] font-medium text-gray-600 hover:text-primary-navy transition-colors"
+            >
+              Contact
+            </a>
+          </div>
           <a
             href="#apply"
-            class="inline-flex items-center justify-center px-5 py-2.5 font-body font-medium text-[14px] rounded-lg border border-gray-200 text-gray-800 hover:border-gray-400 transition-colors bg-white shadow-sm"
+            class="inline-flex items-center justify-center px-5 py-2.5 font-body font-medium text-[14px] rounded-lg border border-primary-navy text-primary-navy hover:bg-accent-red hover:border-accent-red hover:text-white transition-all bg-white shadow-sm"
           >
             Apply Now
           </a>
@@ -163,7 +148,7 @@
         </a>
         <a
           href="#apply"
-          class="inline-flex items-center justify-center px-8 py-3 font-body font-medium text-lg rounded-lg border border-gray-200 text-gray-800 bg-white shadow-sm mt-4"
+          class="inline-flex items-center justify-center px-8 py-3 font-body font-medium text-lg rounded-lg border border-primary-navy bg-primary-navy text-white shadow-sm mt-4 hover:bg-accent-red hover:border-accent-red transition-colors"
         >
           Apply Now
         </a>
@@ -220,7 +205,7 @@
               </p>
               <a
                 href="#apply"
-                class="inline-flex items-center justify-center px-6 py-3 font-body font-semibold text-[15px] bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors shadow-sm"
+                class="inline-flex items-center justify-center px-6 py-3 font-body font-semibold text-[15px] bg-white text-gray-900 rounded-lg hover:bg-accent-red hover:text-white transition-colors shadow-sm"
               >
                 Learn more
               </a>
@@ -229,137 +214,199 @@
         </div>
       </section>
 
-      <!-- Section 2: Credibility Strip -->
-      <section class="py-section bg-light-bg">
-        <div class="container mx-auto max-w-[1200px] px-6">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div
-              class="bg-white p-8 rounded-lg shadow-soft text-center flex flex-col items-center border border-black/5 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] transition-all duration-250"
+      <!-- About Us Section -->
+      <section
+        id="about"
+        class="py-[80px] md:py-[120px] px-4 md:px-6 w-full mx-auto bg-white flex flex-col items-center justify-center relative"
+      >
+        <div
+          class="container max-w-[1100px] flex flex-col items-center text-center"
+        >
+          <!-- Small Strip Tag -->
+          <div
+            class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-gray-50 text-[13px] font-medium text-gray-500 mb-10 uppercase tracking-widest shadow-sm"
+          >
+            About Us
+          </div>
+
+          <!-- Main Text with Inline Images -->
+          <h2
+            class="font-body text-[26px] md:text-[40px] lg:text-[48px] xl:text-[52px] leading-[1.45] md:leading-[1.4] text-[#333333] font-normal tracking-[-0.02em] max-w-[1000px]"
+          >
+            At Acadome, we build industry-ready
+            <span
+              class="inline-block align-middle mx-1 md:mx-2 w-[70px] md:w-[110px] xl:w-[124px] h-[36px] md:h-[50px] xl:h-[58px] rounded-full overflow-hidden shadow-sm mt-[-5px]"
             >
-              <div
-                class="w-16 h-16 bg-light-bg rounded-full flex items-center justify-center mb-5 text-accent-red"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  class="w-8 h-8"
+              <img
+                src="src/images/about-1.jpg"
+                alt="Training"
+                class="w-full h-full object-cover"
+              />
+            </span>
+            accounting professionals. Through practical training
+            <span
+              class="inline-block align-middle mx-1 md:mx-2 w-[70px] md:w-[110px] xl:w-[124px] h-[36px] md:h-[50px] xl:h-[58px] rounded-full overflow-hidden shadow-sm mt-[-5px]"
+            >
+              <img
+                src="src/images/about-2.jpg"
+                alt="Software Mastery"
+                class="w-full h-full object-cover"
+              />
+            </span>
+            and software mastery, we prepare careers for real corporate
+            <span
+              class="inline-block align-middle mx-1 md:mx-2 w-[70px] md:w-[110px] xl:w-[124px] h-[36px] md:h-[50px] xl:h-[58px] rounded-full overflow-hidden shadow-sm mt-[-5px]"
+            >
+              <img
+                src="src/images/about-3.jpg"
+                alt="Corporate"
+                class="w-full h-full object-cover"
+              />
+            </span>
+            environments.
+          </h2>
+
+          <!-- CTA Button -->
+          <div class="mt-12 md:mt-16 w-full max-w-[1000px] flex justify-center">
+            <a
+              href="#"
+              class="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-primary-navy text-white font-body text-[14px] font-medium hover:bg-accent-red transition-colors gap-3 cursor-pointer shadow-md hover:shadow-lg"
+            >
+              Read more
+              <span class="text-lg leading-none">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- What We Offer Section -->
+      <section id="wwo-section" class="w-full bg-white relative py-12 md:py-20">
+        <div
+          id="wwo-container"
+          class="relative mx-auto w-[92%] max-w-[1400px] min-h-[100vh]"
+        >
+          <!-- Animated Background -->
+          <div
+            id="wwo-bg"
+            class="absolute top-0 left-0 w-full h-full z-0 rounded-[2rem] md:rounded-[40px] overflow-hidden"
+          >
+            <img
+              src="src/images/what-we-offer.jpg"
+              alt="What We Offer Header"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-[#0A1628]/85 backdrop-blur-[2px]"
+            ></div>
+          </div>
+
+          <!-- Content Wrapper -->
+          <div
+            class="relative z-10 w-full max-w-[1200px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row gap-12 lg:gap-20 pt-16 md:pt-24 lg:pt-32 pb-16 md:pb-32"
+          >
+            <!-- Left Col (Sticky text) -->
+            <div class="w-full md:w-[45%]">
+              <div class="md:sticky md:top-36 text-left">
+                <div
+                  class="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-white/20 bg-white/10 text-[13px] font-medium text-white mb-8 uppercase tracking-widest shadow-sm"
                 >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M8.5 12.5L10.5 14.5L15.5 9.5"
-                  />
-                </svg>
+                  What We Offer
+                </div>
+                <h2
+                  class="text-white font-heading font-semibold text-[32px] md:text-[44px] lg:text-[56px] leading-[1.15] tracking-tight"
+                >
+                  From Training<br />to Real-World<br />Professional Growth.
+                </h2>
               </div>
-              <h3 class="font-body font-semibold text-base text-primary-navy">
-                Industry-Focused<br />Curriculum
-              </h3>
             </div>
+
+            <!-- Right Col (Scrollable Cards) -->
             <div
-              class="bg-white p-8 rounded-lg shadow-soft text-center flex flex-col items-center border border-black/5 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] transition-all duration-250"
+              class="w-full md:w-[55%] flex flex-col gap-6 md:gap-8 mt-4 md:mt-16"
             >
+              <!-- Card 1 -->
               <div
-                class="w-16 h-16 bg-light-bg rounded-full flex items-center justify-center mb-5 text-accent-red"
+                class="bg-white/10 backdrop-blur-md rounded-2xl md:rounded-[24px] p-8 lg:p-10 border border-white/20 text-white transform hover:-translate-y-2 transition-transform duration-300"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  class="w-8 h-8"
+                <h3
+                  class="text-[22px] md:text-[26px] font-semibold font-heading mb-4 text-white"
                 >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M8.5 12.5L10.5 14.5L15.5 9.5"
-                  />
-                </svg>
+                  Internship Program
+                </h3>
+                <p
+                  class="text-[15px] md:text-[16px] text-white/80 leading-relaxed mb-8"
+                >
+                  Gain real industry exposure across India and GCC markets.
+                  Develop practical skills in accounting, taxation, and
+                  financial management through structured hands-on experience.
+                </p>
+                <a
+                  href="#apply"
+                  class="inline-flex items-center text-white/90 hover:text-white font-medium text-[15px] group transition-colors"
+                >
+                  Learn more
+                  <span
+                    class="ml-2 group-hover:translate-x-1 transition-transform"
+                    >&rarr;</span
+                  >
+                </a>
               </div>
-              <h3 class="font-body font-semibold text-base text-primary-navy">
-                Software-Based<br />Practical Training
-              </h3>
-            </div>
-            <div
-              class="bg-white p-8 rounded-lg shadow-soft text-center flex flex-col items-center border border-black/5 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] transition-all duration-250"
-            >
+
+              <!-- Card 2 -->
               <div
-                class="w-16 h-16 bg-light-bg rounded-full flex items-center justify-center mb-5 text-accent-red"
+                class="bg-white/10 backdrop-blur-md rounded-2xl md:rounded-[24px] p-8 lg:p-10 border border-white/20 text-white transform hover:-translate-y-2 transition-transform duration-300"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  class="w-8 h-8"
+                <h3
+                  class="text-[22px] md:text-[26px] font-semibold font-heading mb-4 text-white"
                 >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M8.5 12.5L10.5 14.5L15.5 9.5"
-                  />
-                </svg>
+                  Professional Workshops
+                </h3>
+                <p
+                  class="text-[15px] md:text-[16px] text-white/80 leading-relaxed mb-8"
+                >
+                  Expert-led sessions designed to strengthen taxation knowledge,
+                  compliance practices, and strategic financial planning for
+                  working professionals.
+                </p>
+                <a
+                  href="#apply"
+                  class="inline-flex items-center text-white/90 hover:text-white font-medium text-[15px] group transition-colors"
+                >
+                  Learn more
+                  <span
+                    class="ml-2 group-hover:translate-x-1 transition-transform"
+                    >&rarr;</span
+                  >
+                </a>
               </div>
-              <h3 class="font-body font-semibold text-base text-primary-navy">
-                Internship<br />Support
-              </h3>
-            </div>
-            <div
-              class="bg-white p-8 rounded-lg shadow-soft text-center flex flex-col items-center border border-black/5 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] transition-all duration-250"
-            >
+
+              <!-- Card 3 -->
               <div
-                class="w-16 h-16 bg-light-bg rounded-full flex items-center justify-center mb-5 text-accent-red"
+                class="bg-white/10 backdrop-blur-md rounded-2xl md:rounded-[24px] p-8 lg:p-10 border border-white/20 text-white transform hover:-translate-y-2 transition-transform duration-300"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  class="w-8 h-8"
+                <h3
+                  class="text-[22px] md:text-[26px] font-semibold font-heading mb-4 text-white"
                 >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M8.5 12.5L10.5 14.5L15.5 9.5"
-                  />
-                </svg>
+                  Seminar Sessions
+                </h3>
+                <p
+                  class="text-[15px] md:text-[16px] text-white/80 leading-relaxed mb-8"
+                >
+                  Scenario-driven seminars focused on practical tax planning and
+                  financial management, tailored for professionals and aspiring
+                  accountants.
+                </p>
+                <a
+                  href="#apply"
+                  class="inline-flex items-center text-white/90 hover:text-white font-medium text-[15px] group transition-colors"
+                >
+                  Learn more
+                  <span
+                    class="ml-2 group-hover:translate-x-1 transition-transform"
+                    >&rarr;</span
+                  >
+                </a>
               </div>
-              <h3 class="font-body font-semibold text-base text-primary-navy">
-                Career &amp; Placement<br />Assistance
-              </h3>
             </div>
           </div>
         </div>
