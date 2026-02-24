@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Prevent horizontal scroll issues and conflicts */
+  html {
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  /* Mobile menu styles */
+  .mobile-toggle {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-toggle {
+      display: flex;
+    }
+  }
+}
