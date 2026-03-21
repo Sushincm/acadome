@@ -124,3 +124,40 @@ export const coursesTabsData = [
     imageSrc: "/images/course3.webp",
   },
 ];
+
+export const benefitsHeaderData = {
+  tag: "Why Choose Us",
+  title: "Core Benefits and Advantages",
+  description: "Join Acadome and leverage a diverse spectrum of elite frameworks designed to elevate your professional trajectory from the classroom out into the corporate sphere.",
+};
+
+export const benefitsCards = [
+  {
+    id: "01",
+    num: "01",
+    title: "Hands-On Training",
+    description: "Strengthen your skills with guided projects, case studies, and exercises designed to mirror real-world accounting work.",
+    iconId: "wrench"
+  },
+  {
+    id: "02",
+    num: "02",
+    title: "Industry-Relevant Curriculum",
+    description: "Master the latest accounting standards, essential tools, and proven practices aligned with modern industry expectations.",
+    iconId: "book"
+  },
+  {
+    id: "03",
+    num: "03",
+    title: "Experienced Instructors",
+    description: "Learn from certified professionals with years of real industry exposure, hands-on experience, and personal mentorship.",
+    iconId: "user"
+  },
+  {
+    id: "04",
+    num: "04",
+    title: "Flexible Learning Options",
+    description: "Choose from convenient online sessions or in-person classes, with schedules tailored to fit both students and working professionals.",
+    iconId: "calendar"
+  }
+];

@@ -6,6 +6,8 @@ export default function CoursesSection() {
   const [activeTabId, setActiveTabId] = useState(coursesTabsData[0].id);
   const contentRef = useRef(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const titleRef = useRef(null);
+  const tagRef = useRef(null);
 
   // Active course data
   const activeCourse = coursesTabsData.find(c => c.id === activeTabId);
@@ -55,16 +57,68 @@ export default function CoursesSection() {
     }
   }, [activeTabId, isTransitioning]);
 
+  // Scroll-triggered section header animations (run once on mount)
+  useEffect(() => {
+    const splitTextIntoSpans = (element) => {
+      const text = element.innerText;
+      element.innerHTML = "";
+      return text.split("").map((char) => {
+        const outer = document.createElement("span");
+        outer.style.cssText = "display:inline-block; overflow:hidden; vertical-align:bottom;";
+        const inner = document.createElement("span");
+        inner.style.cssText = "display:inline-block;";
+        inner.textContent = char === " " ? "\u00A0" : char;
+        outer.appendChild(inner);
+        element.appendChild(outer);
+        return inner;
+      });
+    };
+
+    if (tagRef.current) {
+      gsap.fromTo(
+        tagRef.current,
+        { opacity: 0, y: 12 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          scrollTrigger: { trigger: tagRef.current, start: "top 88%" },
+        }
+      );
+    }
+
+    if (titleRef.current) {
+      const chars = splitTextIntoSpans(titleRef.current);
+      gsap.fromTo(
+        chars,
+        { y: "110%", opacity: 0 },
+        {
+          y: "0%",
+          opacity: 1,
+          duration: 0.6,
+          ease: "power4.out",
+          stagger: 0.015,
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+  }, []);
+
   return (
-    <section id="programs" className="py-[80px] md:py-[5%] px-4 md:px-6 w-full mx-auto bg-[#f9fafb] flex flex-col items-center justify-center relative">
+    <section id="programs" className="py-16 md:py-24 lg:py-32 px-4 md:px-6 w-full mx-auto bg-[#f9fafb] flex flex-col items-center justify-center relative">
       <div className="container max-w-[1200px] flex flex-col items-center">
         
         {/* Header Strip & Title */}
-        <div className="text-center mb-10 w-full flex flex-col items-center">
-          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white border border-gray-100 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
+        <div className="text-center w-full flex flex-col items-center mb-12 md:mb-16">
+          <div ref={tagRef} className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-white border border-gray-100 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
             {coursesHeaderData.tag}
           </div>
-          <h2 className="font-heading text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] text-[#111827] font-semibold max-w-[800px]">
+          <h2 ref={titleRef} className="font-heading text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] text-[#111827] font-semibold max-w-[800px]">
             {coursesHeaderData.title}
           </h2>
         </div>
@@ -132,14 +186,7 @@ export default function CoursesSection() {
               </div>
 
               {/* Right Column (Image & Floating Badge) */}
-              <div className="reveal-item w-full relative order-1 lg:order-2 self-start lg:self-center overflow-visible">
-                {/* Floating Badge */}
-                <div className="absolute top-4 right-4 md:-right-4 md:-top-4 z-20">
-                  <div className="px-4 py-2 bg-primary-navy text-white font-body font-semibold text-[13px] rounded-lg shadow-lg">
-                    {activeCourse.durationInfo}
-                  </div>
-                </div>
-
+              <div className="reveal-item w-full relative order-1 lg:order-2 self-start lg:self-center overflow-visible">                
                 {/* Subtile Hover Zoom Wrapper */}
                 <div className="w-full relative rounded-[16px] overflow-hidden group shadow-md border border-gray-100 bg-gray-200 aspect-[4/3] md:aspect-[3/2] lg:aspect-auto h-full lg:h-[450px]">
                   <img

@@ -20,9 +20,21 @@
   html {
     overflow-x: hidden;
   }
+  body {
+    overflow-x: hidden;
+  }
 }
 
 @layer utilities {
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  .animate-marquee {
+    animation: marquee 22s linear infinite;
+  }
+  
   /* Mobile menu styles */
   .mobile-toggle {
     display: none;
@@ -48,7 +60,7 @@
   top: 20px;
   width: 90%;
   max-width: 1200px;
-  border-radius: 100px; /* pill shape */
+  border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   padding-top: 12px;
   padding-bottom: 12px;
@@ -58,7 +70,7 @@
   #navbar.nav-floating {
     width: 95%;
     top: 15px;
-    border-radius: 24px;
+    border-radius: 12px;
     padding-top: 14px;
     padding-bottom: 14px;
   }
