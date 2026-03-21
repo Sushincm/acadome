@@ -1,6 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-primary-navy: #0f2747;
+  --color-secondary-navy: #1d3557;
+  --color-accent-red: #e63946;
+  --color-light-bg: #f5f7fa;
+  --color-dark-text: #2b2b2b;
+
+  --font-heading: Poppins, sans-serif;
+  --font-body: Inter, sans-serif;
+
+  --shadow-soft: 0px 8px 24px rgba(0, 0, 0, 0.06);
+
+  --spacing-section: 80px;
+}
 
 @layer base {
   /* Prevent horizontal scroll issues and conflicts */
