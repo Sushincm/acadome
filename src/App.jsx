@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { navLinks, heroData, aboutData, wwoHeaderData, wwoCards } from "./data";
-import { splitTextIntoSpans } from "./utils/animations";
+import { setupSplitText, setupScrollReveal } from "./utils/animations";
 import CoursesSection from "./components/CoursesSection";
 import BenefitsSection from "./components/BenefitsSection";
 import MentorsSection from "./components/MentorsSection";
@@ -14,7 +14,7 @@ import CertificationSection from "./components/CertificationSection";
 import MarqueeSection from "./components/MarqueeSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
-import { FaWhatsapp, FaArrowUp, FaArrowRight } from "react-icons/fa";
+import { FaWhatsapp, FaArrowUp } from "react-icons/fa";
 
 
 
@@ -42,6 +42,7 @@ export default function App() {
   const wwoCardsRef = useRef(null);
 
   const aboutTagRef = useRef(null);
+  const aboutTitleRef = useRef(null);
   const aboutCtaRef = useRef(null);
 
   useEffect(() => {
@@ -59,27 +60,16 @@ export default function App() {
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
-    gsap.ticker.lagSmoothing(0);
-
     // Context for all GSAP animations
     let ctx = gsap.context(() => {
 
       // 3. Hero Animations
       if (heroTitleRef.current) {
-        const heroChars = splitTextIntoSpans(heroTitleRef.current);
-        if (heroChars.length > 0) {
-          const heroTl = gsap.timeline({ delay: 0.2 });
-          heroTl.fromTo(heroChars,
-            { y: "110%", opacity: 0 },
-            { y: "0%", opacity: 1, duration: 0.7, ease: "power4.out", stagger: 0.018 }
-          );
-          heroTl.fromTo([heroDescRef.current, heroCtaRef.current],
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.12 },
-            0.5
-          );
-        }
+        setupSplitText(heroTitleRef.current);
       }
+      
+      if (heroDescRef.current) setupScrollReveal(heroDescRef.current, 0.4);
+      if (heroCtaRef.current) setupScrollReveal(heroCtaRef.current, 0.5);
 
       if (heroBgImgRef.current && heroContainerRef.current) {
         gsap.to(heroBgImgRef.current, {
@@ -115,7 +105,7 @@ export default function App() {
         let wwoTl = gsap.timeline({
           scrollTrigger: {
             trigger: wwoSectionRef.current,
-            start: "top 95%", // Start slightly earlier for better feel
+            start: "top 95%",
             end: "top 15%", 
             scrub: 1,
           },
@@ -155,7 +145,6 @@ export default function App() {
             scrub: true,
             anticipatePin: 1,
             onUpdate: (self) => {
-              // Smoothly fade out the text as it nears the bottom
               if (wwoTextRef.current) {
                 const progress = self.progress;
                 if (progress > 0.9) {
@@ -169,15 +158,14 @@ export default function App() {
         }
       }
 
-      if (wwoTitleRef.current) {
-        const wwoChars = splitTextIntoSpans(wwoTitleRef.current);
-        if (wwoChars.length > 0) {
-          gsap.fromTo(wwoChars,
-            { y: "110%", opacity: 0 },
-            { y: "0%", opacity: 1, duration: 0.6, ease: "power4.out", stagger: 0.015, scrollTrigger: { trigger: wwoTitleRef.current, start: "top 85%", toggleActions: "play none none reverse" } }
-          );
-        }
-      }
+      if (wwoTitleRef.current) setupSplitText(wwoTitleRef.current);
+      if (wwoTagRef.current) setupScrollReveal(wwoTagRef.current);
+      if (wwoCardsRef.current) setupScrollReveal(wwoCardsRef.current.children);
+
+      // About Section
+      if (aboutTagRef.current) setupScrollReveal(aboutTagRef.current);
+      if (aboutTitleRef.current) setupScrollReveal(aboutTitleRef.current, 0.2);
+      if (aboutCtaRef.current) setupScrollReveal(aboutCtaRef.current, 0.3);
     });
 
     // Simple scroll listener for Navbar and Top Button (Throttled via state check)
@@ -340,7 +328,7 @@ export default function App() {
             </div>
 
             {/* Main Text with Inline Images */}
-            <h2 className="font-body text-[26px] md:text-[40px] lg:text-[48px] xl:text-[52px] leading-[1.45] md:leading-[1.4] text-[#333333] font-normal tracking-[-0.02em] max-w-[1000px]">
+            <h2 ref={aboutTitleRef} className="font-body text-[26px] md:text-[40px] lg:text-[48px] xl:text-[52px] leading-[1.45] md:leading-[1.4] text-[#333333] font-normal tracking-[-0.02em] max-w-[1000px]">
               {aboutData?.descriptionParts?.map((part, index) =>
                 part.isImage ? (
                   <span

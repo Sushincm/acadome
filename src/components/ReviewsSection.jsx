@@ -3,13 +3,13 @@ import { reviewsData, reviewsHeaderData } from '../data';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { FaStar, FaChevronLeft, FaChevronRight, FaQuoteLeft } from 'react-icons/fa';
-import gsap from 'gsap';
+import { setupSplitText, setupScrollReveal } from '../utils/animations';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 const ReviewCard = ({ review }) => {
   return (
-    <div className="bg-white rounded-[24px] p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col h-full relative transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-1">
+    <div className="bg-white rounded-[24px] p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col h-full relative transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-1 review-card">
       {/* Top row: Quote icon & Stars */}
       <div className="flex justify-between items-start mb-8">
         <div className="text-accent-red opacity-20">
@@ -46,10 +46,16 @@ export default function ReviewsSection() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const swiperWrapperRef = useRef(null);
-  const headerRef = useRef(null);
+  const tagRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtextRef = useRef(null);
 
-  // ── Lenis ↔ Swiper conflict fix ──────────────────────────────────────────
   useEffect(() => {
+    if (tagRef.current) setupScrollReveal(tagRef.current);
+    if (titleRef.current) setupSplitText(titleRef.current);
+    if (subtextRef.current) setupScrollReveal(subtextRef.current, 0.2);
+    setupScrollReveal(".review-card", 0.3);
+
     const el = swiperWrapperRef.current;
     if (!el) return;
     const getLenis = () => window.__lenis_instance__;
@@ -66,41 +72,20 @@ export default function ReviewsSection() {
     };
   }, []);
 
-  // GSAP Entrance Animation
-  useEffect(() => {
-    if (headerRef.current) {
-      gsap.fromTo(
-        headerRef.current.children,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: 'top 85%',
-          },
-        }
-      );
-    }
-  }, []);
-
   return (
     <section className="py-20 md:py-32 bg-[#EBEBEB] w-full overflow-hidden">
       <div className="container max-w-[1240px] mx-auto px-4 md:px-6">
         
         {/* Header Row */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16 gap-8" ref={headerRef}>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16 gap-8">
           <div className="flex flex-col text-left">
-            <span className="text-accent-red font-sora font-semibold text-[13px] uppercase tracking-[0.25em] mb-4">
+            <span ref={tagRef} className="text-accent-red font-sora font-semibold text-[13px] uppercase tracking-[0.25em] mb-4">
               {reviewsHeaderData.tag}
             </span>
-            <h2 className="text-primary-navy font-sora font-bold text-[32px] md:text-[42px] lg:text-[48px] leading-[1.15] tracking-tight">
+            <h2 ref={titleRef} className="text-primary-navy font-sora font-bold text-[32px] md:text-[42px] lg:text-[48px] leading-[1.15] tracking-tight">
               {reviewsHeaderData.title}
             </h2>
-            <p className="text-gray-500 font-body text-[16px] mt-4 max-w-[500px]">
+            <p ref={subtextRef} className="text-gray-500 font-body text-[16px] mt-4 max-w-[500px]">
               Hear directly from our students who have transformed their careers with Acadome's professional programs.
             </p>
           </div>

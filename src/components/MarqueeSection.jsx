@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { splitTextIntoSpans } from '../utils/animations';
+import { setupSplitText, setupScrollReveal } from '../utils/animations';
 
 export default function MarqueeSection() {
   const titleRef = useRef(null);
@@ -20,73 +19,10 @@ export default function MarqueeSection() {
   const trackLogos = [...logos, ...logos];
 
   useEffect(() => {
-    // Tag pill fade in
-    if (tagRef.current) {
-      gsap.fromTo(
-        tagRef.current,
-        { opacity: 0, y: 12 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "power2.out",
-          scrollTrigger: { trigger: tagRef.current, start: "top 88%" },
-        }
-      );
-    }
-
-    // Split-text title animation
-    if (titleRef.current) {
-      const chars = splitTextIntoSpans(titleRef.current);
-      if (chars.length > 0) {
-        gsap.fromTo(
-          chars,
-          { y: "110%", opacity: 0 },
-          {
-            y: "0%",
-            opacity: 1,
-            duration: 0.6,
-            ease: "power4.out",
-            stagger: 0.015,
-            scrollTrigger: {
-              trigger: titleRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
-      }
-    }
-
-    // Description fade in
-    if (descRef.current) {
-      gsap.fromTo(
-        descRef.current,
-        { opacity: 0, y: 14 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "power2.out",
-          scrollTrigger: { trigger: descRef.current, start: "top 88%" },
-        }
-      );
-    }
-
-    // Marquee track fade in
-    if (trackRef.current) {
-      gsap.fromTo(
-        trackRef.current,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power2.out",
-          scrollTrigger: { trigger: trackRef.current, start: "top 90%" },
-        }
-      );
-    }
+    if (tagRef.current) setupScrollReveal(tagRef.current);
+    if (titleRef.current) setupSplitText(titleRef.current);
+    if (descRef.current) setupScrollReveal(descRef.current, 0.2);
+    if (trackRef.current) setupScrollReveal(trackRef.current, 0.3);
   }, []);
 
   return (

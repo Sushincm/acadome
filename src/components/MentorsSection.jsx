@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
 import { mentorsData, mentorsHeaderData } from '../data';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { setupSplitText, setupScrollReveal } from '../utils/animations';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 
 const MentorCard = ({ mentor }) => {
   return (
-    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer w-full h-full shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
+    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer w-full h-full shadow-[0_10px_30px_rgba(0,0,0,0.2)] mentor-card">
       {/* Background Photo */}
       <img
         src={mentor.image}
@@ -61,7 +61,16 @@ export default function MentorsSection() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
+  const titleRef = useRef(null);
+  const tagRef = useRef(null);
+  const subRef = useRef(null);
+
   useEffect(() => {
+    if (tagRef.current) setupScrollReveal(tagRef.current);
+    if (titleRef.current) setupSplitText(titleRef.current);
+    if (subRef.current) setupScrollReveal(subRef.current, 0.2);
+    setupScrollReveal(".mentor-card", 0.3);
+
     const el = swiperWrapperRef.current;
     if (!el) return;
     const lenis = () => window.__lenis_instance__;
@@ -87,13 +96,13 @@ export default function MentorsSection() {
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 px-4 gap-8">
           <div className="flex flex-col text-left max-w-2xl">
-            <span className="text-accent-red font-sora font-bold text-[13px] uppercase tracking-[0.25em] mb-4">
+            <span ref={tagRef} className="text-accent-red font-sora font-bold text-[13px] uppercase tracking-[0.25em] mb-4">
               {mentorsHeaderData.tag}
             </span>
-            <h2 className="text-white font-heading font-bold text-[32px] md:text-[44px] lg:text-[52px] leading-[1.1] mb-6 tracking-tight">
+            <h2 ref={titleRef} className="text-white font-heading font-bold text-[32px] md:text-[44px] lg:text-[52px] leading-[1.1] mb-6 tracking-tight">
               {mentorsHeaderData.title}
             </h2>
-            <p className="text-white/60 font-body text-base md:text-lg leading-relaxed">
+            <p ref={subRef} className="text-white/60 font-body text-base md:text-lg leading-relaxed">
               {mentorsHeaderData.subtext}
             </p>
           </div>

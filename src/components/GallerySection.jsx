@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { setupSplitText, setupScrollReveal } from '../utils/animations';
 import GLightbox from 'glightbox';
 import 'glightbox/dist/css/glightbox.min.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -49,9 +50,20 @@ export default function GallerySection() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [showAll, setShowAll] = useState(false);
   const lightboxRef = useRef(null);
+  
+  const titleRef = useRef(null);
+  const tagRef = useRef(null);
+  const subtextRef = useRef(null);
 
   const visibleImages = showAll ? filteredImages : filteredImages.slice(0, INITIAL_COUNT);
   const hasMore = filteredImages.length > INITIAL_COUNT;
+
+  useEffect(() => {
+    if (tagRef.current) setupScrollReveal(tagRef.current);
+    if (titleRef.current) setupSplitText(titleRef.current);
+    if (subtextRef.current) setupScrollReveal(subtextRef.current, 0.2);
+    setupScrollReveal(".gallery-reveal", 0.3);
+  }, [visibleImages]);
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => {
@@ -119,13 +131,13 @@ export default function GallerySection() {
         
         {/* Header Block */}
         <div className="text-center mb-12 md:mb-16 max-w-[800px] mx-auto flex flex-col items-center">
-          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
+          <div ref={tagRef} className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
             {galleryHeaderData.tag}
           </div>
-          <h2 className="text-[#1B2A3B] font-heading font-bold text-[32px] md:text-[44px] lg:text-[52px] leading-[1.15] mb-6 tracking-tight">
+          <h2 ref={titleRef} className="text-[#1B2A3B] font-heading font-bold text-[32px] md:text-[44px] lg:text-[52px] leading-[1.15] mb-6 tracking-tight">
             {galleryHeaderData.title}
           </h2>
-          <p className="text-gray-500 font-body text-base md:text-lg leading-relaxed max-w-[600px]">
+          <p ref={subtextRef} className="text-gray-500 font-body text-base md:text-lg leading-relaxed max-w-[600px]">
             {galleryHeaderData.subtext}
           </p>
         </div>
@@ -161,7 +173,7 @@ export default function GallerySection() {
             className={`transition-opacity duration-200 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
           >
             {visibleImages.map((img) => (
-              <SwiperSlide key={img.id}>
+              <SwiperSlide key={img.id} className="gallery-reveal">
                 <GalleryCard img={img} heightClass="h-[320px]" />
               </SwiperSlide>
             ))}
@@ -176,7 +188,7 @@ export default function GallerySection() {
         >
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
             {visibleImages.map((img) => (
-              <div key={img.id} className="w-full">
+              <div key={img.id} className="w-full gallery-reveal">
                 <GalleryCard img={img} heightClass="h-[400px]" />
               </div>
             ))}

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { coursesHeaderData, coursesTabsData } from '../data';
-import { splitTextIntoSpans } from '../utils/animations';
+import { setupSplitText, setupScrollReveal } from '../utils/animations';
 
 export default function CoursesSection() {
   const [activeTabId, setActiveTabId] = useState(coursesTabsData[0].id);
@@ -48,42 +48,8 @@ export default function CoursesSection() {
 
   // Scroll-triggered section header animations (run once on mount)
   useEffect(() => {
-
-    if (tagRef.current) {
-      gsap.fromTo(
-        tagRef.current,
-        { opacity: 0, y: 12 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "power2.out",
-          scrollTrigger: { trigger: tagRef.current, start: "top 88%" },
-        }
-      );
-    }
-
-    if (titleRef.current) {
-      const chars = splitTextIntoSpans(titleRef.current);
-      if (chars.length > 0) {
-        gsap.fromTo(
-          chars,
-          { y: "110%", opacity: 0 },
-          {
-            y: "0%",
-            opacity: 1,
-            duration: 0.6,
-            ease: "power4.out",
-            stagger: 0.015,
-            scrollTrigger: {
-              trigger: titleRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
-      }
-    }
+    if (tagRef.current) setupScrollReveal(tagRef.current);
+    if (titleRef.current) setupSplitText(titleRef.current);
   }, []);
 
   return (

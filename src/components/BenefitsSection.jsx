@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import { setupSplitText, setupScrollReveal } from '../utils/animations';
 import { benefitsCards, benefitsHeaderData } from '../data';
 import { FaWrench, FaBookOpen, FaUserCheck, FaCalendarAlt } from 'react-icons/fa';
 
@@ -69,23 +69,10 @@ export default function BenefitsSection() {
   }, []);
 
   useEffect(() => {
-    // Header animations
-    [tagRef, titleRef, descRef].forEach((ref, index) => {
-      if (ref.current) {
-        gsap.fromTo(
-          ref.current,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            delay: index * 0.1,
-            ease: 'power2.out',
-            scrollTrigger: { trigger: ref.current, start: 'top 88%' },
-          }
-        );
-      }
-    });
+    if (tagRef.current) setupScrollReveal(tagRef.current);
+    if (titleRef.current) setupSplitText(titleRef.current);
+    if (descRef.current) setupScrollReveal(descRef.current, 0.2);
+    setupScrollReveal(".benefits-swiper", 0.3);
   }, []);
 
   return (

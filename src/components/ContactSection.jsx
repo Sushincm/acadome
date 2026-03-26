@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { contactData, coursesTabsData } from '../data';
+import { useState, useEffect, useRef } from 'react';
+import { contactData } from '../data';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaArrowRight, FaCheck } from 'react-icons/fa';
+import { setupSplitText, setupScrollReveal } from '../utils/animations';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -12,6 +13,20 @@ export default function ContactSection() {
   });
 
   const [status, setStatus] = useState('idle'); // idle, sending, success, error
+
+  const titleRef = useRef(null);
+  const tagRef = useRef(null);
+  const infoRef = useRef(null);
+  const formRef = useRef(null);
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    if (tagRef.current) setupScrollReveal(tagRef.current);
+    if (titleRef.current) setupSplitText(titleRef.current);
+    if (infoRef.current) setupScrollReveal(".contact-item", 0.2);
+    if (formRef.current) setupScrollReveal(formRef.current, 0.3);
+    if (mapRef.current) setupScrollReveal(mapRef.current, 0.4);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -50,21 +65,21 @@ export default function ContactSection() {
           
           {/* Left Side: Contact Info (Header + Info List) */}
           <div className="w-full lg:w-[42%] flex flex-col items-start text-left">
-            <span className="text-accent-red font-sora font-semibold text-[13px] uppercase tracking-[0.25em] mb-4">
+            <span ref={tagRef} className="text-accent-red font-sora font-semibold text-[13px] uppercase tracking-[0.25em] mb-4">
               {contactData.header.tag}
             </span>
-            <h2 className="text-primary-navy font-sora font-bold text-[36px] md:text-[44px] lg:text-[48px] leading-[1.1] mb-10">
+            <h2 ref={titleRef} className="text-primary-navy font-sora font-bold text-[36px] md:text-[44px] lg:text-[48px] leading-[1.1] mb-10">
               Connect with Our Expert Team
             </h2>
             
             {/* Contact Details List */}
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full" ref={infoRef}>
               {contactData.details.map((item, idx) => {
                 const isLink = item.type === 'tel' || item.type === 'email';
                 const href = item.type === 'tel' ? `tel:${item.value}` : `mailto:${item.value}`;
                 
                 const Content = (
-                  <div key={idx} className="flex items-center gap-6 py-5 border-b border-gray-100 group w-full">
+                  <div key={idx} className="flex items-center gap-6 py-5 border-b border-gray-100 group w-full contact-item">
                     <div className="w-9 h-9 rounded-lg bg-primary-navy shrink-0 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-accent-red">
                       {getIcon(item.type)}
                     </div>
@@ -91,7 +106,7 @@ export default function ContactSection() {
           </div>
 
           {/* Right Side: Form (Navy Background) */}
-          <div className="w-full lg:w-[58%] bg-primary-navy p-8 md:p-12 lg:p-14 rounded-[24px] shadow-[0_20px_50px_rgba(15,39,71,0.15)] relative overflow-hidden">
+          <div ref={formRef} className="w-full lg:w-[58%] bg-primary-navy p-8 md:p-12 lg:p-14 rounded-[24px] shadow-[0_20px_50px_rgba(15,39,71,0.15)] relative overflow-hidden">
             {/* Subtle decorative circle */}
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
 
@@ -222,7 +237,7 @@ export default function ContactSection() {
         </div>
 
         {/* BOTTOM: Full Width Map Integration */}
-        <div className="w-full rounded-[24px] overflow-hidden border border-gray-100 group shadow-lg transition-all duration-300 hover:shadow-xl h-[350px] md:h-[450px]">
+        <div ref={mapRef} className="w-full rounded-[24px] overflow-hidden border border-gray-100 group shadow-lg transition-all duration-300 hover:shadow-xl h-[350px] md:h-[450px]">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1961.36172908012!2d76.1985316983948!3d10.522433700000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ef420d023be5%3A0x528908e46c76b22f!2sACADOME%20%7C%20ACCOUNTING%20TRAINING%20INSTITUTE%20IN%20THRISSUR!5e0!3m2!1sen!2sus!4v1774463429405!5m2!1sen!2sus" 
             width="100%" 
