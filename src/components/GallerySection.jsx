@@ -1,10 +1,47 @@
 import { useEffect, useState, useRef } from 'react';
 import GLightbox from 'glightbox';
 import 'glightbox/dist/css/glightbox.min.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
 import { galleryCategories, galleryHeaderData, galleryImages } from '../data';
 import { FaPlus } from 'react-icons/fa';
 
 const INITIAL_COUNT = 6;
+
+// Reusable Gallery Card
+const GalleryCard = ({ img, className = '', heightClass = '' }) => (
+  <div className={`relative rounded-[16px] overflow-hidden group cursor-pointer shadow-sm border border-gray-100 bg-white ${className}`}>
+    <a 
+      href={img.src} 
+      className="gallery-item block relative overflow-hidden h-full"
+      data-title={img.caption}
+      data-description={img.category}
+    >
+      <img 
+        src={img.src} 
+        alt={img.caption}
+        className={`w-full ${heightClass} object-cover transition-transform duration-700 ease-out group-hover:scale-105`}
+        loading="lazy"
+      />
+      
+      {/* Hover / Tap Overlay */}
+      <div className="absolute inset-0 bg-[#1B2A3B]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+        <div className="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white mb-4 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+          <FaPlus size={18} />
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/60 to-transparent">
+          <p className="text-white font-body text-[11px] font-bold uppercase tracking-[0.12em] mb-1 opacity-80">
+            {img.category}
+          </p>
+          <h4 className="text-white font-heading font-semibold text-[14px] leading-tight">
+            {img.caption}
+          </h4>
+        </div>
+      </div>
+    </a>
+  </div>
+);
 
 export default function GallerySection() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -17,7 +54,6 @@ export default function GallerySection() {
   const hasMore = filteredImages.length > INITIAL_COUNT;
 
   useEffect(() => {
-    // Wait for DOM to fully render before initializing GLightbox
     const timer = requestAnimationFrame(() => {
       setTimeout(() => {
         if (lightboxRef.current) {
@@ -38,7 +74,6 @@ export default function GallerySection() {
             loop: true,
           });
 
-          // Attach click handlers manually
           elements.forEach((el, i) => {
             el.addEventListener('click', (e) => {
               e.preventDefault();
@@ -48,7 +83,7 @@ export default function GallerySection() {
             });
           });
         }
-      }, 100);
+      }, 200); // Increased delay for Swiper initialization
     });
 
     return () => {
@@ -58,15 +93,13 @@ export default function GallerySection() {
         lightboxRef.current = null;
       }
     };
-  }, [visibleImages]);
+  }, [visibleImages, activeCategory]);
 
   const handleFilterChange = (category) => {
     if (category === activeCategory || isAnimating) return;
-
     setIsAnimating(true);
-    setShowAll(false); // Reset expand on filter change
+    setShowAll(false);
     
-    // Fade out duration 150ms
     setTimeout(() => {
       setActiveCategory(category);
       if (category === "All") {
@@ -74,17 +107,11 @@ export default function GallerySection() {
       } else {
         setFilteredImages(galleryImages.filter(img => img.category === category));
       }
-      
-      // Visual buffer for filter swap
-      setTimeout(() => {
-        setIsAnimating(false);
-      }, 50);
+      setTimeout(() => setIsAnimating(false), 50);
     }, 150);
   };
 
-  const toggleShowAll = () => {
-    setShowAll(prev => !prev);
-  };
+  const toggleShowAll = () => setShowAll(prev => !prev);
 
   return (
     <section id="gallery" className="py-20 md:py-32 px-4 md:px-6 bg-white w-full overflow-hidden">
@@ -103,7 +130,7 @@ export default function GallerySection() {
           </p>
         </div>
 
-        {/* Filter Tabs - Unified Style */}
+        {/* Filter Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-3 mb-10 md:mb-16">
           {galleryCategories.map((cat) => {
             const isActive = activeCategory === cat;
@@ -123,66 +150,51 @@ export default function GallerySection() {
           })}
         </div>
 
-        {/* Masonry Grid */}
-        <div 
-          className={`columns-2 md:columns-3 gap-4 lg:gap-6 transition-opacity duration-200 ease-in-out ${
-            isAnimating ? 'opacity-0 scale-98' : 'opacity-100 scale-100'
-          }`}
-          style={{ columnFill: 'balance' }}
-        >
-          {visibleImages.map((img) => (
-            <div 
-              key={img.id} 
-              className="relative mb-4 lg:mb-6 break-inside-avoid rounded-[12px] overflow-hidden group cursor-pointer shadow-sm border border-gray-100"
-            >
-              <a 
-                href={img.src} 
-                className="gallery-item block relative overflow-hidden"
-                data-title={img.caption}
-                data-description={img.category}
-              >
-                <img 
-                  src={img.src} 
-                  alt={img.caption}
-                  className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  style={{ minHeight: '200px', height: `${img.h}px` }}
-                  loading="lazy"
-                />
-                
-                {/* Hover Overlay - Navy Semi-transparent */}
-                <div className="absolute inset-0 bg-[#1B2A3B]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-                  {/* Plus Icon in Circle */}
-                  <div className="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white mb-4 transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                    <FaPlus size={18} />
-                  </div>
-                  
-                  {/* Caption & Category */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/60 to-transparent">
-                    <p className="text-white font-body text-[11px] font-bold uppercase tracking-[0.12em] mb-1 opacity-80">
-                      {img.category}
-                    </p>
-                    <h4 className="text-white font-heading font-semibold text-[15px] leading-tight">
-                      {img.caption}
-                    </h4>
-                  </div>
-                </div>
-              </a>
-            </div>
-          ))}
+        {/* ═══ MOBILE: Swiper JS Carousel (< md) ═══ */}
+        <div className="md:hidden">
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={16}
+            slidesPerView={1.2}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            grabCursor={true}
+            className={`transition-opacity duration-200 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
+          >
+            {visibleImages.map((img) => (
+              <SwiperSlide key={img.id}>
+                <GalleryCard img={img} heightClass="h-[320px]" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
-        {/* View Full Gallery / Show Less — Ghost Button */}
-        {hasMore && (
-          <div className="mt-14 md:mt-20 flex justify-center">
-            <button 
-              onClick={toggleShowAll}
-              className="group inline-flex items-center justify-center px-6 py-3 font-body font-medium text-[15px] rounded-[8px] bg-transparent border border-[#1B2A3B] text-[#1B2A3B] transition-all duration-300 hover:bg-[#1B2A3B] hover:text-white hover:-translate-y-0.5"
-            >
-              {showAll ? 'Show Less' : 'View Full Gallery'}
-              <span className="ml-3 transform group-hover:translate-x-1 transition-transform">→</span>
-            </button>
+        {/* ═══ DESKTOP: Unified Grid (md+) ═══ */}
+        <div 
+          className={`hidden md:block transition-opacity duration-200 ease-in-out ${
+            isAnimating ? 'opacity-0' : 'opacity-100'
+          }`}
+        >
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
+            {visibleImages.map((img) => (
+              <div key={img.id} className="w-full">
+                <GalleryCard img={img} heightClass="h-[400px]" />
+              </div>
+            ))}
           </div>
-        )}
+
+          {/* Expand/Collapse Button — Desktop Only */}
+          {hasMore && (
+            <div className="mt-14 md:mt-20 flex justify-center">
+              <button 
+                onClick={toggleShowAll}
+                className="group inline-flex items-center justify-center px-6 py-3 font-body font-medium text-[15px] rounded-[8px] bg-transparent border border-[#1B2A3B] text-[#1B2A3B] transition-all duration-300 hover:bg-[#1B2A3B] hover:text-white hover:-translate-y-0.5"
+              >
+                {showAll ? 'Show Less' : 'View Full Gallery'}
+                <span className="ml-3 transform group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
+          )}
+        </div>
 
       </div>
     </section>

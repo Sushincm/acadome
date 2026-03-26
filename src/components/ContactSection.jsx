@@ -42,7 +42,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32 bg-white w-full overflow-hidden">
+    <section id="contact" className="py-20 md:py-32 bg-[#EBEBEB] w-full overflow-hidden">
       <div className="container max-w-[1240px] mx-auto px-4 md:px-6">
         
         {/* TOP: Contact Info & Form Row */}
