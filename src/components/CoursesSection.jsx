@@ -14,42 +14,30 @@ export default function CoursesSection() {
   const activeCourse = coursesTabsData.find(c => c.id === activeTabId);
 
   const handleTabClick = (tabId) => {
-    if (tabId === activeTabId || isTransitioning) return;
+    if (tabId === activeTabId) return;
     
+    // Immediate state update for "sync" feel
+    setActiveTabId(tabId);
     setIsTransitioning(true);
-
-    const elements = contentRef.current.querySelectorAll('.reveal-item');
-    if (elements.length > 0) {
-      // Fade out and translate up slightly
-      gsap.to(elements, {
-        opacity: 0,
-        y: -10,
-        duration: 0.15,
-        ease: "power1.in",
-        stagger: 0.02,
-        onComplete: () => {
-          setActiveTabId(tabId);
-        }
-      });
-    } else {
-      setActiveTabId(tabId);
-    }
   };
 
   useEffect(() => {
-    if (isTransitioning) {
+    if (isTransitioning && contentRef.current) {
       const elements = contentRef.current.querySelectorAll('.reveal-item');
       if (elements.length > 0) {
-        // Fade in and translate up from bottom to original position
+        // Clear any existing animations
+        gsap.killTweensOf(elements);
+        
+        // Animate the new content in immediately
         gsap.fromTo(elements, {
           opacity: 0,
-          y: 20
+          y: 15
         }, {
           opacity: 1,
           y: 0,
-          duration: 0.35,
+          duration: 0.4,
           ease: "power2.out",
-          stagger: 0.05,
+          stagger: 0.04,
           onComplete: () => setIsTransitioning(false)
         });
       } else {

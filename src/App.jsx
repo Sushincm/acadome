@@ -7,7 +7,9 @@ import { splitTextIntoSpans } from "./utils/animations";
 import CoursesSection from "./components/CoursesSection";
 import BenefitsSection from "./components/BenefitsSection";
 import MentorsSection from "./components/MentorsSection";
+import PlacementSection from "./components/PlacementSection";
 import ReviewsSection from "./components/ReviewsSection";
+import CertificationSection from "./components/CertificationSection";
 import MarqueeSection from "./components/MarqueeSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
@@ -456,9 +458,11 @@ export default function App() {
 
         {/* MODULAR SECTIONS */}
         <CoursesSection />
+        <CertificationSection />
         <BenefitsSection />
         <MarqueeSection />
         <MentorsSection />
+        <PlacementSection />
         <ReviewsSection />
         <ContactSection />
         <Footer />

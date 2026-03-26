@@ -242,6 +242,101 @@ export const reviewsData = [
   },
 ];
 
+export const certificationHeaderData = {
+  tag: "CERTIFICATION",
+  title: "Credentials That Open Doors",
+  subtext: "Every course backed by recognised certifications, preparing you for global excellence.",
+};
+
+export const certificationCards = [
+  {
+    id: "rsdca",
+    badge: "National",
+    issuer: "RSDCA",
+    title: "RSDCA Certification",
+    description: "Nationally recognised credential validating your accounting and finance skills, endorsed by a reputed institution.",
+    logo: "/images/certificate.png",
+    type: "national"
+  },
+  {
+    id: "embassy",
+    badge: "International",
+    issuer: "Government Verified",
+    title: "Embassy Attestation",
+    description: "RSDCA certificate undergoes embassy attestation — legally accepted by GCC employers and foreign authorities worldwide.",
+    icon: "government",
+    type: "international"
+  },
+  {
+    id: "sap",
+    badge: "Global",
+    issuer: "SAP Global",
+    title: "SAP Authorised Certification",
+    description: "The SAP FICO course prepares you for the globally recognised SAP exam — opens doors to ERP consulting roles worldwide.",
+    icon: "sap",
+    type: "global"
+  }
+];
+
+export const placementHeaderData = {
+  tag: "PLACEMENTS",
+  title: "We Don't Stop At Training",
+  subtext: "Our dedicated placement cell works tirelessly to bridge the gap between your skills and your dream career.",
+};
+
+// NOTE: These are placeholder stats. Please confirm exact numbers with the client before go-live.
+export const placementStats = [
+  {
+    id: 1,
+    number: "200",
+    suffix: "+",
+    label: "STUDENTS PLACED",
+    subLabel: "Growing network of successful alumni"
+  },
+  {
+    id: 2,
+    number: "GCC",
+    suffix: "",
+    label: "INTERNATIONAL REACH",
+    subLabel: "Kuwait, UAE, Qatar, Bahrain"
+  },
+  {
+    id: 3,
+    number: "100",
+    suffix: "%",
+    label: "JOB-ORIENTED COURSES",
+    subLabel: "Every course designed for hiring"
+  },
+  {
+    id: 4,
+    number: "Alumni",
+    suffix: "",
+    label: "NETWORK",
+    subLabel: "Active WhatsApp + referral community"
+  }
+];
+
+export const placementFeatures = [
+  {
+    id: 1,
+    title: "Resume & Interview Prep",
+    description: "Personalised CV support and mock interviews to get you ready for real hiring rounds.",
+    icon: "document"
+  },
+  {
+    id: 2,
+    title: "Employer Tie-Ups",
+    description: "Direct connections with accounting firms, corporates, and GCC businesses actively hiring our graduates.",
+    icon: "handshake"
+  },
+  {
+    id: 3,
+    title: "GCC Placement Pathway",
+    description: "Embassy-attested certifications plus guidance on work visa, documentation, and GCC job applications.",
+    icon: "airplane"
+  }
+];
+
 export const contactData = {
   header: {
     tag: "Get in Touch",
