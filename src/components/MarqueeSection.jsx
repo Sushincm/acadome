@@ -1,8 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { splitTextIntoSpans } from '../utils/animations';
 
 export default function MarqueeSection() {
   const titleRef = useRef(null);
@@ -22,22 +20,6 @@ export default function MarqueeSection() {
   const trackLogos = [...logos, ...logos];
 
   useEffect(() => {
-    // Split text helper
-    const splitTextIntoSpans = (element) => {
-      const text = element.innerText;
-      element.innerHTML = "";
-      return text.split("").map((char) => {
-        const outer = document.createElement("span");
-        outer.style.cssText = "display:inline-block; overflow:hidden; vertical-align:bottom;";
-        const inner = document.createElement("span");
-        inner.style.cssText = "display:inline-block;";
-        inner.textContent = char === " " ? "\u00A0" : char;
-        outer.appendChild(inner);
-        element.appendChild(outer);
-        return inner;
-      });
-    };
-
     // Tag pill fade in
     if (tagRef.current) {
       gsap.fromTo(
@@ -56,22 +38,24 @@ export default function MarqueeSection() {
     // Split-text title animation
     if (titleRef.current) {
       const chars = splitTextIntoSpans(titleRef.current);
-      gsap.fromTo(
-        chars,
-        { y: "110%", opacity: 0 },
-        {
-          y: "0%",
-          opacity: 1,
-          duration: 0.6,
-          ease: "power4.out",
-          stagger: 0.015,
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+      if (chars.length > 0) {
+        gsap.fromTo(
+          chars,
+          { y: "110%", opacity: 0 },
+          {
+            y: "0%",
+            opacity: 1,
+            duration: 0.6,
+            ease: "power4.out",
+            stagger: 0.015,
+            scrollTrigger: {
+              trigger: titleRef.current,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
     }
 
     // Description fade in
@@ -145,6 +129,7 @@ export default function MarqueeSection() {
                 <img
                   src={src}
                   alt={`Software Partner ${i}`}
+                  loading="lazy"
                   className="h-[60px] w-auto object-contain max-w-[170px] mix-blend-multiply"
                 />
               </div>

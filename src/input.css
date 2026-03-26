@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -9,6 +10,7 @@
 
   --font-heading: Poppins, sans-serif;
   --font-body: Inter, sans-serif;
+  --font-sora: Sora, sans-serif;
 
   --shadow-soft: 0px 8px 24px rgba(0, 0, 0, 0.06);
 
@@ -22,6 +24,7 @@
   }
   body {
     overflow-x: hidden;
+    background-color: #fff;
   }
 }
 
@@ -34,17 +37,6 @@
   .animate-marquee {
     animation: marquee 22s linear infinite;
   }
-  
-  /* Mobile menu styles */
-  .mobile-toggle {
-    display: none;
-  }
-
-  @media (max-width: 768px) {
-    .mobile-toggle {
-      display: flex;
-    }
-  }
 }
 
 /* Smooth hide/show for mobile menu */
@@ -55,23 +47,59 @@
   clip-path: circle(0px at 100% 0);
 }
 
-/* Floating Navbar */
+/* Base Navbar (Expanded at top) */
+#navbar {
+  border: none;
+  box-shadow: none;
+  will-change: transform, width, top, padding, border-radius;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(0);
+}
+
+/* Floating Navbar State */
 #navbar.nav-floating {
-  top: 20px;
-  width: 90%;
+  width: 92%;
   max-width: 1200px;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  top: 20px;
+  border-radius: 24px;
   padding-top: 12px;
   padding-bottom: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
-@media (max-width: 768px) {
-  #navbar.nav-floating {
-    width: 95%;
-    top: 15px;
-    border-radius: 12px;
-    padding-top: 14px;
-    padding-bottom: 14px;
-  }
+
+/* Force GPU acceleration for animated backgrounds */
+#wwo-bg, #wwo-bg img {
+  will-change: transform, border-radius;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Swiper Pagination Custom Styles */
+.benefits-swiper .swiper-pagination-bullet,
+.mentor-pagination .mentor-dot {
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer;
+}
+
+.benefits-swiper .swiper-pagination-bullet-active,
+.mentor-pagination .swiper-pagination-bullet-active.mentor-dot {
+  background: #E63946 !important;
+  transform: scale(1.2) !important;
+  opacity: 1 !important;
+}
+
+.benefits-swiper .swiper-pagination-bullet {
+  background: white !important;
+  opacity: 0.3 !important;
+}
+
+.benefits-swiper .swiper-pagination-bullet-active {
+  opacity: 1 !important;
 }

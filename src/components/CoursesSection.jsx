@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { coursesHeaderData, coursesTabsData } from '../data';
+import { splitTextIntoSpans } from '../utils/animations';
 
 export default function CoursesSection() {
   const [activeTabId, setActiveTabId] = useState(coursesTabsData[0].id);
@@ -59,20 +60,6 @@ export default function CoursesSection() {
 
   // Scroll-triggered section header animations (run once on mount)
   useEffect(() => {
-    const splitTextIntoSpans = (element) => {
-      const text = element.innerText;
-      element.innerHTML = "";
-      return text.split("").map((char) => {
-        const outer = document.createElement("span");
-        outer.style.cssText = "display:inline-block; overflow:hidden; vertical-align:bottom;";
-        const inner = document.createElement("span");
-        inner.style.cssText = "display:inline-block;";
-        inner.textContent = char === " " ? "\u00A0" : char;
-        outer.appendChild(inner);
-        element.appendChild(outer);
-        return inner;
-      });
-    };
 
     if (tagRef.current) {
       gsap.fromTo(
@@ -90,22 +77,24 @@ export default function CoursesSection() {
 
     if (titleRef.current) {
       const chars = splitTextIntoSpans(titleRef.current);
-      gsap.fromTo(
-        chars,
-        { y: "110%", opacity: 0 },
-        {
-          y: "0%",
-          opacity: 1,
-          duration: 0.6,
-          ease: "power4.out",
-          stagger: 0.015,
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+      if (chars.length > 0) {
+        gsap.fromTo(
+          chars,
+          { y: "110%", opacity: 0 },
+          {
+            y: "0%",
+            opacity: 1,
+            duration: 0.6,
+            ease: "power4.out",
+            stagger: 0.015,
+            scrollTrigger: {
+              trigger: titleRef.current,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
     }
   }, []);
 
@@ -192,6 +181,7 @@ export default function CoursesSection() {
                   <img
                     src={activeCourse.imageSrc}
                     alt={activeCourse.title}
+                    loading="lazy"
                     className="absolute w-full h-[120%] -top-[10%] left-0 object-cover rounded-[16px] transition-transform duration-700 ease-out group-hover:scale-[1.03] parallax-img"
                   />
                 </div>

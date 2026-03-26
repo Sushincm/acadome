@@ -161,3 +161,98 @@ export const benefitsCards = [
     iconId: "calendar"
   }
 ];
+
+export const mentorsHeaderData = {
+  tag: "OUR MENTORS",
+  title: "Elevating Your Path to Excellence",
+  subtext: "Learn from industry experts with years of experience and a passion for teaching.",
+};
+
+export const mentorsData = [
+  {
+    id: 1,
+    name: "CA Rajeesh Chinnan",
+    credentials: "ACA, ACMA(UK), CGMA",
+    role: "Faculty",
+    image: "/images/Team/CA Rajeesh Chinnan.jpg",
+  },
+  {
+    id: 2,
+    name: "CA Vinod Valooparambil",
+    credentials: "ACA, GMPE (IIM Indore)",
+    role: "Faculty",
+    image: "/images/Team/CA Vinod Valooparambil.jpg",
+  },
+  {
+    id: 3,
+    name: "CA Ajeesh Gopalan",
+    credentials: "ACA",
+    role: "Faculty",
+    image: "/images/Team/CA Ajeesh Gopalan.jpg",
+  },
+  {
+    id: 4,
+    name: "Akshay K.S",
+    credentials: "CA Inter",
+    role: "Faculty",
+    image: "/images/Team/Akshay K.S.jpg",
+  },
+  {
+    id: 5,
+    name: "Justin Davis",
+    credentials: "CA Inter",
+    role: "Faculty",
+    image: "/images/Team/Justin Davis.jpg",
+  },
+  {
+    id: 6,
+    name: "Soumya Sasikumar",
+    credentials: "MBA",
+    role: "Faculty",
+    image: "/images/Team/Soumya Sasikumar.jpg",
+  },
+];
+
+export const reviewsHeaderData = {
+  tag: "STUDENT REVIEWS",
+  title: "What Our Students Say",
+};
+
+export const reviewsData = [
+  {
+    id: 1,
+    name: "Marshal",
+    quote: "My experience at ACADOME was amazing. The Certified Comprehensive Accounting Program was practical and covered all the key aspects I needed. The instructors brought real-world insights, leaving me confident and ready for new challenges in accounting.",
+    program: "CCAP — Certified Comprehensive Accounting Program",
+    image: "https://i.pravatar.cc/150?u=marshal",
+  },
+  {
+    id: 2,
+    name: "Anju",
+    quote: "Joining ACADOME's Certified Comprehensive Accounting Program was a great decision and a refreshment to my career. The curriculum was clear, and the instructors were supportive. I highly recommend it to anyone pursuing accounting.",
+    program: "CCAP — Certified Comprehensive Accounting Program",
+    image: "https://i.pravatar.cc/150?u=anju",
+  },
+  {
+    id: 3,
+    name: "Hena",
+    quote: "Joining ACADOME's CCAP was a pivotal step in my career. The comprehensive curriculum and the knowledgeable instructors provided me with a robust understanding of accounting principles. I highly recommend this program.",
+    program: "CCAP — Certified Comprehensive Accounting Program",
+    image: "https://i.pravatar.cc/150?u=hena",
+  },
+];
+
+export const contactData = {
+  header: {
+    tag: "Get in Touch",
+    title: "Connect with Our Expert Team",
+    description: "Have questions about our programs or need career guidance? Reach out to us today.",
+  },
+  details: [
+    { label: "India Phone", value: "+91 9778914198", type: "tel" },
+    { label: "Kuwait Phone 1", value: "+965 69606980", type: "tel" },
+    { label: "Kuwait Phone 2", value: "+965 63336967", type: "tel" },
+    { label: "Email", value: "info@acadome.in", type: "email" },
+    { label: "Address", value: "Chowallur Tower, Room No. 52/1067/35, 3rd floor, West Fort, Civil Lane, Opp. Mar Augin Thoovana Church, Thrissur, Kerala — 680004", type: "text" },
+  ],
+};
