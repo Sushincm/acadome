@@ -45,21 +45,23 @@ export const setupSplitText = (element) => {
     }
   });
 
-  gsap.fromTo(allChars, 
-    { y: "105%", opacity: 0 },
-    { 
-      y: "0%", 
-      opacity: 1, 
-      duration: 0.8, 
-      ease: "power3.out", 
-      stagger: 0.012,
-      scrollTrigger: {
-        trigger: element,
-        start: "top 90%",
-        toggleActions: "play none none reverse",
+  if (allChars.length > 0) {
+    gsap.fromTo(allChars, 
+      { y: "105%", opacity: 0 },
+      { 
+        y: "0%", 
+        opacity: 1, 
+        duration: 0.8, 
+        ease: "power3.out", 
+        stagger: 0.012,
+        scrollTrigger: {
+          trigger: element,
+          start: "top 90%",
+          toggleActions: "play none none reverse",
+        }
       }
-    }
-  );
+    );
+  }
 };
 
 /**
@@ -67,7 +69,16 @@ export const setupSplitText = (element) => {
  * Robust and lightweight for low-end devices.
  */
 export const setupScrollReveal = (selector, delay = 0) => {
-  const elements = typeof selector === "string" ? document.querySelectorAll(selector) : [selector];
+  let elements = [];
+  if (typeof selector === "string") {
+    elements = Array.from(document.querySelectorAll(selector));
+  } else if (selector instanceof NodeList || selector instanceof HTMLCollection) {
+    elements = Array.from(selector);
+  } else if (Array.isArray(selector)) {
+    elements = selector;
+  } else {
+    elements = [selector];
+  }
   
   elements.forEach((el, index) => {
     if (!el || el.getAttribute("data-animated")) return;
