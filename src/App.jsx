@@ -9,6 +9,7 @@ import BenefitsSection from "./components/BenefitsSection";
 import MentorsSection from "./components/MentorsSection";
 import PlacementSection from "./components/PlacementSection";
 import ReviewsSection from "./components/ReviewsSection";
+import GallerySection from "./components/GallerySection";
 import CertificationSection from "./components/CertificationSection";
 import MarqueeSection from "./components/MarqueeSection";
 import ContactSection from "./components/ContactSection";
@@ -464,6 +465,7 @@ export default function App() {
         <MentorsSection />
         <PlacementSection />
         <ReviewsSection />
+        <GallerySection />
         <ContactSection />
         <Footer />
       </main>

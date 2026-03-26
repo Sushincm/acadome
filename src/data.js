@@ -337,6 +337,30 @@ export const placementFeatures = [
   }
 ];
 
+export const galleryHeaderData = {
+  tag: "LIFE AT ACADOME",
+  title: "A Glimpse into our World",
+  subtext: "Experience the vibrant energy and practical learning environment at Acadome.",
+};
+
+export const galleryCategories = ["All", "Classrooms", "Workshops", "Graduation", "Campus"];
+
+// Placeholder stats for gallery. Please update with real photos (Classrooms, Workshops, Graduation, Campus)
+export const galleryImages = [
+  { id: 1, src: "/images/gallary/Interactive Learning Session.jpg", category: "Classrooms", caption: "Interactive Learning Session", h: 400 },
+  { id: 2, src: "https://images.unsplash.com/photo-1544531585-9847b68c8c86?auto=format&fit=crop&q=80&w=800", category: "Workshops", caption: "Tax Planning Workshop", h: 300 },
+  { id: 3, src: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=800", category: "Graduation", caption: "Batch 2024 Convocation", h: 500 },
+  { id: 4, src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800", category: "Campus", caption: "Main Hall Reception", h: 320 },
+  { id: 5, src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800", category: "Classrooms", caption: "Faculty Room Discussions", h: 420 },
+  { id: 6, src: "/images/gallary/Group Discussion Session.jpg", category: "Workshops", caption: "Group Discussion Session", h: 350 },
+  { id: 7, src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800", category: "Graduation", caption: "Certificate Handover", h: 480 },
+  { id: 8, src: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800", category: "Campus", caption: "Study Area", h: 380 },
+  { id: 9, src: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&q=80&w=800", category: "Classrooms", caption: "Smart Classroom Tech", h: 310 },
+  { id: 10, src: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800", category: "Workshops", caption: "Professional Seminar", h: 450 },
+  { id: 11, src: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800", category: "Graduation", caption: "Faculty & Students", h: 330 },
+  { id: 12, src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=800", category: "Campus", caption: "Outdoor Study Space", h: 410 },
+];
+
 export const contactData = {
   header: {
     tag: "Get in Touch",
