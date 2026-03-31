@@ -3,7 +3,7 @@ import { contactData } from '../data';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaArrowRight, FaCheck } from 'react-icons/fa';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
 
-export default function ContactSection() {
+export default function ContactSection({ showMap = true }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,8 +25,8 @@ export default function ContactSection() {
     if (titleRef.current) setupSplitText(titleRef.current);
     if (infoRef.current) setupScrollReveal(".contact-item", 0.2);
     if (formRef.current) setupScrollReveal(formRef.current, 0.3);
-    if (mapRef.current) setupScrollReveal(mapRef.current, 0.4);
-  }, []);
+    if (showMap && mapRef.current) setupScrollReveal(mapRef.current, 0.4);
+  }, [showMap]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -57,11 +57,11 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32 bg-[#EBEBEB] w-full overflow-hidden">
+    <section id="contact" className={`py-20 md:py-32 bg-[#EBEBEB] w-full overflow-hidden ${!showMap ? 'pb-20' : ''}`}>
       <div className="container max-w-[1240px] mx-auto px-4 md:px-6">
         
         {/* TOP: Contact Info & Form Row */}
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start mb-20 md:mb-24">
+        <div className={`flex flex-col lg:flex-row gap-16 lg:gap-24 items-start ${showMap ? 'mb-20 md:mb-24' : 'mb-0'}`}>
           
           {/* Left Side: Contact Info (Header + Info List) */}
           <div className="w-full lg:w-[42%] flex flex-col items-start text-left">
@@ -105,16 +105,16 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right Side: Form (Navy Background) */}
-          <div ref={formRef} className="w-full lg:w-[58%] bg-primary-navy p-8 md:p-12 lg:p-14 rounded-[24px] shadow-[0_20px_50px_rgba(15,39,71,0.15)] relative overflow-hidden">
-            {/* Subtle decorative circle */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+          {/* Right Side: Form (Modern White Card) */}
+          <div ref={formRef} className="w-full lg:w-[58%] bg-white p-8 md:p-12 lg:p-14 rounded-[32px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-gray-100 relative overflow-hidden group">
+            {/* Subtle decorative glow */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-accent-red/5 rounded-full blur-[100px] pointer-events-none group-hover:bg-accent-red/10 transition-colors"></div>
 
-            <form onSubmit={handleSubmit} className="space-y-6 relative z-10 w-full">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-7 relative z-10 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
                 {/* Full Name */}
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="text-white/40 font-body text-[10px] uppercase tracking-widest font-bold ml-1">Full Name</label>
+                <div className="flex flex-col gap-2.5">
+                  <label htmlFor="name" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-60">Full Name</label>
                   <input
                     type="text"
                     id="name"
@@ -123,13 +123,13 @@ export default function ContactSection() {
                     onChange={handleChange}
                     placeholder="e.g. John Doe"
                     disabled={status === 'sending'}
-                    className="bg-white border border-gray-200 rounded-[10px] px-4 py-3 outline-none text-primary-navy font-body placeholder:text-gray-300 transition-all focus:ring-2 focus:ring-accent-red/20 w-full text-[15px]"
+                    className="bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-4 outline-none text-primary-navy font-body placeholder:text-gray-400 transition-all focus:ring-2 focus:ring-accent-red/20 focus:border-accent-red/30 w-full text-[15px]"
                     required
                   />
                 </div>
                 {/* Email Address */}
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-white/40 font-body text-[10px] uppercase tracking-widest font-bold ml-1">Email Address</label>
+                <div className="flex flex-col gap-2.5">
+                  <label htmlFor="email" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-60">Email Address</label>
                   <input
                     type="email"
                     id="email"
@@ -138,16 +138,16 @@ export default function ContactSection() {
                     onChange={handleChange}
                     placeholder="e.g. name@email.com"
                     disabled={status === 'sending'}
-                    className="bg-white border border-gray-200 rounded-[10px] px-4 py-3 outline-none text-primary-navy font-body placeholder:text-gray-300 transition-all focus:ring-2 focus:ring-accent-red/20 w-full text-[15px]"
+                    className="bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-4 outline-none text-primary-navy font-body placeholder:text-gray-400 transition-all focus:ring-2 focus:ring-accent-red/20 focus:border-accent-red/30 w-full text-[15px]"
                     required
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
                 {/* Phone Number */}
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="phone" className="text-white/40 font-body text-[10px] uppercase tracking-widest font-bold ml-1">Phone Number</label>
+                <div className="flex flex-col gap-2.5">
+                  <label htmlFor="phone" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-60">Phone Number</label>
                   <input
                     type="tel"
                     id="phone"
@@ -156,13 +156,13 @@ export default function ContactSection() {
                     onChange={handleChange}
                     placeholder="+91 0000 000 000"
                     disabled={status === 'sending'}
-                    className="bg-white border border-gray-200 rounded-[10px] px-4 py-3 outline-none text-primary-navy font-body placeholder:text-gray-300 transition-all focus:ring-2 focus:ring-accent-red/20 w-full text-[15px]"
+                    className="bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-4 outline-none text-primary-navy font-body placeholder:text-gray-400 transition-all focus:ring-2 focus:ring-accent-red/20 focus:border-accent-red/30 w-full text-[15px]"
                     required
                   />
                 </div>
                 {/* Course Interest */}
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="course" className="text-white/40 font-body text-[10px] uppercase tracking-widest font-bold ml-1">Course Interest</label>
+                <div className="flex flex-col gap-2.5">
+                  <label htmlFor="course" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-60">Course Interest</label>
                   <div className="relative">
                     <select
                       id="course"
@@ -170,7 +170,7 @@ export default function ContactSection() {
                       value={formData.course}
                       onChange={handleChange}
                       disabled={status === 'sending'}
-                      className="bg-white border border-gray-200 rounded-[10px] px-4 py-3 outline-none text-primary-navy font-body transition-all focus:ring-2 focus:ring-accent-red/20 w-full appearance-none cursor-pointer text-[15px]"
+                      className="bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-4 outline-none text-primary-navy font-body flex items-center transition-all focus:ring-2 focus:ring-accent-red/20 focus:border-accent-red/30 w-full appearance-none cursor-pointer text-[15px]"
                       required
                     >
                       <option value="" disabled>Choose a program</option>
@@ -179,7 +179,7 @@ export default function ContactSection() {
                       <option value="SAP">SAP FICO</option>
                       <option value="Other">Other</option>
                     </select>
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
                       <FaArrowRight size={10} className="rotate-90" />
                     </div>
                   </div>
@@ -187,17 +187,17 @@ export default function ContactSection() {
               </div>
 
               {/* Your Message */}
-              <div className="flex flex-col gap-2">
-                <label htmlFor="message" className="text-white/40 font-body text-[10px] uppercase tracking-widest font-bold ml-1">Your Message</label>
+              <div className="flex flex-col gap-2.5">
+                <label htmlFor="message" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-60">Your Message</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows="4"
-                  placeholder="Tell us a bit about what you need..."
+                  rows="5"
+                  placeholder="Tell us a bit about your career goals..."
                   disabled={status === 'sending'}
-                  className="bg-white border border-gray-200 rounded-[10px] px-4 py-3 outline-none text-primary-navy font-body placeholder:text-gray-300 transition-all focus:ring-2 focus:ring-accent-red/20 w-full resize-none text-[15px]"
+                  className="bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-4 outline-none text-primary-navy font-body placeholder:text-gray-400 transition-all focus:ring-2 focus:ring-accent-red/20 focus:border-accent-red/30 w-full resize-none text-[15px]"
                   required
                 ></textarea>
               </div>
@@ -206,16 +206,16 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className={`w-full py-4 rounded-lg font-sora font-semibold text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-md 
-                  ${status === 'idle' ? 'bg-accent-red hover:bg-white hover:text-primary-navy' : ''}
-                  ${status === 'sending' ? 'bg-white/20 cursor-not-allowed' : ''}
+                className={`w-full py-5 rounded-xl font-sora font-semibold text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-accent-red/20 scale-100 hover:scale-[1.01] active:scale-[0.99]
+                  ${status === 'idle' ? 'bg-primary-navy hover:bg-accent-red' : ''}
+                  ${status === 'sending' ? 'bg-gray-300 cursor-not-allowed' : ''}
                   ${status === 'success' ? 'bg-green-600' : ''}
                   ${status === 'error' ? 'bg-accent-red' : ''}
                 `}
               >
                 {status === 'idle' && (
                   <>
-                    Send Message <FaArrowRight size={12} />
+                    Send Message <FaArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                   </>
                 )}
                 
@@ -237,19 +237,21 @@ export default function ContactSection() {
         </div>
 
         {/* BOTTOM: Full Width Map Integration */}
-        <div ref={mapRef} className="w-full rounded-[24px] overflow-hidden border border-gray-100 group shadow-lg transition-all duration-300 hover:shadow-xl h-[350px] md:h-[450px]">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1961.36172908012!2d76.1985316983948!3d10.522433700000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ef420d023be5%3A0x528908e46c76b22f!2sACADOME%20%7C%20ACCOUNTING%20TRAINING%20INSTITUTE%20IN%20THRISSUR!5e0!3m2!1sen!2sus!4v1774463429405!5m2!1sen!2sus" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen="" 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Acadome Location"
-            className="transition-opacity duration-300 opacity-95 group-hover:opacity-100"
-          />
-        </div>
+        {showMap && (
+          <div ref={mapRef} className="w-full rounded-[24px] overflow-hidden border border-gray-100 group shadow-lg transition-all duration-300 hover:shadow-xl h-[350px] md:h-[450px]">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1961.36172908012!2d76.1985316983948!3d10.522433700000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ef420d023be5%3A0x528908e46c76b22f!2sACADOME%20%7C%20ACCOUNTING%20TRAINING%20INSTITUTE%20IN%20THRISSUR!5e0!3m2!1sen!2sus!4v1774463429405!5m2!1sen!2sus" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Acadome Location"
+              className="transition-opacity duration-300 opacity-95 group-hover:opacity-100"
+            />
+          </div>
+        )}
       </div>
     </section>
   );

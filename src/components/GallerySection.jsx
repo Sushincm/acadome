@@ -11,8 +11,8 @@ import { FaPlus } from 'react-icons/fa';
 const INITIAL_COUNT = 6;
 
 // Reusable Gallery Card
-const GalleryCard = ({ img, className = '', heightClass = '' }) => (
-  <div className={`relative rounded-[16px] overflow-hidden group cursor-pointer shadow-sm border border-gray-100 bg-white ${className}`}>
+const GalleryCard = ({ img, className = '', heightClass = 'h-full' }) => (
+  <div className={`relative rounded-[24px] overflow-hidden group cursor-pointer shadow-sm border border-gray-100 bg-white h-full ${className}`}>
     <a 
       href={img.src} 
       className="gallery-item block relative overflow-hidden h-full"
@@ -44,11 +44,11 @@ const GalleryCard = ({ img, className = '', heightClass = '' }) => (
   </div>
 );
 
-export default function GallerySection() {
+export default function GallerySection({ fullPage = false, isHome = false }) {
   const [activeCategory, setActiveCategory] = useState("All");
   const [filteredImages, setFilteredImages] = useState(galleryImages);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState(fullPage);
   const lightboxRef = useRef(null);
   
   const titleRef = useRef(null);
@@ -56,14 +56,14 @@ export default function GallerySection() {
   const subtextRef = useRef(null);
 
   const visibleImages = showAll ? filteredImages : filteredImages.slice(0, INITIAL_COUNT);
-  const hasMore = filteredImages.length > INITIAL_COUNT;
+  const hasMore = !fullPage && !isHome && filteredImages.length > INITIAL_COUNT;
 
   useEffect(() => {
     if (tagRef.current) setupScrollReveal(tagRef.current);
     if (titleRef.current) setupSplitText(titleRef.current);
     if (subtextRef.current) setupScrollReveal(subtextRef.current, 0.2);
     setupScrollReveal(".gallery-reveal", 0.3);
-  }, [visibleImages]);
+  }, [visibleImages, isHome]);
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => {
@@ -95,7 +95,7 @@ export default function GallerySection() {
             });
           });
         }
-      }, 200); // Increased delay for Swiper initialization
+      }, 200); 
     });
 
     return () => {
@@ -105,12 +105,12 @@ export default function GallerySection() {
         lightboxRef.current = null;
       }
     };
-  }, [visibleImages, activeCategory]);
+  }, [visibleImages, activeCategory, isHome]);
 
   const handleFilterChange = (category) => {
     if (category === activeCategory || isAnimating) return;
     setIsAnimating(true);
-    setShowAll(false);
+    if (!fullPage) setShowAll(false);
     
     setTimeout(() => {
       setActiveCategory(category);
@@ -125,25 +125,88 @@ export default function GallerySection() {
 
   const toggleShowAll = () => setShowAll(prev => !prev);
 
+  // ═══ HOME PAGE: Curated Collage Layout ═══
+  if (isHome) {
+    return (
+      <section id="gallery" className="py-20 md:py-32 px-4 md:px-6 bg-white w-full overflow-hidden">
+        <div className="container max-w-[1240px] mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-16 lg:gap-24">
+            
+            {/* Left Hand: Stylized Text */}
+            <div className="w-full lg:w-[45%] text-left order-2 lg:order-1">
+              <div ref={tagRef} className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
+                {galleryHeaderData.tag}
+              </div>
+              <h2 ref={titleRef} className="text-[#1B2A3B] font-heading font-bold text-[36px] md:text-[48px] lg:text-[56px] leading-[1.1] mb-8 tracking-tight">
+                Glimpse of Academic Life
+              </h2>
+              <p ref={subtextRef} className="text-gray-500 font-body text-base md:text-lg leading-relaxed mb-10 max-w-[500px]">
+                {galleryHeaderData.subtext}
+              </p>
+              
+              <a href="/gallery" className="group inline-flex items-center justify-center px-8 py-4 bg-primary-navy text-white font-body font-bold text-[16px] rounded-xl hover:bg-accent-red transition-all shadow-lg hover:shadow-accent-red/20 w-full sm:w-auto">
+                Explore Full Gallery
+                <span className="ml-3 transform group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+              </a>
+            </div>
+
+            {/* Right Hand: Asymmetrical Collage */}
+            <div className="w-full lg:w-[55%] order-1 lg:order-2 self-start lg:self-center">
+              <div className="relative w-full aspect-[4/5] md:aspect-[4/5] lg:aspect-[4/5] max-w-[550px] mx-auto">
+                {/* Main Background Glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-accent-red/5 rounded-full blur-[100px] md:blur-[140px] pointer-events-none"></div>
+
+                <div className="relative w-full h-full">
+                  {/* Image 1: Top Left (Creative/Atmosphere) */}
+                  <div className="absolute top-[0%] left-[0%] w-[52%] aspect-square z-10 gallery-reveal -rotate-3 hover:rotate-0 transition-all duration-500 hover:z-40 border-4 border-white shadow-xl rounded-[24px] overflow-hidden">
+                    <GalleryCard img={galleryImages[0]} heightClass="h-full" />
+                  </div>
+                  
+                  {/* Image 2: Center Main (Large - Focal Point) */}
+                  <div className="absolute top-[20%] left-[22%] w-[65%] aspect-[4/5] z-20 gallery-reveal rotate-2 hover:rotate-0 transition-all duration-500 shadow-2xl hover:z-40 border-4 border-white rounded-[24px] overflow-hidden">
+                    <GalleryCard img={galleryImages[1]} heightClass="h-full" />
+                  </div>
+                  
+                  {/* Image 3: Bottom Right (Action/Learning) */}
+                  <div className="absolute top-[62%] right-[0%] w-[55%] aspect-[3/2] z-30 gallery-reveal -rotate-2 hover:rotate-0 transition-all duration-500 hover:z-40 shadow-2xl border-4 border-white rounded-[24px] overflow-hidden">
+                    <GalleryCard img={galleryImages[2]} heightClass="h-full" />
+                  </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute top-[15%] right-[10%] w-3 h-3 md:w-4 md:h-4 rounded-full bg-accent-red animate-ping opacity-30"></div>
+                  <div className="absolute bottom-[10%] left-[10%] w-[120px] h-1 bg-accent-red/20 rounded-full blur-sm"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // ═══ GALLERY PAGE: Standard Grid Layout ═══
   return (
-    <section id="gallery" className="py-20 md:py-32 px-4 md:px-6 bg-white w-full overflow-hidden">
+    <section id="gallery" className={`${fullPage ? 'py-12 md:py-20' : 'py-20 md:py-32'} px-4 md:px-6 bg-white w-full overflow-hidden`}>
       <div className="container max-w-[1240px] mx-auto">
         
-        {/* Header Block */}
-        <div className="text-center mb-12 md:mb-16 max-w-[800px] mx-auto flex flex-col items-center">
-          <div ref={tagRef} className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
-            {galleryHeaderData.tag}
+        {/* Header Block - Only show if NOT on full page */}
+        {!fullPage && (
+          <div className="text-center mb-12 md:mb-16 max-w-[800px] mx-auto flex flex-col items-center">
+            <div ref={tagRef} className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
+              {galleryHeaderData.tag}
+            </div>
+            <h2 ref={titleRef} className="text-[#1B2A3B] font-heading font-bold text-[32px] md:text-[44px] lg:text-[52px] leading-[1.15] mb-6 tracking-tight">
+              {galleryHeaderData.title}
+            </h2>
+            <p ref={subtextRef} className="text-gray-500 font-body text-base md:text-lg leading-relaxed max-w-[600px]">
+              {galleryHeaderData.subtext}
+            </p>
           </div>
-          <h2 ref={titleRef} className="text-[#1B2A3B] font-heading font-bold text-[32px] md:text-[44px] lg:text-[52px] leading-[1.15] mb-6 tracking-tight">
-            {galleryHeaderData.title}
-          </h2>
-          <p ref={subtextRef} className="text-gray-500 font-body text-base md:text-lg leading-relaxed max-w-[600px]">
-            {galleryHeaderData.subtext}
-          </p>
-        </div>
+        )}
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-10 md:mb-16">
+        <div className={`flex flex-wrap items-center justify-center gap-3 mb-10 ${fullPage ? 'md:mb-12' : 'md:mb-16'}`}>
           {galleryCategories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
@@ -187,8 +250,8 @@ export default function GallerySection() {
           }`}
         >
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
-            {visibleImages.map((img) => (
-              <div key={img.id} className="w-full gallery-reveal">
+            {visibleImages.map((img, i) => (
+              <div key={`${img.id}-${i}`} className="w-full gallery-reveal">
                 <GalleryCard img={img} heightClass="h-[400px]" />
               </div>
             ))}

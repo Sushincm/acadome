@@ -1,8 +1,10 @@
 
 export const navLinks = [
-  { id: "programs", label: "Programs", href: "#programs" },
-  { id: "about", label: "About", href: "#about" },
-  { id: "contact", label: "Contact", href: "#contact" },
+  { id: "home", label: "Home", href: "/" },
+  { id: "about", label: "About Us", href: "/about-us" },
+  { id: "courses", label: "Our Courses", href: "/our-courses" },
+  { id: "gallery", label: "Gallery", href: "/gallery" },
+  { id: "contact", label: "Contact Us", href: "/contact-us" },
 ];
 
 export const heroData = {
@@ -15,6 +17,7 @@ export const heroData = {
 
 export const aboutData = {
   tag: "About Us",
+  title: "About Acadome",
   descriptionParts: [
     { text: "At Acadome, we build industry-ready", isImage: false },
     { imageSrc: "/images/about-1.jpg", alt: "Training", isImage: true },
@@ -31,7 +34,31 @@ export const aboutData = {
     { text: "environments.", isImage: false },
   ],
   buttonText: "Read more",
-  buttonLink: "#",
+  buttonLink: "/about-us",
+  story: {
+    title: "Our Story",
+    content: [
+      "Founded with a vision to bridge the gap between academic learning and industry requirements, Acadome has emerged as a premier institute for financial and accounting excellence. We recognized that many graduates possessed theoretical knowledge but lacked the practical skills needed in today's fast-paced corporate world, especially in the competitive GCC markets.",
+      "Our journey began with a small group of dedicated CA and MBA professionals who wanted to share their real-world experience. Over the years, we have trained hundreds of students, transforming them into job-ready professionals equipped with the latest software tools and international accounting standards.",
+      "Today, Acadome stands for quality, practical expertise, and career-oriented training. We don't just teach accounting; we build careers that last."
+    ]
+  },
+  missionVision: {
+    mission: {
+      title: "Our Mission",
+      content: "To empower aspiring accountants and finance professionals with practical, industry-aligned training and global certifications, enabling them to excel in domestic and international job markets."
+    },
+    vision: {
+      title: "Our Vision",
+      content: "To be the leading global destination for practical financial education, recognized for creating the most skilled and industry-ready accounting professionals."
+    }
+  },
+  whyChoose: [
+    { title: "Expert Training", content: "Learn from certified professionals with years of industry experience." },
+    { title: "Competitive Edge", content: "Gain skills that set you apart in the global job market." },
+    { title: "Job-Oriented Approach", content: "Every module is designed with hiring requirements in mind." },
+    { title: "Practical Experience", content: "Apply your knowledge through real-world projects and internships." }
+  ]
 };
 
 export const wwoHeaderData = {
@@ -375,3 +402,41 @@ export const contactData = {
     { label: "Address", value: "Chowallur Tower, Room No. 52/1067/35, 3rd floor, West Fort, Civil Lane, Opp. Mar Augin Thoovana Church, Thrissur, Kerala — 680004", type: "text" },
   ],
 };
+
+export const courseComparisonData = {
+  columns: ["Feature", "CCAP", "DAFA", "SAP FICO"],
+  rows: [
+    { label: "Duration", values: ["2 Months", "6 Months", "3 Months"] },
+    { label: "Level", values: ["Beginner to Intermediate", "Advanced Diploma", "Specialized Professional"] },
+    { label: "Certifications", values: ["RSDCA", "RSDCA + Diploma", "SAP Global Ready"] },
+    { label: "Internship", values: ["Included", "Included", "Included"] },
+    { label: "Ideal For", values: ["Fresh Graduates", "Career Switchers", "ERP Consultants"] }
+  ]
+};
+
+export const courseFaqs = [
+  {
+    question: "What is the eligibility for the CCAP course?",
+    answer: "Any graduate or student pursuing graduation in commerce (B.Com, BBA, etc.) can join the CCAP course."
+  },
+  {
+    question: "Is the internship provided during the course?",
+    answer: "Yes, all our major programs include a structured internship phase to provide real-world industry exposure."
+  },
+  {
+    question: "Are the certificates globally recognized?",
+    answer: "Yes, our RSDCA certificates are recognized nationally and can be embassy-attested for GCC and international employment."
+  },
+  {
+    question: "Do you provide job placement support?",
+    answer: "Absolutely. We have a dedicated placement cell that helps with resume building, interview prep, and connecting with employers in India and GCC."
+  },
+  {
+    question: "Can I join SAP FICO without an accounting background?",
+    answer: "While an accounting background is helpful, our SAP FICO module starts with foundations. However, basic financial knowledge is recommended."
+  },
+  {
+    question: "What software tools will I learn?",
+    answer: "Depending on the course, you will master tools like Tally Prime, SAP, Zoho Books, QuickBooks, and Excel for accounting."
+  }
+];

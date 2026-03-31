@@ -112,3 +112,81 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s infinite ease-in-out;
+}
+
+/* Optimization: Native CSS Reveal Animations */
+.reveal-content {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px); 
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+              visibility 0.8s linear;
+  will-change: transform, opacity;
+}
+
+.reveal-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+/* Variant: Fade only */
+.reveal-fade {
+  transform: none;
+}
+
+/* Variant: Slide from Left */
+.reveal-left {
+  transform: translateX(-30px);
+}
+
+.reveal-visible.reveal-left {
+  transform: translateX(0) !important;
+}
+
+/* Variant: Scale In */
+.reveal-scale {
+  transform: scale(0.95);
+}
+
+.reveal-visible.reveal-scale {
+  transform: scale(1) !important;
+}
+
+/* Split Text Reveal classes */
+.reveal-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.reveal-word-inner {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(105%);
+  transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1), 
+              transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-visible .reveal-word-inner {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Simple Hover Parallax for low-end (using transform instead of JS) */
+.hover-parallax {
+  transition: transform 0.3s ease-out;
+}
+.hover-parallax:hover {
+  transform: translateY(-5px);
+}

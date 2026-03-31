@@ -1,17 +1,8 @@
 import { FaInstagram, FaLinkedinIn, FaFacebookF, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-
-  const handleAnchorClick = (e, target) => {
-    if (target && target.startsWith('#')) {
-      e.preventDefault();
-      const lenis = window.__lenis_instance__;
-      if (lenis) {
-        lenis.scrollTo(target, { offset: -80 });
-      }
-    }
-  };
 
   return (
     <footer className="bg-primary-navy text-white pt-20 pb-10 w-full overflow-hidden">
@@ -22,13 +13,13 @@ export default function Footer() {
           
           {/* Col 1: Brand Info */}
           <div className="flex flex-col">
-            <a href="#home" onClick={(e) => handleAnchorClick(e, '#home')} className="mb-6 block w-fit">
+            <Link to="/" className="mb-6 block w-fit">
               <img 
-                src="/images/ACADOME-LOGO-WHITE.png" 
+                src="/images/ACADOME-LOGO.png" 
                 alt="Acadome Logo" 
-                className="h-9 w-auto object-contain"
+                className="h-9 w-auto object-contain brightness-0 invert"
               />
-            </a>
+            </Link>
             <p className="text-white/70 font-body text-[15px] leading-relaxed mb-8 max-w-[280px]">
               Empowering individuals with cutting-edge financial management skills.
             </p>
@@ -54,22 +45,21 @@ export default function Footer() {
             <h4 className="font-sora font-bold text-[18px] mb-8 text-white">Quick Links</h4>
             <ul className="flex flex-col gap-4">
               {[
-                { label: "About Us", href: "#about" },
-                { label: "Our Courses", href: "#programs" },
-                { label: "Gallery", href: "#gallery" },
-                { label: "Contact Us", href: "#contact" }
+                { label: "About Us", href: "/about-us" },
+                { label: "Our Courses", href: "/our-courses" },
+                { label: "Gallery", href: "/gallery" },
+                { label: "Contact Us", href: "/contact-us" }
               ].map((link, i) => (
                 <li key={i}>
-                  <a 
-                    href={link.href}
-                    onClick={(e) => handleAnchorClick(e, link.href)}
+                  <Link 
+                    to={link.href}
                     className="font-body text-[15px] text-white/70 transition-all duration-300 hover:text-accent-red flex items-center group"
                   >
                     {link.label}
                     <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300">
                       &rarr;
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -77,24 +67,23 @@ export default function Footer() {
 
           {/* Col 3: Programs */}
           <div className="flex flex-col">
-            <h4 className="font-sora font-bold text-[18px] mb-8 text-white">Our Courses</h4>
+            <h4 className="font-sora font-bold text-[15px] mb-8 text-white uppercase tracking-widest">Our Courses</h4>
             <ul className="flex flex-col gap-4">
               {[
-                { label: "CCAP", href: "#programs" },
-                { label: "DAFA", href: "#programs" },
-                { label: "SAP FICO", href: "#programs" }
+                { label: "CCAP", sub: "2 Months", href: "/our-courses" },
+                { label: "DAFA", sub: "6 Months", href: "/our-courses" },
+                { label: "SAP FICO", sub: "3 Months", href: "/our-courses" }
               ].map((course, i) => (
                 <li key={i}>
-                  <a 
-                    href={course.href}
-                    onClick={(e) => handleAnchorClick(e, course.href)}
-                    className="font-body text-[15px] text-white/70 transition-all duration-300 hover:text-accent-red flex items-center group"
+                  <Link 
+                    to={course.href}
+                    className="font-body text-[15px] text-white/70 transition-all duration-300 hover:text-accent-red flex items-center gap-2 group"
                   >
-                    {course.label}
+                    {course.label} <span className="text-[10px] text-accent-red font-bold">{course.sub}</span>
                     <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
                       &rarr;
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -126,14 +115,15 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="w-full h-px bg-white/10 mb-8 overflow-hidden relative">
-           {/* Animated line movement could go here if GSAP is used */}
-        </div>
+        <div className="w-full h-px bg-white/10 mb-8 overflow-hidden relative"></div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col items-center justify-center gap-6 px-2">
-          <p className="text-white/40 font-body text-[13px] tracking-wide uppercase font-medium text-center">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-2">
+          <p className="text-white/40 font-body text-[13px] tracking-wide uppercase font-medium text-center md:text-left">
             &copy; {currentYear} ACADOME. ALL RIGHTS RESERVED.
+          </p>
+          <p className="text-white/20 font-body text-[11px] tracking-widest uppercase">
+            Designed & Developed by Antigravity
           </p>
         </div>
       </div>
