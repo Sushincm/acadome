@@ -26,7 +26,6 @@
     "vite": "^8.0.1"
   },
   "dependencies": {
-    "framer-motion": "^12.38.0",
     "glightbox": "^3.3.1",
     "gsap": "^3.14.2",
     "lenis": "^1.3.19",

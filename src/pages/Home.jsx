@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { heroData, aboutData, wwoHeaderData, wwoCards } from "../data";
 import { setupSplitText, setupScrollReveal } from "../utils/animations";
 import CoursesSection from "../components/CoursesSection";
@@ -9,6 +11,8 @@ import GallerySection from "../components/GallerySection";
 import MarqueeSection from "../components/MarqueeSection";
 import ContactSection from "../components/ContactSection";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Home() {
   const heroContainerRef = useRef(null);
   const heroTitleRef = useRef(null);
@@ -16,6 +20,10 @@ export default function Home() {
   const heroCtaRef = useRef(null);
 
   const wwoSectionRef = useRef(null);
+  const wwoContainerRef = useRef(null);
+  const wwoBgRef = useRef(null);
+  const wwoBgImgRef = useRef(null);
+  const wwoTextRef = useRef(null);
   const wwoTagRef = useRef(null);
   const wwoTitleRef = useRef(null);
   const wwoCardsRef = useRef(null);
@@ -25,20 +33,60 @@ export default function Home() {
   const aboutCtaRef = useRef(null);
 
   useEffect(() => {
-    // 1. Hero Reveals
-    if (heroTitleRef.current) setupSplitText(heroTitleRef.current);
-    if (heroDescRef.current) setupScrollReveal(heroDescRef.current, 0.4);
-    if (heroCtaRef.current) setupScrollReveal(heroCtaRef.current, 0.5);
+    const ctx = gsap.context(() => {
+      // 1. Hero Reveals
+      if (heroTitleRef.current) setupSplitText(heroTitleRef.current);
+      if (heroDescRef.current) setupScrollReveal(heroDescRef.current, 0.4);
+      if (heroCtaRef.current) setupScrollReveal(heroCtaRef.current, 0.5);
 
-    // 2. About Section Reveals
-    if (aboutTagRef.current) setupScrollReveal(aboutTagRef.current);
-    if (aboutTitleRef.current) setupScrollReveal(aboutTitleRef.current, 0.2);
-    if (aboutCtaRef.current) setupScrollReveal(aboutCtaRef.current, 0.3);
+      // 2. About Section Reveals
+      if (aboutTagRef.current) setupScrollReveal(aboutTagRef.current);
+      if (aboutTitleRef.current) setupScrollReveal(aboutTitleRef.current, 0.2);
+      if (aboutCtaRef.current) setupScrollReveal(aboutCtaRef.current, 0.3);
 
-    // 3. What We Offer Reveals
-    if (wwoTagRef.current) setupScrollReveal(wwoTagRef.current);
-    if (wwoTitleRef.current) setupSplitText(wwoTitleRef.current);
-    if (wwoCardsRef.current) setupScrollReveal(wwoCardsRef.current.children, 0.1);
+      // 3. What We Offer Expand Animation & Pinning
+      if (wwoSectionRef.current && wwoContainerRef.current && wwoBgRef.current) {
+        // Expand Animation
+        let wwoTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: wwoSectionRef.current,
+            start: "top 95%",
+            end: "top 15%", 
+            scrub: 1,
+          },
+        });
+
+        wwoTl.to(
+          wwoBgRef.current,
+          {
+            scaleX: 1,
+            borderRadius: "0px",
+            ease: "power2.inOut",
+            force3D: true, // GPU acceleration
+          },
+          0
+        );
+
+        if (wwoBgImgRef.current) {
+          wwoTl.to(
+            wwoBgImgRef.current,
+            {
+              scaleX: 1,
+              ease: "power2.inOut",
+              force3D: true,
+            },
+            0
+          );
+        }
+
+      }
+
+      if (wwoTitleRef.current) setupSplitText(wwoTitleRef.current);
+      if (wwoTagRef.current) setupScrollReveal(wwoTagRef.current);
+      if (wwoCardsRef.current) setupScrollReveal(wwoCardsRef.current.children);
+    });
+
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -110,29 +158,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What We Offer Section - Native sticky & reveal optimization */}
+      {/* What We Offer Section */}
       <section
         id="wwo-section"
         ref={wwoSectionRef}
         className="w-full bg-white relative pt-12 md:pt-20"
       >
-        <div className="relative mx-auto w-full">
-          {/* Static Background for Performance on low-end */}
-          <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+        <div
+          id="wwo-container"
+          ref={wwoContainerRef}
+          className="relative mx-auto w-full min-h-[100vh]"
+        >
+          {/* Animated Background */}
+          <div
+            id="wwo-bg"
+            ref={wwoBgRef}
+            className="absolute top-0 left-0 w-full h-full z-0 rounded-[2rem] md:rounded-[40px] overflow-hidden origin-center"
+            style={{ transform: "scaleX(0.9)" }}
+          >
             <img
+              ref={wwoBgImgRef}
               src="/images/what-we-offer.webp"
               alt="What We Offer Header"
               loading="lazy"
-              className="absolute w-full h-full object-cover opacity-100"
+              className="absolute w-full h-[120%] -top-[10%] left-0 object-cover origin-center"
+              style={{ transform: "scaleX(1.111)" }}
             />
             <div className="absolute inset-0 bg-[#0A1628]/95"></div>
           </div>
 
           {/* Content Wrapper */}
-          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row gap-12 lg:gap-20 py-16 md:py-24 lg:py-32">
-            {/* Left Col (Native CSS Sticky) */}
-            <div className="w-full md:w-[45%]">
-              <div className="md:sticky md:top-32 text-left mb-12 md:mb-0 relative max-w-full">
+          <div className="relative z-10 w-full max-w-[1240px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row gap-12 lg:gap-20 py-16 md:py-24 lg:py-32">
+            {/* Left Col (Text block pinned by Native CSS) */}
+            <div className="w-full md:w-[45%] h-full">
+              <div
+                ref={wwoTextRef}
+                className="text-left mb-12 md:mb-0 relative max-w-full md:sticky md:top-32 lg:top-40"
+              >
                 <div 
                   ref={wwoTagRef}
                   className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg border border-white/20 bg-white/10 text-[13px] font-medium text-white mb-6 uppercase tracking-widest shadow-sm"
@@ -141,7 +203,7 @@ export default function Home() {
                 </div>
                 <h2
                   ref={wwoTitleRef}
-                  className="text-white font-heading font-semibold text-[28px] md:text-[36px] lg:text-[42px] leading-[1.15] tracking-tight"
+                  className="text-white font-heading font-semibold text-[32px] md:text-[2rem] lg:text-[2.5rem] leading-[1.15] tracking-tight"
                 >
                   {wwoHeaderData.title}
                 </h2>
@@ -149,22 +211,22 @@ export default function Home() {
             </div>
 
             {/* Right Col (Scrollable Cards) */}
-            <div className="w-full md:w-[55%] flex flex-col gap-10 md:gap-14 mt-4">
-              <div ref={wwoCardsRef} className="flex flex-col gap-10 md:gap-14">
+            <div className="w-full md:w-[55%] flex flex-col gap-6 md:gap-8 mt-4 md:mt-16">
+              <div ref={wwoCardsRef} className="flex flex-col gap-6 md:gap-8">
               {wwoCards && wwoCards.map((card) => (
                 <div
                   key={card.id}
-                  className="bg-white/10 backdrop-blur-xl rounded-2xl md:rounded-[40px] p-8 md:p-14 border border-white/20 text-white hover:bg-white/15 transition-all duration-300 shadow-xl"
+                  className="bg-white/15 rounded-2xl md:rounded-[24px] p-8 lg:p-10 border border-white/20 text-white transform hover:-translate-y-2 transition-transform duration-300"
                 >
-                  <h3 className="text-[22px] md:text-[28px] font-bold font-heading mb-4 text-white">
+                  <h3 className="text-[22px] md:text-[26px] font-semibold font-heading mb-4 text-white">
                     {card.title}
                   </h3>
-                  <p className="text-[15px] md:text-[17px] text-white/80 leading-relaxed mb-8">
+                  <p className="text-[15px] md:text-[16px] text-white/80 leading-relaxed mb-8">
                     {card.description}
                   </p>
                   <a
                     href={card.buttonLink}
-                    className="inline-flex items-center px-6 py-3.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white hover:text-primary-navy font-semibold text-[15px] group transition-all duration-300"
+                    className="inline-flex items-center text-white/90 hover:text-white font-medium text-[15px] group transition-colors"
                   >
                     {card.buttonText}
                     <span className="ml-2 group-hover:translate-x-1 transition-transform">

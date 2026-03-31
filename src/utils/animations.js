@@ -12,8 +12,8 @@ const revealObserver = typeof window !== 'undefined' ? new IntersectionObserver(
   });
 }, {
   root: null,
-  rootMargin: '0px 0px -50px 0px', // Trigger slightly after coming into view
-  threshold: 0.1
+  rootMargin: '0px 0px 0px 0px', // Trigger exactly when entering viewport to fix mobile scroll issues
+  threshold: 0
 }) : null;
 
 /**
