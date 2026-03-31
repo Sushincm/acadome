@@ -76,10 +76,17 @@ export default function Layout({ children }) {
   };
 
   const scrollToTop = () => {
-    lenisRef.current?.scrollTo(0, {
-      duration: 1.5,
-      // Custom ease: outQuart alternative for native scroll
-    });
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, {
+        duration: 1.5,
+      });
+    } else {
+      // Fallback for Mobile (where Lenis is disabled)
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
