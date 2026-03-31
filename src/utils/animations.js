@@ -4,6 +4,7 @@
  */
 const revealObserver = typeof window !== 'undefined' ? new IntersectionObserver((entries) => {
   entries.forEach(entry => {
+    // entry.isIntersecting is the primary trigger, intersectionRatio > 0 is a fallback
     if (entry.isIntersecting || entry.intersectionRatio > 0) {
       entry.target.classList.add('reveal-visible');
       revealObserver.unobserve(entry.target);
@@ -11,8 +12,8 @@ const revealObserver = typeof window !== 'undefined' ? new IntersectionObserver(
   });
 }, {
   root: null,
-  rootMargin: '120px 0px 120px 0px', // Start revealing BEFORE entering viewport for smoother mobile feel
-  threshold: [0, 0.1]
+  rootMargin: '10% 0px 40% 0px', // Trigger revelations much earlier, especially from bottom
+  threshold: 0
 }) : null;
 
 /**
@@ -22,7 +23,14 @@ export const setupSplitText = (element, delay = 0) => {
   if (!element || element.getAttribute("data-animated")) return;
 
   const text = element.innerText;
-  element.setAttribute("data-animated", "true");
+
+  // MOBILE FALLBACK: 
+  // Use standard reveal instead of complex split-text for devices < 992px
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 992;
+  if (isMobile) {
+     setupScrollReveal(element, delay);
+     return;
+  }
   
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     element.style.opacity = 1;
@@ -54,7 +62,15 @@ export const setupSplitText = (element, delay = 0) => {
     }
   });
 
-  if (revealObserver) revealObserver.observe(element);
+  if (revealObserver) {
+    revealObserver.observe(element);
+    // Safety timeout for mobile
+    setTimeout(() => {
+      if (element) element.classList.add("reveal-visible");
+    }, 3000);
+  } else {
+    element.classList.add("reveal-visible");
+  }
 };
 
 /**
@@ -96,7 +112,16 @@ export const setupScrollReveal = (selector, delay = 0, variant = "") => {
       el.style.transitionDelay = `${staggerDelay}s`;
     }
 
-    if (revealObserver) revealObserver.observe(el);
+    // Optimization for mobile/low-end: Ensure visibility even if observer fails
+    if (revealObserver) {
+      revealObserver.observe(el);
+      // Safety timeout: reveal anyway after 3s if observer doesn't trigger
+      setTimeout(() => {
+        if (el) el.classList.add("reveal-visible");
+      }, 3000);
+    } else {
+      el.classList.add("reveal-visible");
+    }
   });
 };
 
