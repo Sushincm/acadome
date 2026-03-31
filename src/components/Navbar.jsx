@@ -29,7 +29,7 @@ export default function Navbar({ isNavOpen, setIsNavOpen, isNavFloating, toggleN
           <img src="/images/ACADOME-LOGO.png" alt="Acadome Logo" className="h-9 w-auto object-contain" />
         </Link>
 
-        <div className="hidden md:flex items-center gap-8 relative z-20">
+        <div className="hidden min-[992px]:flex items-center gap-8 relative z-20">
           <div className="flex items-center gap-8">
             {navLinks && navLinks.map((link) => (
               <Link 
@@ -48,14 +48,14 @@ export default function Navbar({ isNavOpen, setIsNavOpen, isNavFloating, toggleN
           </Link>
         </div>
 
-        <button onClick={toggleNav} className="md:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer relative z-50 w-[24px]" aria-label="Toggle navigation">
+        <button onClick={toggleNav} className="min-[992px]:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer relative z-50 w-[24px]" aria-label="Toggle navigation">
           <span className="w-full h-[2px] bg-gray-800 transition-all duration-300 origin-center" style={isNavOpen ? { transform: "translateY(7px) rotate(45deg)" } : {}}></span>
           <span className="w-full h-[2px] bg-gray-800 transition-all duration-300 origin-center" style={isNavOpen ? { opacity: "0" } : {}}></span>
           <span className="w-full h-[2px] bg-gray-800 transition-all duration-300 origin-center" style={isNavOpen ? { transform: "translateY(-7px) rotate(-45deg)" } : {}}></span>
         </button>
       </div>
 
-      <div id="nav-links" className={`fixed top-0 left-0 w-full h-screen bg-white z-40 flex flex-col items-center justify-center gap-8 transition-all duration-500 ease-in-out md:hidden ${isNavOpen ? "mobile-menu-active" : "mobile-menu-inactive"}`}>
+      <div id="nav-links" className={`fixed top-0 left-0 w-full h-screen bg-white z-40 flex flex-col items-center justify-center gap-8 transition-all duration-500 ease-in-out min-[992px]:hidden ${isNavOpen ? "mobile-menu-active" : "mobile-menu-inactive"}`}>
         {navLinks.map((link) => (
           <Link key={link.id} to={link.href} onClick={closeNav} className={`font-body text-2xl font-medium ${location.pathname === link.href ? "text-primary-navy" : "text-gray-800"}`}>
             {link.label}
