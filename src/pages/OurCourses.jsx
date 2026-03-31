@@ -103,13 +103,13 @@ export default function OurCourses() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 md:py-32 px-6 bg-white overflow-hidden">
+      <section className="pb-20 md:pb-32 px-6 bg-white overflow-hidden">
         <div className="container max-w-[900px] mx-auto">
-          <div ref={faqRef} className="mb-12">
+          <div ref={faqRef} className="mb-12 text-center flex flex-col items-center">
             <h2 className="font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] text-primary-navy mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 max-w-2xl">
               Find answers to common queries about our courses, certifications, and career support.
             </p>
           </div>

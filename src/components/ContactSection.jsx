@@ -32,19 +32,47 @@ export default function ContactSection({ showMap = true }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
     
-    // Simulate API call
-    setTimeout(() => {
-      // Simulate success
-      setStatus('success');
-      setFormData({ name: '', email: '', phone: '', course: '', message: '' });
-      
-      // Reset back to idle after 3 seconds
+    /* 
+      ACTION REQUIRED: For a real working form, replace the URL below with your 
+      Formspree endpoint (formspree.io) or your custom backend URL.
+    */
+    const FORM_ENDPOINT = ""; // e.g. "https://formspree.io/f/your_id"
+
+    if (!FORM_ENDPOINT) {
+      // If no endpoint, we still simulate the success for now but with a warning
+      console.warn("ContactSection: No FORM_ENDPOINT defined. Submission is simulated.");
+      setTimeout(() => {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', course: '', message: '' });
+        setTimeout(() => setStatus('idle'), 3000);
+      }, 1500);
+      return;
+    }
+
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', course: '', message: '' });
+        setTimeout(() => setStatus('idle'), 3000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 3000);
+      }
+    } catch (error) {
+      console.error("Form error:", error);
+      setStatus('error');
       setTimeout(() => setStatus('idle'), 3000);
-    }, 2000);
+    }
   };
 
   const getIcon = (type) => {

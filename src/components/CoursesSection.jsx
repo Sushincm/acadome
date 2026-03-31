@@ -19,7 +19,7 @@ export default function CoursesSection() {
   // Scroll-triggered section header animations (run once on mount)
   useEffect(() => {
     if (tagRef.current) setupScrollReveal(tagRef.current);
-    if (titleRef.current) setupSplitText(titleRef.current);
+    if (titleRef.current) setupScrollReveal(titleRef.current, 0.1);
   }, []);
 
   return (

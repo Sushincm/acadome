@@ -12,7 +12,7 @@ export const heroData = {
   description:
     "Practical finance training. Real software exposure. Structured internship pathways. Designed for job-ready professionals in India and GCC markets.",
   buttonText: "Learn more",
-  buttonLink: "#apply",
+  buttonLink: "/contact-us",
 };
 
 export const aboutData = {
@@ -73,7 +73,7 @@ export const wwoCards = [
     description:
       "Gain real industry exposure across India and GCC markets. Develop practical skills in accounting, taxation, and financial management through structured hands-on experience.",
     buttonText: "Learn more",
-    buttonLink: "#apply",
+    buttonLink: "/contact-us",
   },
   {
     id: "workshops",
@@ -81,7 +81,7 @@ export const wwoCards = [
     description:
       "Expert-led sessions designed to strengthen taxation knowledge, compliance practices, and strategic financial planning for working professionals.",
     buttonText: "Learn more",
-    buttonLink: "#apply",
+    buttonLink: "/contact-us",
   },
   {
     id: "seminars",
@@ -89,7 +89,7 @@ export const wwoCards = [
     description:
       "Scenario-driven seminars focused on practical tax planning and financial management, tailored for professionals and aspiring accountants.",
     buttonText: "Learn more",
-    buttonLink: "#apply",
+    buttonLink: "/contact-us",
   },
 ];
 
@@ -112,7 +112,7 @@ export const coursesTabsData = [
       "Software training (Tally, etc.)",
     ],
     buttonText: "Enroll Now",
-    buttonLink: "#apply",
+    buttonLink: "/contact-us",
     imageSrc: "/images/course1.webp",
   },
   {
@@ -129,7 +129,7 @@ export const coursesTabsData = [
       "Strategic Financial Planning",
     ],
     buttonText: "Enroll Now",
-    buttonLink: "#apply",
+    buttonLink: "/contact-us",
     imageSrc: "/images/course2.webp",
   },
   {
@@ -147,7 +147,7 @@ export const coursesTabsData = [
       "Cost Center Accounting",
     ],
     buttonText: "Enroll Now",
-    buttonLink: "#apply",
+    buttonLink: "/contact-us",
     imageSrc: "/images/course3.webp",
   },
 ];
