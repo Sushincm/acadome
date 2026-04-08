@@ -122,9 +122,6 @@ export default function Footer() {
           <p className="text-white/40 font-body text-[13px] tracking-wide uppercase font-medium text-center md:text-left">
             &copy; {currentYear} ACADOME. ALL RIGHTS RESERVED.
           </p>
-          <p className="text-white/20 font-body text-[11px] tracking-widest uppercase">
-            Designed & Developed by Antigravity
-          </p>
         </div>
       </div>
     </footer>
