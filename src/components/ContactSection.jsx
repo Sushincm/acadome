@@ -96,7 +96,7 @@ export default function ContactSection({ showMap = true }) {
             <span ref={tagRef} className="text-accent-red font-sora font-semibold text-[13px] uppercase tracking-[0.25em] mb-4">
               {contactData.header.tag}
             </span>
-            <h2 ref={titleRef} className="text-primary-navy font-sora font-bold text-[36px] md:text-[44px] lg:text-[48px] leading-[1.1] mb-10">
+            <h2 ref={titleRef} className="text-primary-navy font-sora font-bold text-[36px] md:text-[44px] lg:text-[48px] leading-[1.1] mb-10 whitespace-normal break-words max-w-full">
               Connect with Our Expert Team
             </h2>
             

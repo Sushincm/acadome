@@ -57,7 +57,7 @@ export const setupSplitText = (element, delay = 0) => {
     element.appendChild(wordSpan);
 
     if (wordIndex < words.length - 1) {
-      const space = document.createTextNode("\u00A0");
+      const space = document.createTextNode(" ");
       element.appendChild(space);
     }
   });
@@ -156,7 +156,7 @@ export const splitTextIntoSpans = (element) => {
     element.appendChild(wordSpan);
     if (wordIndex < words.length - 1) {
       const space = document.createElement("span");
-      space.textContent = "\u00A0";
+      space.textContent = " ";
       element.appendChild(space);
     }
   });

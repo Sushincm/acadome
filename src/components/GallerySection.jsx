@@ -137,7 +137,7 @@ export default function GallerySection({ fullPage = false, isHome = false }) {
               <div ref={tagRef} className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
                 {galleryHeaderData.tag}
               </div>
-              <h2 ref={titleRef} className="text-[#1B2A3B] font-heading font-bold text-[36px] md:text-[48px] lg:text-[56px] leading-[1.1] mb-8 tracking-tight">
+              <h2 ref={titleRef} className="text-[#1B2A3B] font-heading font-bold text-[36px] md:text-[48px] lg:text-[56px] leading-[1.1] mb-8 tracking-tight whitespace-normal break-words max-w-full">
                 Glimpse of Academic Life
               </h2>
               <p ref={subtextRef} className="text-gray-500 font-body text-base md:text-lg leading-relaxed mb-10 max-w-[500px]">

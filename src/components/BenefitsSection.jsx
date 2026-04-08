@@ -95,7 +95,7 @@ export default function BenefitsSection() {
             <div ref={tagRef} className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg border border-white/20 bg-white/10 text-[13px] font-medium text-white mb-6 uppercase tracking-widest shadow-sm">
               {benefitsHeaderData.tag}
             </div>
-            <h2 ref={titleRef} className="font-heading font-bold text-[36px] md:text-[44px] lg:text-[52px] leading-[1.1] text-white">
+            <h2 ref={titleRef} className="font-heading font-bold text-[36px] md:text-[44px] lg:text-[52px] leading-[1.1] text-white whitespace-normal break-words">
               {benefitsHeaderData.title}
             </h2>
           </div>

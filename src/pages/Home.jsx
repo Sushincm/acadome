@@ -104,7 +104,7 @@ export default function Home() {
           </div>
           <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between w-full mt-auto gap-8 pt-[200px]">
             <div className="max-w-[750px]">
-              <h1 ref={heroTitleRef} className="font-heading font-semibold text-[40px] md:text-[50px] lg:text-[55px] leading-[1.05] tracking-tight text-white m-0">
+              <h1 ref={heroTitleRef} className="font-heading font-semibold text-[40px] md:text-[50px] lg:text-[55px] leading-[1.05] tracking-tight text-white m-0 whitespace-normal break-words">
                 {heroData.title}
               </h1>
             </div>
@@ -193,7 +193,7 @@ export default function Home() {
             <div className="w-full md:w-[45%] h-full">
               <div
                 ref={wwoTextRef}
-                className="text-left mb-12 md:mb-0 relative max-w-full md:sticky md:top-32 lg:top-40"
+                className="text-left mb-12 md:mb-0 relative max-w-[90%] md:max-w-full md:sticky md:top-32 lg:top-40"
               >
                 <div 
                   ref={wwoTagRef}
@@ -203,7 +203,7 @@ export default function Home() {
                 </div>
                 <h2
                   ref={wwoTitleRef}
-                  className="text-white font-heading font-semibold text-[32px] md:text-[2rem] lg:text-[2.5rem] leading-[1.15] tracking-tight"
+                  className="text-white font-heading font-semibold text-[32px] md:text-[2rem] lg:text-[2.5rem] leading-[1.15] tracking-tight whitespace-normal break-words"
                 >
                   {wwoHeaderData.title}
                 </h2>
