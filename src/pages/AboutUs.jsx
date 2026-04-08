@@ -23,7 +23,7 @@ export default function AboutUs() {
         IMMERSIVE HERO SECTION 
         Aligned with Home Page Typography & Spacing
       */}
-      <section ref={heroRef} className="pt-[140px] md:pt-[160px] lg:pt-[180px] pb-12 md:pb-24 lg:pb-44 px-6 md:px-10 lg:px-20 bg-[#f9fafb] overflow-hidden">
+      <section ref={heroRef} className="pt-[120px] md:pt-[140px] lg:pt-[160px] pb-12 md:pb-24 lg:pb-44 px-6 md:px-10 lg:px-20 bg-[#f9fafb] overflow-hidden">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-20 items-start lg:items-end justify-between mb-12 md:mb-20 lg:mb-24">
              <div className="max-w-[800px]">

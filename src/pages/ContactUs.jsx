@@ -15,7 +15,7 @@ export default function ContactUs() {
   return (
     <div className="bg-white">
       {/* Hero Banner */}
-      <section className="bg-primary-navy pt-[140px] pb-20 px-6 relative overflow-hidden text-center">
+      <section className="bg-primary-navy pt-[120px] pb-20 px-6 relative overflow-hidden text-center">
         <div className="absolute inset-0 bg-primary-navy z-0">
            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-red/10 rounded-full blur-[120px]"></div>
            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px]"></div>

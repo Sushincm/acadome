@@ -92,7 +92,7 @@ export default function Home() {
   return (
     <>
       {/* HERO SECTION */}
-      <section id="home" className="relative pt-[115px] md:pt-[145px] px-4 md:px-6 w-full mx-auto min-h-screen flex items-center justify-center">
+      <section id="home" className="relative pt-0 md:pt-[75px] px-4 md:px-6 w-full mx-auto min-h-screen flex items-center justify-center">
         <div ref={heroContainerRef} className="relative w-full h-[80vh] min-h-[500px] md:min-h-[600px] rounded-3xl md:rounded-[48px] overflow-hidden flex flex-col justify-end p-6 md:p-14 lg:p-20 isolate bg-gray-900 shadow-2xl">
           <div className="absolute inset-0 z-0">
             <img 
@@ -119,7 +119,7 @@ export default function Home() {
       {/* About Us Section */}
       <section
         id="about"
-        className="py-24 md:py-32 lg:py-44 px-4 md:px-6 w-full mx-auto bg-white flex flex-col items-center justify-center relative"
+        className="py-16 md:py-20 lg:py-32 px-4 md:px-6 w-full mx-auto bg-white flex flex-col items-center justify-center relative"
       >
         <div className="container max-w-[1100px] flex flex-col items-center text-center">
           <div ref={aboutTagRef} className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-8 md:mb-10 uppercase tracking-widest shadow-sm">

@@ -1,59 +1,94 @@
 /**
  * Universal Intersection Observer for Native CSS Reveals
- * High performance, zero overhead for mobile browsers.
+ * Optimized for low-end devices: checks 'isConnected' to prevent memory leaks
+ * and uses requestAnimationFrame to batch DOM layout passes.
  */
-const revealObserver = typeof window !== 'undefined' ? new IntersectionObserver((entries) => {
+const revealObserver = typeof window !== 'undefined' ? new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
-    // entry.isIntersecting is the primary trigger, intersectionRatio > 0 is a fallback
+    // Memory leak prevention: if component unmounted before revealing
+    if (!entry.target.isConnected) {
+      observer.unobserve(entry.target);
+      return;
+    }
+    
+    // Trigger on intersection
     if (entry.isIntersecting || entry.intersectionRatio > 0) {
-      entry.target.classList.add('reveal-visible');
-      revealObserver.unobserve(entry.target);
+      observer.unobserve(entry.target);
+      
+      requestAnimationFrame(() => {
+        entry.target.classList.add('reveal-visible');
+        
+        // GPU Memory Cleanup: Strip will-change after animation completes (approx 1s)
+        setTimeout(() => {
+          if (entry.target && entry.target.isConnected) {
+             entry.target.style.willChange = 'auto';
+             // Clean up inner spans will-change for spelling animations
+             const inners = entry.target.querySelectorAll('.reveal-word-inner');
+             if (inners.length > 0) {
+               inners.forEach(span => span.style.willChange = 'auto');
+             }
+          }
+        }, 1200);
+      });
     }
   });
 }, {
   root: null,
-  rootMargin: '10% 0px 40% 0px', // Trigger revelations much earlier, especially from bottom
+  rootMargin: '10% 0px 40% 0px',
   threshold: 0
 }) : null;
 
 /**
- * Splits text into staggered character spans and sets up native CSS transitions.
+ * Checks if the device is low-end to disable heavy GPU spelling animations.
+ */
+const isLowEndDevice = () => {
+  if (typeof navigator === 'undefined' || typeof window === 'undefined') return false;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return true;
+  
+  // Safely check device capabilities (Mobile/Old CPU/Low RAM fallback)
+  const isWeakCPU = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4;
+  const isLowRAM = navigator.deviceMemory && navigator.deviceMemory < 4;
+  return isWeakCPU || isLowRAM;
+};
+
+/**
+ * Splits text into staggered character spans for "spelling" animation.
+ * Automatically gracefully falls back to simple fade for low-end devices.
  */
 export const setupSplitText = (element, delay = 0) => {
   if (!element || element.getAttribute("data-animated")) return;
 
-  const text = element.innerText;
-
-  // MOBILE FALLBACK: 
-  // Use standard reveal instead of complex split-text for devices < 992px
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 992;
-  if (isMobile) {
-     setupScrollReveal(element, delay);
-     return;
-  }
-  
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    element.style.opacity = 1;
+  // Respect low-end devices: bypass heavy DOM modifications and use lightweight reveal
+  if (isLowEndDevice()) {
+    setupScrollReveal(element, delay);
     return;
   }
 
+  const text = element.innerText;
+  element.setAttribute("data-animated", "true");
   element.innerHTML = "";
   element.classList.add('reveal-content');
   if (delay) element.style.transitionDelay = `${delay}s`;
 
+  let charCount = 0;
   const words = text.split(" ");
+  
   words.forEach((word, wordIndex) => {
     const wordSpan = document.createElement("span");
     wordSpan.className = "reveal-word";
     
-    const inner = document.createElement("span");
-    inner.className = "reveal-word-inner";
-    inner.textContent = word;
-    
-    // Stagger words
-    inner.style.transitionDelay = `${(wordIndex * 0.03)}s`;
-    
-    wordSpan.appendChild(inner);
+    // True "Spelling" Animation: Char by Char
+    word.split("").forEach((char) => {
+      const inner = document.createElement("span");
+      inner.className = "reveal-word-inner";
+      // To save GPU on init, will-change is applied only dynamically via CSS if needed, 
+      // but explicitly tracked for removal later.
+      inner.textContent = char;
+      inner.style.transitionDelay = `${(charCount * 0.02)}s`;
+      wordSpan.appendChild(inner);
+      charCount++;
+    });
+
     element.appendChild(wordSpan);
 
     if (wordIndex < words.length - 1) {
@@ -64,9 +99,12 @@ export const setupSplitText = (element, delay = 0) => {
 
   if (revealObserver) {
     revealObserver.observe(element);
-    // Safety timeout for mobile
+    
+    // Memory leak safe timeout
     setTimeout(() => {
-      if (element) element.classList.add("reveal-visible");
+      if (element && element.isConnected && !element.classList.contains("reveal-visible")) {
+        element.classList.add("reveal-visible");
+      }
     }, 3000);
   } else {
     element.classList.add("reveal-visible");
@@ -112,12 +150,13 @@ export const setupScrollReveal = (selector, delay = 0, variant = "") => {
       el.style.transitionDelay = `${staggerDelay}s`;
     }
 
-    // Optimization for mobile/low-end: Ensure visibility even if observer fails
     if (revealObserver) {
       revealObserver.observe(el);
-      // Safety timeout: reveal anyway after 3s if observer doesn't trigger
+      // Memory leak safe timeout
       setTimeout(() => {
-        if (el) el.classList.add("reveal-visible");
+        if (el && el.isConnected && !el.classList.contains("reveal-visible")) {
+          el.classList.add("reveal-visible");
+        }
       }, 3000);
     } else {
       el.classList.add("reveal-visible");

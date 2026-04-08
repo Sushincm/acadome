@@ -41,7 +41,7 @@ export default function OurCourses() {
   return (
     <div className="bg-white">
       {/* Hero Banner */}
-      <section className="bg-primary-navy pt-[140px] pb-20 px-6 relative overflow-hidden">
+      <section className="bg-primary-navy pt-[120px] pb-20 px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent-red/10 rounded-full blur-[100px]"></div>
         <div ref={heroRef} className="container max-w-[1240px] mx-auto text-center relative z-10">
           <h1 className="font-heading font-semibold text-[40px] md:text-[56px] text-white mb-6">
