@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import GallerySection from "../components/GallerySection";
 import { setupScrollReveal } from "../utils/animations";
 
@@ -25,7 +26,7 @@ export default function Gallery() {
             A visual journey through our practical training sessions, workshops, graduation celebrations, and campus life.
           </p>
           <div className="flex items-center justify-center gap-3 text-white/50 text-[15px] font-medium">
-            <a href="/" className="hover:text-white transition-colors">Home</a>
+            <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <span className="w-1.5 h-1.5 rounded-full bg-accent-red"></span>
             <span className="text-white">Gallery</span>
           </div>
@@ -73,9 +74,9 @@ export default function Gallery() {
             <h3 className="font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] text-primary-navy mb-8">
                Want to be part of our next batch?
             </h3>
-            <a href="/contact-us" className="inline-flex items-center justify-center px-10 py-5 bg-primary-navy text-white font-body font-bold text-[18px] rounded-2xl hover:bg-accent-red transition-all shadow-xl scale-100 hover:scale-105 active:scale-95">
-               Join Acadome Now →
-            </a>
+            <Link to="/contact-us" className="inline-flex items-center justify-center px-10 py-5 bg-primary-navy text-white font-body font-bold text-[18px] rounded-2xl hover:bg-accent-red transition-all shadow-xl scale-100 hover:scale-105 active:scale-95">
+              Join Acadome Now →
+            </Link>
          </div>
       </section>
     </div>

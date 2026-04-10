@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
 import GLightbox from 'glightbox';
 import 'glightbox/dist/css/glightbox.min.css';
@@ -144,10 +145,10 @@ export default function GallerySection({ fullPage = false, isHome = false }) {
                 {galleryHeaderData.subtext}
               </p>
               
-              <a href="/gallery" className="group inline-flex items-center justify-center px-8 py-4 bg-primary-navy text-white font-body font-bold text-[16px] rounded-xl hover:bg-accent-red transition-all shadow-lg hover:shadow-accent-red/20 w-full sm:w-auto">
+              <Link to="/gallery" className="group inline-flex items-center justify-center px-8 py-4 bg-primary-navy text-white font-body font-bold text-[16px] rounded-xl hover:bg-accent-red transition-all shadow-lg hover:shadow-accent-red/20 w-full sm:w-auto">
                 Explore Full Gallery
                 <span className="ml-3 transform group-hover:translate-x-1.5 transition-transform">&rarr;</span>
-              </a>
+              </Link>
             </div>
 
             {/* Right Hand: Asymmetrical Collage */}

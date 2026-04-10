@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { coursesHeaderData, coursesTabsData } from '../data';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
@@ -92,13 +93,13 @@ export default function CoursesSection() {
                   </div>
                 )}
 
-                <a
-                  href={activeCourse.buttonLink}
+                <Link
+                  to={activeCourse.buttonLink}
                   className="inline-flex items-center justify-center mt-2 px-8 py-3.5 font-body font-medium text-[15px] rounded-lg bg-primary-navy text-white hover:bg-accent-red transition-colors shadow-sm w-full md:w-auto text-center"
                 >
                   {activeCourse.buttonText}
                   <span className="ml-2">&rarr;</span>
-                </a>
+                </Link>
               </div>
 
               {/* Right Column (Image & Floating Badge) */}

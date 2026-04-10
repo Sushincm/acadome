@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import ContactSection from "../components/ContactSection";
 import { setupScrollReveal } from "../utils/animations";
 import { FaClock, FaCalendarAlt, FaGlobeAmericas } from "react-icons/fa";
@@ -28,7 +29,7 @@ export default function ContactUs() {
             Have questions about our programs or need career guidance? Reach out to us today and start your journey towards excellence.
           </p>
           <div className="flex items-center justify-center gap-3 text-white/50 text-[15px] font-medium">
-            <a href="/" className="hover:text-white transition-colors">Home</a>
+            <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <span className="w-1.5 h-1.5 rounded-full bg-accent-red"></span>
             <span className="text-white">Contact Us</span>
           </div>

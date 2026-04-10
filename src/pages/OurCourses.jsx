@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { setupScrollReveal } from "../utils/animations";
 import { courseComparisonData, courseFaqs } from "../data";
 import CoursesSection from "../components/CoursesSection";
@@ -51,7 +52,7 @@ export default function OurCourses() {
             Comprehensive programs designed to transform you into a professional accountant with real-world expertise.
           </p>
           <div className="flex items-center justify-center gap-2 text-white/60 text-[14px]">
-            <a href="/" className="hover:text-white transition-colors">Home</a>
+            <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <span>/</span>
             <span className="text-white font-medium">Our Courses</span>
           </div>
@@ -131,12 +132,12 @@ export default function OurCourses() {
             </h2>
             
             <div className="flex flex-wrap justify-center gap-5 md:gap-8">
-               <a 
-                href="/contact-us" 
+               <Link 
+                to="/contact-us" 
                 className="inline-flex items-center justify-center px-10 py-5 bg-white text-accent-red font-body font-bold text-[17px] rounded-2xl hover:bg-primary-navy hover:text-white transition-all duration-500 shadow-xl hover:-translate-y-1 active:scale-95"
                >
                 Talk to Our Experts <span>&rarr;</span>
-               </a>
+               </Link>
                <a 
                 href="https://wa.me/919778914198" 
                 target="_blank" 

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { heroData, aboutData, wwoHeaderData, wwoCards } from "../data";
@@ -110,7 +111,7 @@ export default function Home() {
             </div>
             <div className="max-w-[420px] flex flex-col items-start text-left">
               <p ref={heroDescRef} className="text-[16px] md:text-[17px] text-white/90 mb-6 leading-relaxed">{heroData.description}</p>
-              <a ref={heroCtaRef} href={heroData.buttonLink} className="inline-flex items-center justify-center px-6 py-3 font-body font-semibold text-[15px] bg-white text-gray-900 rounded-lg hover:bg-accent-red hover:text-white transition-colors shadow-sm">{heroData.buttonText}</a>
+              <Link ref={heroCtaRef} to={heroData.buttonLink} className="inline-flex items-center justify-center px-6 py-3 font-body font-semibold text-[15px] bg-white text-gray-900 rounded-lg hover:bg-accent-red hover:text-white transition-colors shadow-sm">{heroData.buttonText}</Link>
             </div>
           </div>
         </div>
@@ -147,13 +148,13 @@ export default function Home() {
           </h2>
 
           <div ref={aboutCtaRef} className="mt-12 md:mt-16 w-full max-w-[1000px] flex justify-center">
-            <a
-              href="/about-us"
+            <Link
+              to="/about-us"
               className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-primary-navy text-white font-body text-[14px] font-medium hover:bg-accent-red transition-colors gap-3 cursor-pointer shadow-md hover:shadow-lg"
             >
               {aboutData.buttonText}
               <span className="text-lg leading-none">&rarr;</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -224,15 +225,15 @@ export default function Home() {
                   <p className="text-[15px] md:text-[16px] text-white/80 leading-relaxed mb-8">
                     {card.description}
                   </p>
-                  <a
-                    href={card.buttonLink}
+                  <Link
+                    to={card.buttonLink}
                     className="inline-flex items-center text-white/90 hover:text-white font-medium text-[15px] group transition-colors"
                   >
                     {card.buttonText}
                     <span className="ml-2 group-hover:translate-x-1 transition-transform">
                       &rarr;
                     </span>
-                  </a>
+                  </Link>
                 </div>
               ))}
               </div>

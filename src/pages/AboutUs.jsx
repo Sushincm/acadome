@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { setupScrollReveal } from "../utils/animations";
 import { aboutData } from "../data";
 import MentorsSection from "../components/MentorsSection";
@@ -63,13 +64,13 @@ export default function AboutUs() {
             <h2 className="text-[#0A1628] font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-[1.1] mb-10 tracking-tight">
               The Acadome <br className="hidden lg:block"/> Experience
             </h2>
-            <a 
-              href="/contact-us" 
+            <Link 
+              to="/contact-us" 
               className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-[#0A1628] text-white font-body text-[14px] font-medium hover:bg-accent-red transition-all duration-300 gap-3 cursor-pointer shadow-md hover:shadow-lg"
             >
               Contact Us
               <span className="text-lg leading-none">&rarr;</span>
-            </a>
+            </Link>
           </div>
 
           {/* Right Side: Narrative Text */}
