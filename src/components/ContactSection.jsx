@@ -275,7 +275,7 @@ export default function ContactSection({ showMap = true }) {
               allowFullScreen="" 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
-              title="Acadome Location"
+              title="ACADOME Location"
               className="transition-opacity duration-300 opacity-95 group-hover:opacity-100"
             />
           </div>

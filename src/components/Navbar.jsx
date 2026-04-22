@@ -23,11 +23,17 @@ export default function Navbar({ isNavOpen, setIsNavOpen, isNavFloating, toggleN
     <>
       <nav
         id="navbar"
-        className={`fixed top-0 left-0 right-0 mx-auto w-full bg-white z-[60] flex items-center py-3 ${isNavFloating ? "nav-floating" : ""}`}
+        className={`fixed top-0 left-0 right-0 mx-auto w-full bg-white z-[60] flex items-center transition-all duration-500 ease-in-out ${isNavFloating ? "py-3 nav-floating" : "py-3 min-[992px]:py-5"}`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center relative">
-          <Link to="/" onClick={(e) => handleAnchorClick(e, "/")} className="flex items-center flex-shrink-0 relative z-20">
-            <img src="/images/ACADOME-LOGO.png" alt="Acadome Logo" className="h-9 w-auto object-contain" />
+          <Link to="/" onClick={(e) => handleAnchorClick(e, "/")} className="flex items-center flex-shrink-0 relative z-20 group">
+            <div className="nav-logo-container transform group-hover:scale-105">
+              <img 
+                src="/images/ACADOME-LOGO.png" 
+                alt="ACADOME Logo" 
+                className={`w-auto object-contain transition-all duration-500 ease-in-out ${isNavFloating ? "h-9" : "h-9 min-[992px]:h-11"}`} 
+              />
+            </div>
           </Link>
 
           <div className="hidden min-[992px]:flex items-center gap-8 relative z-20">

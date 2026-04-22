@@ -16,7 +16,7 @@ export default function Footer() {
             <Link to="/" className="mb-6 block w-fit">
               <img 
                 src="/images/ACADOME-LOGO.png" 
-                alt="Acadome Logo" 
+                alt="ACADOME Logo" 
                 className="h-9 w-auto object-contain brightness-0 invert"
               />
             </Link>

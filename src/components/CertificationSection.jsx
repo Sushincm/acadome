@@ -74,7 +74,7 @@ export default function CertificationSection({ className = "", noBg = false, isL
             {certificationHeaderData.subtext}
           </p>
         </div>
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {certificationCards.map((card) => (
             <CertificationCard key={card.id} card={card} isLight={isLight} />
           ))}

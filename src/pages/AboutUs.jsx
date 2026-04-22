@@ -44,7 +44,7 @@ export default function AboutUs() {
           <div className="relative w-full aspect-[16/6] rounded-3xl md:rounded-[32px] overflow-hidden shadow-2xl group isolate">
             <img 
               src="/images/course1.webp" 
-              alt="Acadome Professional Environment" 
+              alt="ACADOME Professional Environment" 
               className="w-full h-full object-cover" 
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
@@ -62,7 +62,7 @@ export default function AboutUs() {
           <div className="w-full lg:w-[45%]">
             <span className="text-accent-red font-heading text-[28px] md:text-[32px] lg:text-[40px] leading-tight mb-2 block font-medium">A little bit about</span>
             <h2 className="text-[#0A1628] font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-[1.1] mb-10 tracking-tight">
-              The Acadome <br className="hidden lg:block"/> Experience
+              The ACADOME <br className="hidden lg:block"/> Experience
             </h2>
             <Link 
               to="/contact-us" 
@@ -120,7 +120,7 @@ export default function AboutUs() {
         </div>
         <div className="container max-w-[1240px] mx-auto relative z-10">
           <div className="max-w-[700px] mb-16 md:mb-20">
-            <span className="text-accent-red font-bold tracking-[0.4em] uppercase text-[12px] mb-6 block">Why Acadome?</span>
+            <span className="text-accent-red font-bold tracking-[0.4em] uppercase text-[12px] mb-6 block">Why ACADOME?</span>
             <h2 className="font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-[1.1]">Built for the <br/> <span className="text-white/50">Next Generation.</span></h2>
           </div>
 

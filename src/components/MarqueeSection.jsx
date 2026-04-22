@@ -42,9 +42,9 @@ export default function MarqueeSection() {
         </h2>
         <p
           ref={descRef}
-          className="font-body text-gray-500 text-[15px] md:text-[16px] max-w-[600px] leading-relaxed"
+          className="font-body text-accent-red text-[16px] md:text-[18px] max-w-[800px] leading-relaxed font-bold bg-accent-red/5 px-6 py-3 rounded-2xl border border-accent-red/10 animate-pulse-subtle"
         >
-          Hands-on training with industry-standard tools used by companies in India and GCC.
+          Step into Global Careers with Fully Free Internship Opportunities in Gulf Countries
         </p>
       </div>
 

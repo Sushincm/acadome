@@ -105,13 +105,12 @@ export default function Home() {
           </div>
           <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between w-full mt-auto gap-8 pt-[200px]">
             <div className="max-w-[750px]">
-              <h1 ref={heroTitleRef} className="font-heading font-semibold text-[40px] md:text-[50px] lg:text-[55px] leading-[1.05] tracking-tight text-white m-0 whitespace-normal break-words">
+              <h1 ref={heroTitleRef} className="font-heading font-semibold text-[40px] md:text-[50px] lg:text-[55px] leading-[1.2] tracking-tight text-white m-0 whitespace-normal break-words max-w-[720px]">
                 {heroData.title}
               </h1>
             </div>
             <div className="max-w-[420px] flex flex-col items-start text-left">
-              <p ref={heroDescRef} className="text-[16px] md:text-[17px] text-white/90 mb-6 leading-relaxed">{heroData.description}</p>
-              <Link ref={heroCtaRef} to={heroData.buttonLink} className="inline-flex items-center justify-center px-6 py-3 font-body font-semibold text-[15px] bg-white text-gray-900 rounded-lg hover:bg-accent-red hover:text-white transition-colors shadow-sm">{heroData.buttonText}</Link>
+              <p ref={heroDescRef} className="text-[16px] md:text-[17px] text-white/90 mb-0 leading-relaxed">{heroData.description}</p>
             </div>
           </div>
         </div>
@@ -190,8 +189,8 @@ export default function Home() {
 
           {/* Content Wrapper */}
           <div className="relative z-10 w-full max-w-[1240px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row gap-12 lg:gap-20 py-16 md:py-24 lg:py-32">
-            {/* Left Col (Text block pinned by Native CSS) */}
-            <div className="w-full md:w-[45%] h-full">
+            {/* Left Col (Stretched track for sticky content) */}
+            <div className="w-full md:w-[45%] relative">
               <div
                 ref={wwoTextRef}
                 className="text-left mb-12 md:mb-0 relative max-w-[90%] md:max-w-full md:sticky md:top-32 lg:top-40"

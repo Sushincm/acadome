@@ -53,17 +53,17 @@ export default function ContactUs() {
                   <h3 className="font-heading font-bold text-[22px] text-primary-navy mb-4 group-hover:text-white">Office Hours</h3>
                   <p className="text-gray-600 group-hover:text-white/80 leading-relaxed text-[15px]">
                      Monday to Saturday<br />
-                     <span className="font-bold text-primary-navy group-hover:text-white text-[16px]">9:00 AM – 6:00 PM IST</span>
+                     <span className="font-bold text-primary-navy group-hover:text-white text-[16px]">9:00 AM – 5:00 PM IST</span>
                   </p>
                </div>
 
-               {/* Visit Us */}
-               <div className="p-10 bg-gray-50 rounded-[32px] border border-gray-100 flex flex-col items-center text-center group hover:bg-primary-navy transition-all duration-500 shadow-sm hover:shadow-xl">
-                  <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-accent-red mb-6 shadow-sm group-hover:scale-110 transition-transform">
+               {/* Personal Counseling (Featured Center Card) */}
+               <div className="p-10 bg-primary-navy rounded-[32px] border border-primary-navy flex flex-col items-center text-center shadow-2xl scale-[1.03] z-10 relative">
+                  <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-accent-red mb-6 shadow-sm">
                      <FaCalendarAlt size={24} />
                   </div>
-                  <h3 className="font-heading font-bold text-[22px] text-primary-navy mb-4 group-hover:text-white">Personal Counseling</h3>
-                  <p className="text-gray-600 group-hover:text-white/80 leading-relaxed text-[15px]">
+                  <h3 className="font-heading font-bold text-[22px] text-white mb-4">Personal Counseling</h3>
+                  <p className="text-white/80 leading-relaxed text-[15px]">
                      Walk-ins are welcome, but we recommend scheduling a session for personalized career guidance.
                   </p>
                </div>

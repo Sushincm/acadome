@@ -86,7 +86,7 @@ export default function ReviewsSection() {
               {reviewsHeaderData.title}
             </h2>
             <p ref={subtextRef} className="text-gray-500 font-body text-[16px] mt-4 max-w-[500px]">
-              Hear directly from our students who have transformed their careers with Acadome's professional programs.
+              Hear directly from our students who have transformed their careers with ACADOME's professional programs.
             </p>
           </div>
 

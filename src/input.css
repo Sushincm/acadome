@@ -4,7 +4,7 @@
 @theme {
   --color-primary-navy: #0f2747;
   --color-secondary-navy: #1d3557;
-  --color-accent-red: #e63946;
+  --color-accent-red: #da2a3f;
   --color-light-bg: #f5f7fa;
   --color-dark-text: #2b2b2b;
 
@@ -19,11 +19,8 @@
 
 @layer base {
   /* Prevent horizontal scroll issues and conflicts */
-  html {
-    overflow-x: hidden;
-  }
-  body {
-    overflow-x: hidden;
+  html, body {
+    overflow-x: clip; /* Modern alternative to hidden that doesn't break sticky */
     background-color: #fff;
   }
 }
@@ -68,14 +65,31 @@
 
 /* Floating Navbar State */
 #navbar.nav-floating {
-  width: 92%;
-  max-width: 1200px;
-  top: 20px;
-  border-radius: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 992px) {
+  #navbar.nav-floating {
+    width: 90%;
+    max-width: 1300px;
+    top: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.nav-logo-container {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#navbar:not(.nav-floating) .nav-logo-container {
+  filter: drop-shadow(0 4px 12px rgba(15, 39, 71, 0.08));
 }
 
 /* Force GPU acceleration for animated backgrounds */
@@ -100,7 +114,7 @@
 
 .benefits-swiper .swiper-pagination-bullet-active,
 .mentor-pagination .swiper-pagination-bullet-active.mentor-dot {
-  background: #E63946 !important;
+  background: #da2a3f !important;
   transform: scale(1.2) !important;
   opacity: 1 !important;
 }
@@ -173,6 +187,8 @@
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
+  padding-bottom: 0.15em;
+  margin-bottom: -0.15em;
 }
 
 .reveal-word-inner {

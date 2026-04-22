@@ -10,16 +10,16 @@ export const navLinks = [
 export const heroData = {
   title: "Empowering individuals with cutting-edge financial management skills",
   description:
-    "Practical finance training. Real software exposure. Structured internship pathways. Designed for job-ready professionals in India and GCC markets.",
+    "Step into Global Careers with Fully Free Internship Opportunities in Gulf Countries. Practical training designed for job-ready professionals in India and GCC markets.",
   buttonText: "Learn more",
   buttonLink: "/contact-us",
 };
 
 export const aboutData = {
   tag: "About Us",
-  title: "About Acadome",
+  title: "About ACADOME",
   descriptionParts: [
-    { text: "At Acadome, we build industry-ready", isImage: false },
+    { text: "At ACADOME, we build industry-ready", isImage: false },
     { imageSrc: "/images/about-1.jpg", alt: "Training", isImage: true },
     {
       text: "accounting professionals. Through practical training",
@@ -38,9 +38,9 @@ export const aboutData = {
   story: {
     title: "Our Story",
     content: [
-      "Founded with a vision to bridge the gap between academic learning and industry requirements, Acadome has emerged as a premier institute for financial and accounting excellence. We recognized that many graduates possessed theoretical knowledge but lacked the practical skills needed in today's fast-paced corporate world, especially in the competitive GCC markets.",
+      "Founded with a vision to bridge the gap between academic learning and industry requirements, ACADOME has emerged as a premier institute for financial and accounting excellence. We recognized that many graduates possessed theoretical knowledge but lacked the practical skills needed in today's fast-paced corporate world, especially in the competitive GCC markets.",
       "Our journey began with a small group of dedicated CA and MBA professionals who wanted to share their real-world experience. Over the years, we have trained hundreds of students, transforming them into job-ready professionals equipped with the latest software tools and international accounting standards.",
-      "Today, Acadome stands for quality, practical expertise, and career-oriented training. We don't just teach accounting; we build careers that last."
+      "Today, ACADOME stands for quality, practical expertise, and career-oriented training. We don't just teach accounting; we build careers that last."
     ]
   },
   missionVision: {
@@ -69,9 +69,9 @@ export const wwoHeaderData = {
 export const wwoCards = [
   {
     id: "internship",
-    title: "Internship Program",
+    title: "Free Internship in Gulf Countries",
     description:
-      "Gain real industry exposure across India and GCC markets. Develop practical skills in accounting, taxation, and financial management through structured hands-on experience.",
+      "Step into Global Careers with Fully Free Internship Opportunities in Gulf Countries. Gain real industry exposure and develop practical skills in accounting and taxation through structured hands-on experience.",
     buttonText: "Learn more",
     buttonLink: "/contact-us",
   },
@@ -95,7 +95,7 @@ export const wwoCards = [
 
 export const coursesHeaderData = {
   tag: "Courses",
-  title: "Courses Available at Acadome",
+  title: "Courses Available at ACADOME",
 };
 
 export const coursesTabsData = [
@@ -107,9 +107,10 @@ export const coursesTabsData = [
     description:
       "A dynamic 2-month course to equip you with essential skills for a career in accounting.",
     topics: [
-      "Financial Accounting basics",
-      "Corporate taxes & compliance",
-      "Software training (Tally, etc.)",
+      "Manual Accounting",
+      "Zoho Books",
+      "M.S Excel",
+      "GST & TDS (Foundation Level)",
     ],
     buttonText: "Enroll Now",
     buttonLink: "/contact-us",
@@ -123,10 +124,16 @@ export const coursesTabsData = [
     description:
       "An immersive 6-month experience combining foundational knowledge with advanced accounting practices.",
     topics: [
-      "Advanced Financial Reporting",
-      "Audit & Assurance",
-      "Direct & Indirect Taxation",
-      "Strategic Financial Planning",
+      "Manual Accounting",
+      "Tally Prime",
+      "M.S Excel",
+      "Odoo",
+      "Zoho Books",
+      "Quickbooks",
+      "Sage 50",
+      "Xero",
+      "SAP-FICO",
+      "GST, GCC VAT & TDS",
     ],
     buttonText: "Enroll Now",
     buttonLink: "/contact-us",
@@ -135,7 +142,7 @@ export const coursesTabsData = [
   {
     id: "sap",
     tabLabel: "SAP FICO",
-    durationInfo: "3 Months + Internship",
+    durationInfo: "3 Months",
     title: "SAP FICO",
     description:
       "Training in Financial Accounting (FI) and Controlling (CO) within SAP ERP. Prepares for SAP Authorized Certification.",
@@ -155,7 +162,7 @@ export const coursesTabsData = [
 export const benefitsHeaderData = {
   tag: "Why Choose Us",
   title: "Core Benefits and Advantages",
-  description: "Join Acadome and leverage a diverse spectrum of elite frameworks designed to elevate your professional trajectory from the classroom out into the corporate sphere.",
+  description: "Join ACADOME and leverage a diverse spectrum of elite frameworks designed to elevate your professional trajectory from the classroom out into the corporate sphere.",
 };
 
 export const benefitsCards = [
@@ -285,15 +292,7 @@ export const certificationCards = [
     logo: "/images/certificate.png",
     type: "national"
   },
-  {
-    id: "embassy",
-    badge: "International",
-    issuer: "Government Verified",
-    title: "Embassy Attestation",
-    description: "RSDCA certificate undergoes embassy attestation — legally accepted by GCC employers and foreign authorities worldwide.",
-    icon: "government",
-    type: "international"
-  },
+
   {
     id: "sap",
     badge: "Global",
@@ -358,8 +357,8 @@ export const placementFeatures = [
   },
   {
     id: 3,
-    title: "GCC Placement Pathway",
-    description: "Embassy-attested certifications plus guidance on work visa, documentation, and GCC job applications.",
+    title: "GCC Placement & Free Internship",
+    description: "Step into Global Careers with Fully Free Internship Opportunities in Gulf Countries, plus guidance on work visa, documentation, and job applications.",
     icon: "airplane"
   }
 ];
@@ -367,7 +366,7 @@ export const placementFeatures = [
 export const galleryHeaderData = {
   tag: "LIFE AT ACADOME",
   title: "A Glimpse into our World",
-  subtext: "Experience the vibrant energy and practical learning environment at Acadome.",
+  subtext: "Experience the vibrant energy and practical learning environment at ACADOME.",
 };
 
 export const galleryCategories = ["All", "Classrooms", "Workshops", "Graduation", "Campus"];
@@ -387,7 +386,7 @@ export const galleryImages = [
   { id: 11, src: "/images/gallary/webp/gallery-11.webp", category: "Graduation", caption: "Achievement", h: 400 },
   { id: 12, src: "/images/gallary/webp/gallery-12.webp", category: "Classrooms", caption: "Faculty Guidance", h: 400 },
   { id: 13, src: "/images/gallary/webp/gallery-13.webp", category: "Workshops", caption: "Soft Skills Training", h: 400 },
-  { id: 14, src: "/images/gallary/webp/gallery-14.webp", category: "Campus", caption: "Acadome Premises", h: 400 },
+  { id: 14, src: "/images/gallary/webp/gallery-14.webp", category: "Campus", caption: "ACADOME Premises", h: 400 },
   { id: 15, src: "/images/gallary/webp/gallery-15.webp", category: "Classrooms", caption: "Morning Session", h: 400 },
   { id: 16, src: "/images/gallary/webp/gallery-16.webp", category: "Workshops", caption: "Tally Mastery", h: 400 },
   { id: 17, src: "/images/gallary/webp/gallery-17.webp", category: "Campus", caption: "Collaboration Space", h: 400 },
@@ -433,7 +432,7 @@ export const courseComparisonData = {
     { label: "Duration", values: ["2 Months", "6 Months", "3 Months"] },
     { label: "Level", values: ["Beginner to Intermediate", "Advanced Diploma", "Specialized Professional"] },
     { label: "Certifications", values: ["RSDCA", "RSDCA + Diploma", "SAP Global Ready"] },
-    { label: "Internship", values: ["Included", "Included", "Included"] },
+    { label: "Internship", values: ["Included", "Included", "Not Included"] },
     { label: "Ideal For", values: ["Fresh Graduates", "Career Switchers", "ERP Consultants"] }
   ]
 };
@@ -445,11 +444,11 @@ export const courseFaqs = [
   },
   {
     question: "Is the internship provided during the course?",
-    answer: "Yes, all our major programs include a structured internship phase to provide real-world industry exposure."
+    answer: "Yes, our CCAP and DAFA programs include a structured internship phase to provide real-world industry exposure."
   },
   {
     question: "Are the certificates globally recognized?",
-    answer: "Yes, our RSDCA certificates are recognized nationally and can be embassy-attested for GCC and international employment."
+    answer: "Yes, our RSDCA certificates are recognized nationally and are accepted for GCC and international employment."
   },
   {
     question: "Do you provide job placement support?",

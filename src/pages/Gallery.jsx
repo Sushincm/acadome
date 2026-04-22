@@ -20,7 +20,7 @@ export default function Gallery() {
         </div>
         <div ref={heroRef} className="container max-w-[1240px] mx-auto relative z-10">
           <h1 className="font-heading font-semibold text-[40px] md:text-[64px] text-white mb-6 leading-tight">
-            Life at Acadome
+            Life at ACADOME
           </h1>
           <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
             A visual journey through our practical training sessions, workshops, graduation celebrations, and campus life.
@@ -75,7 +75,7 @@ export default function Gallery() {
                Want to be part of our next batch?
             </h3>
             <Link to="/contact-us" className="inline-flex items-center justify-center px-10 py-5 bg-primary-navy text-white font-body font-bold text-[18px] rounded-2xl hover:bg-accent-red transition-all shadow-xl scale-100 hover:scale-105 active:scale-95">
-              Join Acadome Now →
+              Join ACADOME Now →
             </Link>
          </div>
       </section>
