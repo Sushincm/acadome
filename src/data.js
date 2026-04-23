@@ -20,17 +20,17 @@ export const aboutData = {
   title: "About ACADOME",
   descriptionParts: [
     { text: "At ACADOME, we build industry-ready", isImage: false },
-    { imageSrc: "/images/about-1.jpg", alt: "Training", isImage: true },
+    { imageSrc: "/images/course1.webp", alt: "Training", isImage: true },
     {
       text: "accounting professionals. Through practical training",
       isImage: false,
     },
-    { imageSrc: "/images/about-2.jpg", alt: "Software Mastery", isImage: true },
+    { imageSrc: "/images/course2.webp", alt: "Software Mastery", isImage: true },
     {
       text: "and software mastery, we prepare careers for real corporate",
       isImage: false,
     },
-    { imageSrc: "/images/about-3.jpg", alt: "Corporate", isImage: true },
+    { imageSrc: "/images/course3.webp", alt: "Corporate", isImage: true },
     { text: "environments.", isImage: false },
   ],
   buttonText: "Read more",

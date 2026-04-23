@@ -25,13 +25,14 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4">
               {[
-                { icon: <FaInstagram size={16} />, href: "#" },
-                { icon: <FaLinkedinIn size={16} />, href: "#" },
-                { icon: <FaFacebookF size={16} />, href: "#" }
+                { icon: <FaInstagram size={16} />, href: "https://www.instagram.com/acadome.in" },
+                { icon: <FaFacebookF size={16} />, href: "https://www.facebook.com/profile.php?id=61562893422409&name=xhp_nt__fb__action__open_user&_rdr" }
               ].map((social, i) => (
                 <a 
                   key={i}
                   href={social.href} 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/80 transition-all duration-300 hover:border-accent-red hover:bg-accent-red hover:text-white"
                 >
                   {social.icon}
