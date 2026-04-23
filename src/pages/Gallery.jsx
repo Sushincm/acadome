@@ -2,12 +2,30 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import GallerySection from "../components/GallerySection";
 import { setupScrollReveal } from "../utils/animations";
+import { galleryVideos } from "../data";
+import GLightbox from 'glightbox';
+import 'glightbox/dist/css/glightbox.min.css';
 
 export default function Gallery() {
   const heroRef = useRef(null);
+  const videoLightboxRef = useRef(null);
   
   useEffect(() => {
     if (heroRef.current) setupScrollReveal(heroRef.current.children);
+    
+    // Initialize Video Lightbox
+    videoLightboxRef.current = GLightbox({
+      selector: '.video-gallery-item',
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true,
+    });
+
+    return () => {
+      if (videoLightboxRef.current) {
+        videoLightboxRef.current.destroy();
+      }
+    };
   }, []);
 
   return (
@@ -23,7 +41,7 @@ export default function Gallery() {
             Life at ACADOME
           </h1>
           <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            A visual journey through our practical training sessions, workshops, graduation celebrations, and campus life.
+            A visual journey through our practical training sessions, classroom activities, and vibrant campus life.
           </p>
           <div className="flex items-center justify-center gap-3 text-white/50 text-[15px] font-medium">
             <Link to="/" className="hover:text-white transition-colors">Home</Link>
@@ -38,7 +56,7 @@ export default function Gallery() {
          <GallerySection fullPage={true} />
       </div>
 
-      {/* Optional Video Section (As per spec) */}
+      {/* Video Section */}
       <section className="py-20 md:py-32 px-6 bg-gray-50 overflow-hidden text-center">
          <div className="container max-w-[1240px] mx-auto">
             <h2 className="font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] text-primary-navy mb-6">
@@ -48,25 +66,30 @@ export default function Gallery() {
                See how our students engage in interactive workshops and hands-on accounting software training.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1000px] mx-auto">
-               <div className="aspect-video bg-gray-200 rounded-3xl overflow-hidden shadow-lg border-8 border-white group relative">
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors z-10">
-                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-accent-red shadow-xl group-hover:scale-110 transition-transform cursor-pointer">
-                        <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M4.516 2.104a.5.5 0 01.484.014l11 7a.5.5 0 010 .864l-11 7A.5.5 0 014 16.5v-13a.5.5 0 01.516-.396z"/></svg>
-                     </div>
-                  </div>
-                  <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" alt="Video Placeholder" className="w-full h-full object-cover" />
-               </div>
-               <div className="aspect-video bg-gray-200 rounded-3xl overflow-hidden shadow-lg border-8 border-white group relative">
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors z-10">
-                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-accent-red shadow-xl group-hover:scale-110 transition-transform cursor-pointer">
-                        <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M4.516 2.104a.5.5 0 01.484.014l11 7a.5.5 0 010 .864l-11 7A.5.5 0 014 16.5v-13a.5.5 0 01.516-.396z"/></svg>
-                     </div>
-                  </div>
-                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Video Placeholder" className="w-full h-full object-cover" />
-               </div>
+               {galleryVideos.map((video) => (
+                 <a 
+                   key={video.id}
+                   href={video.videoUrl} 
+                   className="video-gallery-item block aspect-video bg-gray-200 rounded-3xl overflow-hidden shadow-lg border-8 border-white group relative"
+                   data-glightbox={`title: ${video.title}`}
+                 >
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors z-10">
+                       <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-accent-red shadow-xl group-hover:scale-110 transition-transform cursor-pointer">
+                          <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M4.516 2.104a.5.5 0 01.484.014l11 7a.5.5 0 010 .864l-11 7A.5.5 0 014 16.5v-13a.5.5 0 01.516-.396z"/>
+                          </svg>
+                       </div>
+                    </div>
+                    <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 z-20 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <h4 className="text-white font-heading font-semibold text-lg">{video.title}</h4>
+                    </div>
+                 </a>
+               ))}
             </div>
          </div>
       </section>
+
 
       {/* Final CTA */}
       <section className="py-20 md:py-32 px-6">

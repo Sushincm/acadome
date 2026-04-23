@@ -369,47 +369,62 @@ export const galleryHeaderData = {
   subtext: "Experience the vibrant energy and practical learning environment at ACADOME.",
 };
 
-export const galleryCategories = ["All", "Classrooms", "Workshops", "Graduation", "Campus"];
+export const galleryCategories = ["All", "Classroom", "Campus"];
 
 // Placeholder stats for gallery. Please update with real photos (Classrooms, Workshops, Graduation, Campus)
 export const galleryImages = [
-  { id: 1, src: "/images/gallary/webp/gallery-1.webp", category: "Classrooms", caption: "Accounting Session", h: 400 },
-  { id: 2, src: "/images/gallary/webp/gallery-2.webp", category: "Workshops", caption: "Hands-on Training", h: 400 },
-  { id: 3, src: "/images/gallary/webp/gallery-3.webp", category: "Campus", caption: "Student Interaction", h: 400 },
-  { id: 4, src: "/images/gallary/webp/gallery-4.webp", category: "Graduation", caption: "Success Moments", h: 400 },
-  { id: 5, src: "/images/gallary/webp/gallery-5.webp", category: "Classrooms", caption: "Smart Class Learning", h: 400 },
-  { id: 6, src: "/images/gallary/webp/gallery-6.webp", category: "Workshops", caption: "Industry Expert Talk", h: 400 },
-  { id: 7, src: "/images/gallary/webp/gallery-7.webp", category: "Campus", caption: "Campus Life", h: 400 },
-  { id: 8, src: "/images/gallary/webp/gallery-8.webp", category: "Classrooms", caption: "Practical Lab", h: 400 },
-  { id: 9, src: "/images/gallary/webp/gallery-9.webp", category: "Workshops", caption: "Corporate Preparedness", h: 400 },
+  { id: 1, src: "/images/gallary/webp/gallery-1.webp", category: "Classroom", caption: "Accounting Session", h: 400 },
+  { id: 2, src: "/images/gallary/webp/gallery-2.webp", category: "Classroom", caption: "Hands-on Training", h: 400 },
+  { id: 3, src: "/images/gallary/webp/gallery-3.webp", category: "Classroom", caption: "Student Interaction", h: 400 },
+  { id: 4, src: "/images/gallary/webp/gallery-4.webp", category: "Classroom", caption: "Success Moments", h: 400 },
+  { id: 5, src: "/images/gallary/webp/gallery-5.webp", category: "Classroom", caption: "Smart Class Learning", h: 400 },
+  { id: 6, src: "/images/gallary/webp/gallery-6.webp", category: "Classroom", caption: "Industry Expert Talk", h: 400 },
+  { id: 7, src: "/images/gallary/webp/gallery-7.webp", category: "Classroom", caption: "Campus Life", h: 400 },
+  { id: 9, src: "/images/gallary/webp/gallery-9.webp", category: "Classroom", caption: "Corporate Preparedness", h: 400 },
   { id: 10, src: "/images/gallary/webp/gallery-10.webp", category: "Campus", caption: "Discussion Hub", h: 400 },
-  { id: 11, src: "/images/gallary/webp/gallery-11.webp", category: "Graduation", caption: "Achievement", h: 400 },
-  { id: 12, src: "/images/gallary/webp/gallery-12.webp", category: "Classrooms", caption: "Faculty Guidance", h: 400 },
-  { id: 13, src: "/images/gallary/webp/gallery-13.webp", category: "Workshops", caption: "Soft Skills Training", h: 400 },
+  { id: 11, src: "/images/gallary/webp/gallery-11.webp", category: "Campus", caption: "Achievement", h: 400 },
+  { id: 12, src: "/images/gallary/webp/gallery-12.webp", category: "Campus", caption: "Faculty Guidance", h: 400 },
+  { id: 13, src: "/images/gallary/webp/gallery-13.webp", category: "Classroom", caption: "Soft Skills Training", h: 400 },
   { id: 14, src: "/images/gallary/webp/gallery-14.webp", category: "Campus", caption: "ACADOME Premises", h: 400 },
-  { id: 15, src: "/images/gallary/webp/gallery-15.webp", category: "Classrooms", caption: "Morning Session", h: 400 },
-  { id: 16, src: "/images/gallary/webp/gallery-16.webp", category: "Workshops", caption: "Tally Mastery", h: 400 },
-  { id: 17, src: "/images/gallary/webp/gallery-17.webp", category: "Campus", caption: "Collaboration Space", h: 400 },
-  { id: 18, src: "/images/gallary/webp/gallery-18.webp", category: "Graduation", caption: "Graduation Batch", h: 400 },
-  { id: 19, src: "/images/gallary/webp/gallery-19.webp", category: "Classrooms", caption: "Interactive Teaching", h: 400 },
-  { id: 20, src: "/images/gallary/webp/gallery-20.webp", category: "Workshops", caption: "SAP Module Training", h: 400 },
-  { id: 21, src: "/images/gallary/webp/gallery-21.webp", category: "Campus", caption: "Student Lounge", h: 400 },
-  { id: 22, src: "/images/gallary/webp/gallery-22.webp", category: "Classrooms", caption: "Accounting Basics", h: 400 },
-  { id: 23, src: "/images/gallary/webp/gallery-23.webp", category: "Workshops", caption: "Peer Learning", h: 400 },
-  { id: 24, src: "/images/gallary/webp/gallery-24.webp", category: "Campus", caption: "Library Area", h: 400 },
-  { id: 25, src: "/images/gallary/webp/gallery-25.webp", category: "Graduation", caption: "Convocation Ceremony", h: 400 },
-  { id: 26, src: "/images/gallary/webp/gallery-26.webp", category: "Classrooms", caption: "Evening Batch", h: 400 },
-  { id: 27, src: "/images/gallary/webp/gallery-27.webp", category: "Workshops", caption: "Resume Workshop", h: 400 },
-  { id: 28, src: "/images/gallary/webp/gallery-28.webp", category: "Campus", caption: "Entrance View", h: 400 },
-  { id: 29, src: "/images/gallary/webp/gallery-29.webp", category: "Classrooms", caption: "Focused Study", h: 400 },
-  { id: 30, src: "/images/gallary/webp/gallery-30.webp", category: "Workshops", caption: "Interview Prep", h: 400 },
-  { id: 31, src: "/images/gallary/webp/gallery-31.webp", category: "Campus", caption: "Main Corridor", h: 400 },
-  { id: 32, src: "/images/gallary/webp/gallery-32.webp", category: "Graduation", caption: "Certificate Pride", h: 400 },
-  { id: 33, src: "/images/gallary/webp/gallery-33.webp", category: "Classrooms", caption: "Digital Learning", h: 400 },
-  { id: 34, src: "/images/gallary/webp/gallery-34.webp", category: "Workshops", caption: "Case Study Analysis", h: 400 },
-  { id: 35, src: "/images/gallary/webp/gallery-35.webp", category: "Campus", caption: "Student Hub", h: 400 },
-  { id: 36, src: "/images/gallary/webp/gallery-36.webp", category: "Graduation", caption: "Final Farewell", h: 400 },
+  { id: 15, src: "/images/gallary/webp/gallery-15.webp", category: "Campus", caption: "Morning Session", h: 400 },
+  { id: 16, src: "/images/gallary/webp/gallery-16.webp", category: "Classroom", caption: "Tally Mastery", h: 400 },
+  { id: 17, src: "/images/gallary/webp/gallery-17.webp", category: "Classroom", caption: "Collaboration Space", h: 400 },
+  { id: 18, src: "/images/gallary/webp/gallery-18.webp", category: "Classroom", caption: "Graduation Batch", h: 400 },
+  { id: 19, src: "/images/gallary/webp/gallery-19.webp", category: "Classroom", caption: "Interactive Teaching", h: 400 },
+  { id: 20, src: "/images/gallary/webp/gallery-20.webp", category: "Classroom", caption: "SAP Module Training", h: 400 },
+  { id: 21, src: "/images/gallary/webp/gallery-21.webp", category: "Classroom", caption: "Student Lounge", h: 400 },
+  { id: 22, src: "/images/gallary/webp/gallery-22.webp", category: "Classroom", caption: "Accounting Basics", h: 400 },
+  { id: 23, src: "/images/gallary/webp/gallery-23.webp", category: "Classroom", caption: "Peer Learning", h: 400 },
+  { id: 24, src: "/images/gallary/webp/gallery-24.webp", category: "Classroom", caption: "Library Area", h: 400 },
+  { id: 25, src: "/images/gallary/webp/gallery-25.webp", category: "Classroom", caption: "Convocation Ceremony", h: 400 },
+  { id: 27, src: "/images/gallary/webp/gallery-27.webp", category: "Classroom", caption: "Resume Workshop", h: 400 },
+  { id: 28, src: "/images/gallary/webp/gallery-28.webp", category: "Classroom", caption: "Entrance View", h: 400 },
+  { id: 29, src: "/images/gallary/webp/gallery-29.webp", category: "Classroom", caption: "Focused Study", h: 400 },
+  { id: 30, src: "/images/gallary/webp/gallery-30.webp", category: "Classroom", caption: "Interview Prep", h: 400 },
+  { id: 31, src: "/images/gallary/webp/gallery-31.webp", category: "Classroom", caption: "Main Corridor", h: 400 },
+  { id: 32, src: "/images/gallary/webp/gallery-32.webp", category: "Classroom", caption: "Certificate Pride", h: 400 },
+  { id: 33, src: "/images/gallary/webp/gallery-33.webp", category: "Classroom", caption: "Digital Learning", h: 400 },
+  { id: 34, src: "/images/gallary/webp/gallery-34.webp", category: "Classroom", caption: "Case Study Analysis", h: 400 },
+  { id: 35, src: "/images/gallary/webp/gallery-35.webp", category: "Classroom", caption: "Student Hub", h: 400 },
+  { id: 36, src: "/images/gallary/webp/gallery-36.webp", category: "Classroom", caption: "Final Farewell", h: 400 },
 ];
+
+export const galleryVideos = [
+  {
+    id: 1,
+    title: "Practical Training at ACADOME",
+    videoUrl: "https://www.youtube.com/embed/OeJ_UxFgRAs?si=2zYHd5hbKLP_mx9A",
+    thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 2,
+    title: "Student Success Stories",
+    videoUrl: "https://www.youtube.com/embed/OeJ_UxFgRAs?si=2zYHd5hbKLP_mx9A",
+    thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+  }
+];
+
+
 
 export const contactData = {
   header: {

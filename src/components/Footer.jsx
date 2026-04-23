@@ -96,7 +96,7 @@ export default function Footer() {
               <li className="flex items-start gap-4">
                 <FaMapMarkerAlt className="text-accent-red mt-1 shrink-0" size={16} />
                 <span className="text-white/70 font-body text-[14px] leading-relaxed">
-                  Chowallur Tower, Room No. 52/1067/35, 3rd floor, West Fort, Civil Lane, Thrissur, Kerala — 680004
+                  Chowallur Tower, Room No. 52/1067/35, 3rd floor, West Fort, Thrissur, Kerala — 680004
                 </span>
               </li>
               <li className="flex items-center gap-4">

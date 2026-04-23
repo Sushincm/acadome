@@ -59,7 +59,7 @@ export default function AboutUs() {
       <section ref={storyRef} className="pb-12 md:pb-24 lg:pb-44 px-6 bg-white relative">
         <div className="container max-w-[1300px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 items-start text-left">
           {/* Left Side: Brand Highlight */}
-          <div className="w-full lg:w-[45%]">
+          <div className="w-full lg:w-[45%] lg:sticky lg:top-40 lg:pl-[10%]">
             <span className="text-accent-red font-heading text-[28px] md:text-[32px] lg:text-[40px] leading-tight mb-2 block font-medium">A little bit about</span>
             <h2 className="text-[#0A1628] font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-[1.1] mb-10 tracking-tight">
               The ACADOME <br className="hidden lg:block"/> Experience
@@ -74,7 +74,8 @@ export default function AboutUs() {
           </div>
 
           {/* Right Side: Narrative Text */}
-          <div className="w-full lg:w-[55%] flex flex-col gap-8 md:gap-10 pt-4 md:pt-8 lg:pt-12">
+          <div className="w-full lg:w-[55%] flex flex-col gap-8 md:gap-10">
+
             <h3 className="text-gray-800 font-heading font-medium text-[26px] md:text-[32px] lg:text-[38px] leading-snug">
               Your partner in professional excellence & growth.
             </h3>
