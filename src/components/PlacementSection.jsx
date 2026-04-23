@@ -109,22 +109,16 @@ export default function PlacementSection() {
           ))}
         </div>
 
-        {/* Centered CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6" ref={ctaRef}>
-          <a 
-            href="#contact" 
-            className="inline-flex items-center justify-center px-8 md:px-10 py-4 md:py-5 bg-[#1B2A3B] text-white font-body font-semibold text-[15px] rounded-[8px] transition-all duration-300 hover:bg-accent-red hover:shadow-lg hover:-translate-y-0.5 gap-3 w-full sm:w-auto"
-          >
-            Talk to Our Placement Team
-            <FaArrowRight size={14} className="mt-0.5" />
-          </a>
+        {/* Centered CTA Button */}
+        <div className="flex items-center justify-center" ref={ctaRef}>
           <a 
             href="https://wa.me/919778914198?text=Hi%20ACADOME%20Placement%20Team%2C%20I'd%20like%20to%20know%20more%20about%20your%20placement%20support%20and%20career%20opportunities." 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="inline-flex items-center justify-center px-8 md:px-10 py-4 md:py-5 border-2 border-[#1B2A3B] text-[#1B2A3B] font-body font-semibold text-[15px] rounded-[8px] transition-all duration-300 hover:bg-[#1B2A3B] hover:text-white hover:shadow-lg hover:-translate-y-0.5 gap-3 w-full sm:w-auto"
+            className="inline-flex items-center justify-center px-10 py-5 bg-[#1B2A3B] text-white font-body font-semibold text-[15px] rounded-[8px] transition-all duration-300 hover:bg-accent-red hover:shadow-lg hover:-translate-y-0.5 gap-3 w-full sm:w-auto"
           >
             WhatsApp Placement Team
+            <FaArrowRight size={14} className="mt-0.5" />
           </a>
         </div>
       </div>
