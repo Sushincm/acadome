@@ -102,7 +102,7 @@ export default function Layout({ children }) {
         </button>
 
         <a
-          href="https://wa.me/919778914198?text=Hi, I'm interested in learning more about ACADOME courses"
+          href="https://wa.me/919778914198?text=Hello%20ACADOME%2C%20I%20have%20a%20few%20questions%20regarding%20your%20training%20programs.%20Could%20you%20please%20assist%20me%3F"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-[52px] h-[52px] rounded-full bg-primary-navy text-white shadow-[0_4px_14px_rgba(10,22,40,0.4)] hover:bg-accent-red hover:scale-110 transition-all duration-300 relative group animate-bounce-subtle"

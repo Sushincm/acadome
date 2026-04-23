@@ -43,7 +43,7 @@ export default function AboutUs() {
 
           <div className="relative w-full aspect-[16/6] rounded-3xl md:rounded-[32px] overflow-hidden shadow-2xl group isolate">
             <img 
-              src="/images/course1.webp" 
+              src="/images/about-us.webp" 
               alt="ACADOME Professional Environment" 
               className="w-full h-full object-cover" 
             />

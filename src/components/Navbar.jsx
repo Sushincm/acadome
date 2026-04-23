@@ -50,9 +50,14 @@ export default function Navbar({ isNavOpen, setIsNavOpen, isNavFloating, toggleN
                 </Link>
               ))}
             </div>
-            <Link to="/contact-us" className="inline-flex items-center justify-center px-5 py-2.5 font-body font-medium text-[14px] rounded-lg bg-primary-navy text-white hover:bg-accent-red transition-all shadow-sm">
+            <a 
+              href="https://wa.me/919778914198?text=Hi%20ACADOME%2C%20I'd%20like%20to%20get%20more%20information%20about%20your%20courses%20and%20enroll%20in%20a%20program." 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center justify-center px-5 py-2.5 font-body font-medium text-[14px] rounded-lg bg-primary-navy text-white hover:bg-accent-red transition-all shadow-sm"
+            >
               Enroll Now →
-            </Link>
+            </a>
           </div>
 
           <button onClick={toggleNav} className="min-[992px]:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer relative z-50 w-[24px]" aria-label="Toggle navigation">
@@ -69,9 +74,15 @@ export default function Navbar({ isNavOpen, setIsNavOpen, isNavFloating, toggleN
             {link.label}
           </Link>
         ))}
-        <Link to="/contact-us" onClick={closeNav} className="inline-flex items-center justify-center px-8 py-3 font-body font-medium text-lg rounded-lg border border-primary-navy bg-primary-navy text-white shadow-sm mt-4 hover:bg-accent-red hover:border-accent-red transition-colors">
+        <a 
+          href="https://wa.me/919778914198?text=Hi%20ACADOME%2C%20I'd%20like%20to%20get%20more%20information%20about%20your%20courses%20and%20enroll%20in%20a%20program." 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          onClick={closeNav} 
+          className="inline-flex items-center justify-center px-8 py-3 font-body font-medium text-lg rounded-lg border border-primary-navy bg-primary-navy text-white shadow-sm mt-4 hover:bg-accent-red hover:border-accent-red transition-colors"
+        >
           Enroll Now →
-        </Link>
+        </a>
       </div>
     </>
   );

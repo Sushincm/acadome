@@ -142,7 +142,7 @@ export default function ContactSection({ showMap = true }) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
                 {/* Full Name */}
                 <div className="flex flex-col gap-2.5">
-                  <label htmlFor="name" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-60">Full Name</label>
+                  <label htmlFor="name" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-100">Full Name</label>
                   <input
                     type="text"
                     id="name"
@@ -157,7 +157,7 @@ export default function ContactSection({ showMap = true }) {
                 </div>
                 {/* Email Address */}
                 <div className="flex flex-col gap-2.5">
-                  <label htmlFor="email" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-60">Email Address</label>
+                  <label htmlFor="email" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-100">Email Address</label>
                   <input
                     type="email"
                     id="email"
@@ -175,7 +175,7 @@ export default function ContactSection({ showMap = true }) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
                 {/* Phone Number */}
                 <div className="flex flex-col gap-2.5">
-                  <label htmlFor="phone" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-60">Phone Number</label>
+                  <label htmlFor="phone" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-100">Phone Number</label>
                   <input
                     type="tel"
                     id="phone"
@@ -190,7 +190,7 @@ export default function ContactSection({ showMap = true }) {
                 </div>
                 {/* Course Interest */}
                 <div className="flex flex-col gap-2.5">
-                  <label htmlFor="course" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-60">Course Interest</label>
+                  <label htmlFor="course" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-100">Course Interest</label>
                   <div className="relative">
                     <select
                       id="course"
@@ -216,7 +216,7 @@ export default function ContactSection({ showMap = true }) {
 
               {/* Your Message */}
               <div className="flex flex-col gap-2.5">
-                <label htmlFor="message" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-60">Your Message</label>
+                <label htmlFor="message" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-100">Your Message</label>
                 <textarea
                   id="message"
                   name="message"

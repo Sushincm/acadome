@@ -111,6 +111,16 @@ export default function Home() {
             </div>
             <div className="max-w-[420px] flex flex-col items-start text-left">
               <p ref={heroDescRef} className="text-[16px] md:text-[17px] text-white/90 mb-0 leading-relaxed">{heroData.description}</p>
+              <a 
+                ref={heroCtaRef}
+                href="https://wa.me/919778914198?text=Hi%20ACADOME%2C%20I'd%20like%20to%20get%20more%20details%20about%20your%20courses." 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex items-center justify-center px-8 py-3.5 bg-white text-primary-navy font-body font-bold text-[14px] rounded-lg hover:bg-accent-red hover:text-white transition-all duration-300 shadow-lg group"
+              >
+                Get course details on WhatsApp
+                <span className="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </a>
             </div>
           </div>
         </div>

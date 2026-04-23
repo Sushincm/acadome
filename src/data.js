@@ -114,7 +114,8 @@ export const coursesTabsData = [
     ],
     buttonText: "Enroll Now",
     buttonLink: "/contact-us",
-    imageSrc: "/images/course1.webp",
+    whatsappMessage: "Hi ACADOME, I'm interested in the CCAP (Certified Comprehensive Accounting Program). Could you provide more details?",
+    imageSrc: "/images/ccap.webp",
   },
   {
     id: "dafa",
@@ -137,7 +138,8 @@ export const coursesTabsData = [
     ],
     buttonText: "Enroll Now",
     buttonLink: "/contact-us",
-    imageSrc: "/images/course2.webp",
+    whatsappMessage: "Hi ACADOME, I'm interested in the DAFA (Diploma in Advanced Financial Accounting). Could you provide more details?",
+    imageSrc: "/images/dafa.webp",
   },
   {
     id: "sap",
@@ -155,9 +157,11 @@ export const coursesTabsData = [
     ],
     buttonText: "Enroll Now",
     buttonLink: "/contact-us",
-    imageSrc: "/images/course3.webp",
+    whatsappMessage: "Hi ACADOME, I'm interested in the SAP FICO course. Could you provide more details?",
+    imageSrc: "/images/sap.webp",
   },
 ];
+
 
 export const benefitsHeaderData = {
   tag: "Why Choose Us",

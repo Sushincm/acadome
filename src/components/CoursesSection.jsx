@@ -93,13 +93,17 @@ export default function CoursesSection() {
                   </div>
                 )}
 
-                <Link
-                  to={activeCourse.buttonLink}
-                  className="inline-flex items-center justify-center mt-2 px-8 py-3.5 font-body font-medium text-[15px] rounded-lg bg-primary-navy text-white hover:bg-accent-red transition-colors shadow-sm w-full md:w-auto text-center"
-                >
-                  {activeCourse.buttonText}
-                  <span className="ml-2">&rarr;</span>
-                </Link>
+                <div className="mt-6 w-full md:w-auto">
+                  <a
+                    href={`https://wa.me/919778914198?text=${encodeURIComponent(activeCourse.whatsappMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-10 py-4 font-body font-semibold text-[15px] rounded-lg bg-primary-navy text-white hover:bg-accent-red transition-all duration-300 shadow-md w-full md:w-auto text-center group"
+                  >
+                    Enroll Now
+                    <span className="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
+                  </a>
+                </div>
               </div>
 
               {/* Right Column (Image & Floating Badge) */}

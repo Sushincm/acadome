@@ -1,10 +1,59 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { setupScrollReveal } from "../utils/animations";
-import { courseComparisonData, courseFaqs } from "../data";
-import CoursesSection from "../components/CoursesSection";
+import { courseComparisonData, courseFaqs, coursesHeaderData, coursesTabsData } from "../data";
+// import CoursesSection from "../components/CoursesSection"; // Replaced with custom grid
 import MarqueeSection from "../components/MarqueeSection";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaClock, FaCheckCircle } from "react-icons/fa";
+
+const CourseCard = ({ course }) => (
+  <div className="group bg-white rounded-[32px] overflow-hidden border border-gray-200 shadow-lg hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.15)] hover:border-accent-red/20 transition-all duration-500 flex flex-col h-full">
+    <div className="relative aspect-[16/10] overflow-hidden">
+      <img 
+        src={course.imageSrc} 
+        alt={course.title} 
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+      <div className="absolute top-6 left-6">
+        <span className="px-4 py-2 bg-white/90 backdrop-blur-md text-primary-navy text-[12px] font-bold uppercase tracking-wider rounded-full shadow-sm flex items-center gap-2">
+          <FaClock className="text-accent-red" />
+          {course.durationInfo}
+        </span>
+      </div>
+    </div>
+    
+    <div className="p-8 md:p-10 flex flex-col flex-grow">
+      <h3 className="font-heading font-bold text-[24px] md:text-[28px] text-primary-navy mb-4 leading-tight group-hover:text-accent-red transition-colors">
+        {course.title}
+      </h3>
+      <p className="text-gray-600 font-body text-[16px] leading-relaxed mb-8 flex-grow">
+        {course.description}
+      </p>
+      
+      <div className="space-y-4 mb-10">
+        <h4 className="text-[13px] font-bold text-gray-400 uppercase tracking-widest">Core Curriculum</h4>
+        <div className="grid grid-cols-1 gap-3">
+          {course.topics.slice(0, 4).map((topic, i) => (
+            <div key={i} className="flex items-center gap-3 text-gray-700 text-[15px]">
+              <FaCheckCircle className="text-accent-red shrink-0" size={14} />
+              <span>{topic}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <a 
+        href={`https://wa.me/919778914198?text=${encodeURIComponent(course.whatsappMessage)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full inline-flex items-center justify-center px-8 py-4.5 bg-primary-navy text-white font-body font-bold text-[15px] rounded-2xl hover:bg-accent-red transition-all duration-300 shadow-lg group/btn"
+      >
+        Enroll Now
+        <span className="ml-2 group-hover/btn:translate-x-1 transition-transform">&rarr;</span>
+      </a>
+    </div>
+  </div>
+);
 
 const FaqItem = ({ faq }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,8 +108,28 @@ export default function OurCourses() {
         </div>
       </section>
 
-      {/* Main Courses Section */}
-      <CoursesSection />
+      {/* Main Courses Section - Re-designed to Grid */}
+      <section className="pt-20 md:pt-32 pb-0 px-6 bg-white overflow-hidden">
+        <div className="container max-w-[1240px] mx-auto">
+          <div className="text-center mb-16 md:mb-24 flex flex-col items-center">
+            <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
+              {coursesHeaderData.tag}
+            </div>
+            <h2 className="font-heading font-bold text-[32px] md:text-[44px] lg:text-[52px] text-primary-navy mb-6 tracking-tight leading-[1.1]">
+              {coursesHeaderData.title}
+            </h2>
+            <p className="text-gray-500 max-w-2xl text-[17px] md:text-[19px] leading-relaxed">
+              Explore our range of professional accounting programs, each tailored to specific career milestones and industry demands.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            {coursesTabsData.map((course) => (
+              <CourseCard key={course.id} course={course} />
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Software Tools Marquee */}
       <MarqueeSection />
@@ -139,7 +208,7 @@ export default function OurCourses() {
                 Talk to Our Experts <span>&rarr;</span>
                </Link>
                <a 
-                href="https://wa.me/919778914198" 
+                href="https://wa.me/919778914198?text=Hi%20ACADOME%2C%20I'm%20exploring%20your%20courses%20and%20need%20help%20choosing%20the%20right%20program%20for%20my%20career." 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-flex items-center justify-center px-10 py-5 bg-primary-navy text-white font-body font-bold text-[17px] rounded-2xl hover:bg-white hover:text-primary-navy transition-all duration-500 shadow-xl hover:-translate-y-1 active:scale-95 border border-white/10"
