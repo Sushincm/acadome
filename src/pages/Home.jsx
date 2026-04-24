@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { heroData, aboutData, wwoHeaderData, wwoCards } from "../data";
 import { setupSplitText, setupScrollReveal } from "../utils/animations";
+import SEO from "../components/SEO";
 import CoursesSection from "../components/CoursesSection";
 import BenefitsSection from "../components/BenefitsSection";
 import PlacementSection from "../components/PlacementSection";

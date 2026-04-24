@@ -4,6 +4,7 @@ import { setupScrollReveal } from "../utils/animations";
 import { aboutData } from "../data";
 import MentorsSection from "../components/MentorsSection";
 import CertificationSection from "../components/CertificationSection";
+import SEO from "../components/SEO";
 
 export default function AboutUs() {
   const heroRef = useRef(null);

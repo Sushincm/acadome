@@ -90,7 +90,10 @@ export default function OurCourses() {
 
   return (
     <div className="bg-white">
-
+      <SEO 
+        title="Our Courses" 
+        description="Discover professional accounting and finance courses at ACADOME. SAP FICO, Tally, Zoho Books, and comprehensive training designed for GCC job markets."
+      />
 
       {/* Main Courses Section - Re-designed to Grid */}
       <section className="pt-[120px] md:pt-[160px] pb-0 px-6 bg-white overflow-hidden">

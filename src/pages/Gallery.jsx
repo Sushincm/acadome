@@ -5,6 +5,7 @@ import { setupScrollReveal } from "../utils/animations";
 import { videoGalleryData, testimonialVideos } from "../data";
 import GLightbox from 'glightbox';
 import 'glightbox/dist/css/glightbox.min.css';
+import SEO from "../components/SEO";
 
 export default function Gallery() {
   const heroRef = useRef(null);
@@ -30,6 +31,10 @@ export default function Gallery() {
 
   return (
     <div className="bg-white">
+      <SEO 
+        title="Gallery" 
+        description="Explore life at ACADOME. Browse through our training sessions, classroom activities, and student success stories in our visual gallery."
+      />
       {/* Hero Banner */}
       <section className="bg-primary-navy pt-[120px] pb-20 px-6 relative overflow-hidden text-center">
         <div className="absolute inset-0 bg-primary-navy z-0">

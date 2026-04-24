@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ContactSection from "../components/ContactSection";
 import { setupScrollReveal } from "../utils/animations";
 import { FaClock, FaCalendarAlt, FaGlobeAmericas } from "react-icons/fa";
+import SEO from "../components/SEO";
 
 export default function ContactUs() {
   const heroRef = useRef(null);
@@ -15,6 +16,10 @@ export default function ContactUs() {
 
   return (
     <div className="bg-white">
+      <SEO 
+        title="Contact Us" 
+        description="Get in touch with ACADOME. Visit our offices in Calicut or Kochi, or reach out via WhatsApp for course details and career counseling."
+      />
       {/* Hero Banner */}
       <section className="bg-primary-navy pt-[120px] pb-20 px-6 relative overflow-hidden text-center">
         <div className="absolute inset-0 bg-primary-navy z-0">
