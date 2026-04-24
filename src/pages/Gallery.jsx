@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import GallerySection from "../components/GallerySection";
 import { setupScrollReveal } from "../utils/animations";
-import { galleryVideos } from "../data";
+import { videoGalleryData, testimonialVideos } from "../data";
 import GLightbox from 'glightbox';
 import 'glightbox/dist/css/glightbox.min.css';
 
@@ -66,12 +66,11 @@ export default function Gallery() {
                See how our students engage in interactive workshops and hands-on accounting software training.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1000px] mx-auto">
-               {galleryVideos.map((video) => (
+               {videoGalleryData.map((video) => (
                  <a 
                    key={video.id}
-                   href={video.videoUrl} 
+                   href={video.url} 
                    className="video-gallery-item block aspect-video bg-gray-200 rounded-3xl overflow-hidden shadow-lg border-8 border-white group relative"
-                   data-glightbox={`title: ${video.title}`}
                  >
                     <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors z-10">
                        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-accent-red shadow-xl group-hover:scale-110 transition-transform cursor-pointer">
@@ -80,12 +79,26 @@ export default function Gallery() {
                           </svg>
                        </div>
                     </div>
-                    <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 z-20 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <h4 className="text-white font-heading font-semibold text-lg">{video.title}</h4>
-                    </div>
+                    {video.type === "video" ? (
+                      <video src={video.url} className="w-full h-full object-cover muted playsInline preload-metadata" />
+                    ) : (
+                      <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    )}
                  </a>
                ))}
+
+               {/* Hidden testimonial videos to be shown in the lightbox sequence */}
+               <div className="hidden">
+                  {testimonialVideos.map((video) => (
+                    <a 
+                      key={video.id}
+                      href={video.url}
+                      className="video-gallery-item"
+                    >
+                      {video.title}
+                    </a>
+                  ))}
+               </div>
             </div>
          </div>
       </section>

@@ -263,6 +263,7 @@ export const reviewsData = [
     quote: "My experience at ACADOME was amazing. The Certified Comprehensive Accounting Program was practical and covered all the key aspects I needed. The instructors brought real-world insights, leaving me confident and ready for new challenges in accounting.",
     program: "CCAP — Certified Comprehensive Accounting Program",
     image: "https://i.pravatar.cc/150?u=marshal",
+    videoUrl: "/images/testimonials/testimonial-1.mp4"
   },
   {
     id: 2,
@@ -270,6 +271,7 @@ export const reviewsData = [
     quote: "Joining ACADOME's Certified Comprehensive Accounting Program was a great decision and a refreshment to my career. The curriculum was clear, and the instructors were supportive. I highly recommend it to anyone pursuing accounting.",
     program: "CCAP — Certified Comprehensive Accounting Program",
     image: "https://i.pravatar.cc/150?u=anju",
+    videoUrl: null // Text only
   },
   {
     id: 3,
@@ -277,7 +279,24 @@ export const reviewsData = [
     quote: "Joining ACADOME's CCAP was a pivotal step in my career. The comprehensive curriculum and the knowledgeable instructors provided me with a robust understanding of accounting principles. I highly recommend this program.",
     program: "CCAP — Certified Comprehensive Accounting Program",
     image: "https://i.pravatar.cc/150?u=hena",
+    videoUrl: "/images/testimonials/testimonial-2.mp4"
   },
+  {
+    id: 4,
+    name: "Sneha",
+    quote: "The DAFA program provided me with the practical skills needed for the GCC market. The training on Odoo and Zoho Books was especially helpful.",
+    program: "DAFA — Diploma in Advanced Financial Accounting",
+    image: "https://i.pravatar.cc/150?u=sneha",
+    videoUrl: null // Text only
+  },
+  {
+    id: 5,
+    name: "Rahul",
+    quote: "SAP FICO training at ACADOME is top-notch. The instructors are very knowledgeable and the practical sessions are very intense.",
+    program: "SAP FICO",
+    image: "https://i.pravatar.cc/150?u=rahul",
+    videoUrl: "/images/testimonials/testimonial-3.mp4"
+  }
 ];
 
 export const certificationHeaderData = {
@@ -404,19 +423,30 @@ export const galleryImages = [
   { id: 36, src: "/images/gallary/webp/gallery-36.webp", category: "Classroom", caption: "Final Farewell", h: 400 },
 ];
 
-export const galleryVideos = [
+export const videoGalleryData = [
   {
     id: 1,
-    title: "Practical Training at ACADOME",
-    videoUrl: "https://www.youtube.com/embed/OeJ_UxFgRAs?si=2zYHd5hbKLP_mx9A",
-    thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800"
+    title: "Student Success Story",
+    url: "/images/testimonials/testimonial-1.mp4",
+    type: "video"
   },
   {
     id: 2,
-    title: "Student Success Stories",
-    videoUrl: "https://www.youtube.com/embed/OeJ_UxFgRAs?si=2zYHd5hbKLP_mx9A",
-    thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+    title: "ACADOME Highlights",
+    url: "https://www.youtube.com/embed/Wxdx0iafvXQ",
+    thumbnail: "https://img.youtube.com/vi/Wxdx0iafvXQ/maxresdefault.jpg",
+    type: "youtube"
   }
+];
+
+export const testimonialVideos = [
+  { id: 1, url: "/images/testimonials/testimonial-1.mp4", title: "Student Testimonial 1" },
+  { id: 2, url: "/images/testimonials/testimonial-2.mp4", title: "Student Testimonial 2" },
+  { id: 3, url: "/images/testimonials/testimonial-3.mp4", title: "Student Testimonial 3" },
+  { id: 4, url: "/images/testimonials/testimonial-4.mp4", title: "Student Testimonial 4" },
+  { id: 5, url: "/images/testimonials/testimonial-5.mp4", title: "Student Testimonial 5" },
+  { id: 6, url: "/images/testimonials/testimonial-6.mp4", title: "Student Testimonial 6" },
+  { id: 7, url: "/images/testimonials/testimonial-7.mp4", title: "Student Testimonial 7" },
 ];
 
 

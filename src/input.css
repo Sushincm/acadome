@@ -23,6 +23,31 @@
     overflow-x: clip; /* Modern alternative to hidden that doesn't break sticky */
     background-color: #fff;
   }
+
+  /* Branded Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #dedede; /* Primary Navy */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #da2a3f; /* Accent Red */
+    border-radius: 10px;
+    border: 2px solid #dedede; /* Track color as border for gap effect */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b21e30; /* Darker red on hover */
+  }
+
+  /* Firefox Support */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #da2a3f #dedede;
+  }
 }
 
 @layer utilities {
@@ -211,4 +236,69 @@
 }
 .hover-parallax:hover {
   transform: translateY(-5px);
+}
+
+/* GLightbox UI Overrides */
+.glightbox-container .gclose,
+.glightbox-container .gprev,
+.glightbox-container .gnext {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 50% !important;
+  width: 45px !important;
+  height: 45px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.glightbox-container .gclose:hover,
+.glightbox-container .gprev:hover,
+.glightbox-container .gnext:hover {
+  background-color: #da2a3f !important;
+}
+
+.glightbox-container .gclose {
+  top: 30px !important;
+  right: 30px !important;
+}
+
+.glightbox-container .gprev svg,
+.glightbox-container .gnext svg,
+.glightbox-container .gclose svg {
+  width: 20px !important;
+  height: 20px !important;
+  color: white !important;
+}
+
+/* Portrait Video Optimization for GLightbox */
+@media (max-width: 767px) {
+  .glightbox-container .gvideo-container {
+    width: 100% !important;
+    height: 85vh !important;
+    max-width: 100vw !important;
+  }
+  
+  .glightbox-container .gvideo-container video {
+    object-fit: contain !important;
+    height: 100% !important;
+  }
+}
+
+/* Review Card Performance Optimization */
+.review-card {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

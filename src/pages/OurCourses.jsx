@@ -78,38 +78,22 @@ const FaqItem = ({ faq }) => {
 };
 
 export default function OurCourses() {
-  const heroRef = useRef(null);
+
   const comparisonRef = useRef(null);
   const faqRef = useRef(null);
 
   useEffect(() => {
-    if (heroRef.current) setupScrollReveal(heroRef.current.children);
+
     if (comparisonRef.current) setupScrollReveal(comparisonRef.current.children);
     if (faqRef.current) setupScrollReveal(faqRef.current.children);
   }, []);
 
   return (
     <div className="bg-white">
-      {/* Hero Banner */}
-      <section className="bg-primary-navy pt-[120px] pb-20 px-6 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent-red/10 rounded-full blur-[100px]"></div>
-        <div ref={heroRef} className="container max-w-[1240px] mx-auto text-center relative z-10">
-          <h1 className="font-heading font-semibold text-[40px] md:text-[56px] text-white mb-6">
-            Our Courses
-          </h1>
-          <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
-            Comprehensive programs designed to transform you into a professional accountant with real-world expertise.
-          </p>
-          <div className="flex items-center justify-center gap-2 text-white/60 text-[14px]">
-            <Link to="/" className="hover:text-white transition-colors">Home</Link>
-            <span>/</span>
-            <span className="text-white font-medium">Our Courses</span>
-          </div>
-        </div>
-      </section>
+
 
       {/* Main Courses Section - Re-designed to Grid */}
-      <section className="pt-20 md:pt-32 pb-0 px-6 bg-white overflow-hidden">
+      <section className="pt-[120px] md:pt-[160px] pb-0 px-6 bg-white overflow-hidden">
         <div className="container max-w-[1240px] mx-auto">
           <div className="text-center mb-16 md:mb-24 flex flex-col items-center">
             <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
