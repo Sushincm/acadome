@@ -18,6 +18,7 @@ function AnimatedRoutes() {
         <Route path="/our-courses" element={<OurCourses />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );

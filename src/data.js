@@ -260,42 +260,65 @@ export const reviewsData = [
   {
     id: 1,
     name: "Marshal",
-    quote: "My experience at ACADOME was amazing. The Certified Comprehensive Accounting Program was practical and covered all the key aspects I needed. The instructors brought real-world insights, leaving me confident and ready for new challenges in accounting.",
+    quote: "My experience at ACADOME was amazing. The CCAP was practical and covered all the key aspects I needed.",
     program: "CCAP — Certified Comprehensive Accounting Program",
-    image: "https://i.pravatar.cc/150?u=marshal",
     videoUrl: "/images/testimonials/testimonial-1.mp4"
   },
   {
     id: 2,
     name: "Anju",
-    quote: "Joining ACADOME's Certified Comprehensive Accounting Program was a great decision and a refreshment to my career. The curriculum was clear, and the instructors were supportive. I highly recommend it to anyone pursuing accounting.",
+    quote: "Joining ACADOME's Certified Comprehensive Accounting Program was a great decision and a refreshment to my career. The curriculum was clear, and the instructors were supportive.",
     program: "CCAP — Certified Comprehensive Accounting Program",
-    image: "https://i.pravatar.cc/150?u=anju",
     videoUrl: null // Text only
   },
   {
     id: 3,
     name: "Hena",
-    quote: "Joining ACADOME's CCAP was a pivotal step in my career. The comprehensive curriculum and the knowledgeable instructors provided me with a robust understanding of accounting principles. I highly recommend this program.",
+    quote: "Joining ACADOME's CCAP was a pivotal step in my career. I highly recommend this program.",
     program: "CCAP — Certified Comprehensive Accounting Program",
-    image: "https://i.pravatar.cc/150?u=hena",
     videoUrl: "/images/testimonials/testimonial-2.mp4"
   },
   {
     id: 4,
     name: "Sneha",
-    quote: "The DAFA program provided me with the practical skills needed for the GCC market. The training on Odoo and Zoho Books was especially helpful.",
+    quote: "The DAFA program provided me with the practical skills needed for the GCC market.",
     program: "DAFA — Diploma in Advanced Financial Accounting",
-    image: "https://i.pravatar.cc/150?u=sneha",
     videoUrl: null // Text only
   },
   {
     id: 5,
     name: "Rahul",
-    quote: "SAP FICO training at ACADOME is top-notch. The instructors are very knowledgeable and the practical sessions are very intense.",
+    quote: "SAP FICO training at ACADOME is top-notch. The instructors are very knowledgeable.",
     program: "SAP FICO",
-    image: "https://i.pravatar.cc/150?u=rahul",
     videoUrl: "/images/testimonials/testimonial-3.mp4"
+  },
+  {
+    id: 6,
+    name: "Sruthi",
+    quote: "The practical approach to accounting at ACADOME is what sets them apart.",
+    program: "CCAP",
+    videoUrl: "/images/testimonials/testimonial-4.mp4"
+  },
+  {
+    id: 7,
+    name: "Arjun",
+    quote: "I gained immense confidence in Zoho Books and Tally through their hands-on sessions.",
+    program: "DAFA",
+    videoUrl: "/images/testimonials/testimonial-5.mp4"
+  },
+  {
+    id: 8,
+    name: "Fathima",
+    quote: "The internship pathway at ACADOME really helped me land my first job.",
+    program: "CCAP",
+    videoUrl: "/images/testimonials/testimonial-6.mp4"
+  },
+  {
+    id: 9,
+    name: "Midhun",
+    quote: "Best institute for SAP FICO in Kerala. Highly recommended.",
+    program: "SAP FICO",
+    videoUrl: "/images/testimonials/testimonial-7.mp4"
   }
 ];
 

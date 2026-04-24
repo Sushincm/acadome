@@ -85,7 +85,7 @@ export default function Gallery() {
                        </div>
                     </div>
                     {video.type === "video" ? (
-                      <video src={video.url} className="w-full h-full object-cover muted playsInline preload-metadata" />
+                      <video src={video.url} className="w-full h-full object-cover" muted playsInline preload="metadata" />
                     ) : (
                       <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     )}

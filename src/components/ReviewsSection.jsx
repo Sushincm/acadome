@@ -11,26 +11,17 @@ import 'swiper/css/navigation';
 
 const ReviewCard = ({ review }) => {
   const videoRef = useRef(null);
-  const [videoSrc, setVideoSrc] = useState(null);
 
   const handleMouseEnter = () => {
-    // Only load the video source on hover
-    setVideoSrc(review.videoUrl);
-    
-    // Use a small timeout to ensure the src is set before playing
-    setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.play().catch(() => {});
-      }
-    }, 50);
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
   };
 
   const handleMouseLeave = () => {
     if (videoRef.current) {
       videoRef.current.pause();
     }
-    // Optionally clear src to save memory, or keep it loaded once touched
-    // setVideoSrc(null); 
   };
 
   return (
@@ -42,29 +33,19 @@ const ReviewCard = ({ review }) => {
       
       {review.videoUrl ? (
         /* VIDEO TESTIMONIAL LAYOUT */
-        <div className="relative w-full h-full group/video bg-gray-50 flex items-center justify-center">
-          {/* Video Preview - Strict Lazy Loading */}
-          {videoSrc ? (
-            <video 
-              ref={videoRef}
-              src={videoSrc} 
-              className="w-full h-full object-cover animate-page-enter"
-              muted
-              playsInline
-              loop
-              preload="auto"
-            />
-          ) : (
-            /* Placeholder state before hover */
-            <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-               <div className="w-16 h-16 bg-accent-red/10 text-accent-red rounded-full flex items-center justify-center scale-90 opacity-40">
-                  <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                     <path d="M4.516 2.104a.5.5 0 01.484.014l11 7a.5.5 0 010 .864l-11 7A.5.5 0 014 16.5v-13a.5.5 0 01.516-.396z"/>
-                  </svg>
-               </div>
-            </div>
-          )}
-          <div className="absolute inset-0 bg-black/5 group-hover/video:bg-black/20 transition-colors" />
+        <div className="relative w-full h-full group/video bg-gray-100 flex items-center justify-center overflow-hidden">
+          {/* Video Preview - Persistent tag and src for immediate thumbnail */}
+          <video 
+            ref={videoRef}
+            src={review.videoUrl} 
+            className="w-full h-full object-cover absolute inset-0"
+            muted
+            playsInline
+            loop
+            preload="metadata"
+          />
+          
+          <div className="absolute inset-0 bg-black/5 group-hover/video:bg-black/20 transition-colors pointer-events-none" />
           
           <a 
             href={review.videoUrl} 
@@ -219,7 +200,7 @@ export default function ReviewsSection() {
             }}
             className="!overflow-visible"
           >
-            {[...reviewsData, ...reviewsData, ...reviewsData].map((review, index) => (
+            {reviewsData.map((review, index) => (
               <SwiperSlide key={`${review.id}-${index}`} className="!h-auto">
                 <ReviewCard review={review} />
               </SwiperSlide>
