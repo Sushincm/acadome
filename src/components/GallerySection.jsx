@@ -1,12 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
-import GLightbox from 'glightbox';
-import 'glightbox/dist/css/glightbox.min.css';
+import useLightbox from '../hooks/useLightbox';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
-import { galleryCategories, galleryHeaderData, galleryImages } from '../data';
+import { galleryCategories, galleryHeaderData, galleryImages } from '../data/gallery';
 import { FaPlus } from 'react-icons/fa';
 
 const INITIAL_COUNT = 6;
@@ -50,8 +49,6 @@ export default function GallerySection({ fullPage = false, isHome = false }) {
   const [filteredImages, setFilteredImages] = useState(galleryImages);
   const [isAnimating, setIsAnimating] = useState(false);
   const [showAll, setShowAll] = useState(fullPage);
-  const lightboxRef = useRef(null);
-  
   const titleRef = useRef(null);
   const tagRef = useRef(null);
   const subtextRef = useRef(null);
@@ -66,48 +63,11 @@ export default function GallerySection({ fullPage = false, isHome = false }) {
     setupScrollReveal(".gallery-reveal", 0.3);
   }, [visibleImages, isHome]);
 
-  useEffect(() => {
-    const timer = requestAnimationFrame(() => {
-      setTimeout(() => {
-        if (lightboxRef.current) {
-          lightboxRef.current.destroy();
-          lightboxRef.current = null;
-        }
-
-        const elements = document.querySelectorAll('.gallery-item');
-        if (elements.length > 0) {
-          lightboxRef.current = GLightbox({
-            elements: Array.from(elements).map(el => ({
-              href: el.getAttribute('href'),
-              type: 'image',
-              title: el.getAttribute('data-title') || '',
-              description: el.getAttribute('data-description') || '',
-            })),
-            touchNavigation: true,
-            loop: true,
-          });
-
-          elements.forEach((el, i) => {
-            el.addEventListener('click', (e) => {
-              e.preventDefault();
-              if (lightboxRef.current) {
-                lightboxRef.current.openAt(i);
-              }
-            });
-          });
-        }
-      }, 200); 
-    });
-
-    return () => {
-      cancelAnimationFrame(timer);
-      if (lightboxRef.current) {
-        lightboxRef.current.destroy();
-        lightboxRef.current = null;
-      }
-    };
+  useLightbox({
+    selector: '.gallery-item',
+    touchNavigation: true,
+    loop: true,
   }, [visibleImages, activeCategory, isHome]);
-
   const handleFilterChange = (category) => {
     if (category === activeCategory || isAnimating) return;
     setIsAnimating(true);

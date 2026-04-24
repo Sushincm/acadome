@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { coursesHeaderData, coursesTabsData } from '../data';
+import { coursesHeaderData, coursesTabsData } from '../data/courses';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
 
 export default function CoursesSection() {

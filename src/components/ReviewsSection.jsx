@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import { reviewsData, reviewsHeaderData } from '../data';
+import { useEffect, useRef } from 'react';
+import { reviewsData, reviewsHeaderData } from '../data/reviews';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { FaStar, FaChevronLeft, FaChevronRight, FaQuoteLeft } from 'react-icons/fa';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
-import GLightbox from 'glightbox';
-import 'glightbox/dist/css/glightbox.min.css';
+import useLightbox from '../hooks/useLightbox';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -92,28 +91,21 @@ export default function ReviewsSection() {
   const tagRef = useRef(null);
   const titleRef = useRef(null);
   const subtextRef = useRef(null);
-  const lightboxRef = useRef(null);
+
+  useLightbox({
+    selector: '.video-testimonial-item',
+    touchNavigation: true,
+    loop: true,
+    autoplayVideos: true,
+    zoomable: false,
+    draggable: true,
+  });
 
   useEffect(() => {
     if (tagRef.current) setupScrollReveal(tagRef.current);
     if (titleRef.current) setupSplitText(titleRef.current);
     if (subtextRef.current) setupScrollReveal(subtextRef.current, 0.2);
     setupScrollReveal(".review-card", 0.3);
-
-    // Initialize Lightbox for video testimonials
-    const initLightbox = () => {
-      if (lightboxRef.current) lightboxRef.current.destroy();
-      lightboxRef.current = GLightbox({
-        selector: '.video-testimonial-item',
-        touchNavigation: true,
-        loop: true,
-        autoplayVideos: true,
-        zoomable: false,
-        draggable: true,
-      });
-    };
-
-    initLightbox();
 
     const el = swiperWrapperRef.current;
     if (!el) return;
@@ -124,7 +116,6 @@ export default function ReviewsSection() {
     el.addEventListener('touchend', onTouchEnd, { passive: true });
     el.addEventListener('touchcancel', onTouchEnd, { passive: true });
     return () => {
-      if (lightboxRef.current) lightboxRef.current.destroy();
       el.removeEventListener('touchstart', onTouchStart);
       el.removeEventListener('touchend', onTouchEnd);
       el.removeEventListener('touchcancel', onTouchEnd);
@@ -146,7 +137,7 @@ export default function ReviewsSection() {
               {reviewsHeaderData.title}
             </h2>
             <p ref={subtextRef} className="text-gray-500 font-body text-[16px] mt-4 max-w-[500px]">
-              Hear directly from our students who have transformed their careers with ACADOME's professional programs.
+              {reviewsHeaderData.subtext}
             </p>
           </div>
 

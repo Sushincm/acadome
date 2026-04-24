@@ -2,31 +2,22 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import GallerySection from "../components/GallerySection";
 import { setupScrollReveal } from "../utils/animations";
-import { videoGalleryData, testimonialVideos } from "../data";
-import GLightbox from 'glightbox';
-import 'glightbox/dist/css/glightbox.min.css';
+import { videoGalleryData, testimonialVideos } from "../data/gallery";
+import useLightbox from "../hooks/useLightbox";
 import SEO from "../components/SEO";
 
 export default function Gallery() {
   const heroRef = useRef(null);
-  const videoLightboxRef = useRef(null);
-  
+
+  useLightbox({
+    selector: '.video-gallery-item',
+    touchNavigation: true,
+    loop: true,
+    autoplayVideos: true,
+  });
+
   useEffect(() => {
     if (heroRef.current) setupScrollReveal(heroRef.current.children);
-    
-    // Initialize Video Lightbox
-    videoLightboxRef.current = GLightbox({
-      selector: '.video-gallery-item',
-      touchNavigation: true,
-      loop: true,
-      autoplayVideos: true,
-    });
-
-    return () => {
-      if (videoLightboxRef.current) {
-        videoLightboxRef.current.destroy();
-      }
-    };
   }, []);
 
   return (

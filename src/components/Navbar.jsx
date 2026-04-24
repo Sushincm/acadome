@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { navLinks } from "../data";
+import { navLinks } from "../data/navigation";
 
 export default function Navbar({ isNavOpen, setIsNavOpen, isNavFloating, toggleNav, closeNav, lenisRef }) {
   const location = useLocation();

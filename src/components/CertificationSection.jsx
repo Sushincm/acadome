@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { certificationCards, certificationHeaderData } from '../data';
+import { certificationCards, certificationHeaderData } from '../data/courses';
 import { FaUniversity, FaAward, FaCertificate } from 'react-icons/fa';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
 

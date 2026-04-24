@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { setupScrollReveal } from "../utils/animations";
-import { courseComparisonData, courseFaqs, coursesHeaderData, coursesTabsData } from "../data";
+import { courseComparisonData, courseFaqs, coursesHeaderData, coursesTabsData } from "../data/courses";
 // import CoursesSection from "../components/CoursesSection"; // Replaced with custom grid
 import MarqueeSection from "../components/MarqueeSection";
 import { FaChevronDown, FaClock, FaCheckCircle } from "react-icons/fa";
