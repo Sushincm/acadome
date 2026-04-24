@@ -4,6 +4,7 @@ import { setupScrollReveal } from "../utils/animations";
 import { courseComparisonData, courseFaqs, coursesHeaderData, coursesTabsData } from "../data/courses";
 // import CoursesSection from "../components/CoursesSection"; // Replaced with custom grid
 import MarqueeSection from "../components/MarqueeSection";
+import SEO from "../components/SEO";
 import { FaChevronDown, FaClock, FaCheckCircle } from "react-icons/fa";
 
 const CourseCard = ({ course }) => (
