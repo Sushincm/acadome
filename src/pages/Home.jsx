@@ -41,6 +41,23 @@ export default function Home() {
       if (heroDescRef.current) setupScrollReveal(heroDescRef.current, 0.4);
       if (heroCtaRef.current) setupScrollReveal(heroCtaRef.current, 0.5);
 
+      // Hero Image Slider Loop
+      const slides = gsap.utils.toArray('.hero-slide');
+      if (slides.length > 0) {
+        let current = 0;
+        const cycleSlides = () => {
+          const next = (current + 1) % slides.length;
+          
+          gsap.timeline()
+            .to(slides[current], { opacity: 0, duration: 1.5, ease: "power2.inOut" })
+            .fromTo(slides[next], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }, "-=1.2");
+
+          current = next;
+          gsap.delayedCall(5, cycleSlides);
+        };
+        gsap.delayedCall(5, cycleSlides);
+      }
+
       // 2. About Section Reveals
       if (aboutTagRef.current) setupScrollReveal(aboutTagRef.current);
       if (aboutTitleRef.current) setupScrollReveal(aboutTitleRef.current, 0.2);
@@ -97,11 +114,25 @@ export default function Home() {
       <section id="home" className="relative pt-0 md:pt-[75px] px-4 md:px-6 w-full mx-auto min-h-screen flex items-center justify-center">
         <div ref={heroContainerRef} className="relative w-full h-[80vh] min-h-[500px] md:min-h-[600px] rounded-3xl md:rounded-[48px] overflow-hidden flex flex-col justify-end p-6 md:p-14 lg:p-20 isolate bg-gray-900 shadow-2xl">
           <div className="absolute inset-0 z-0">
-            <img 
-              src="/images/hero-img.webp" 
-              alt="Background" 
-              className="w-full h-full object-cover origin-center" 
-            />
+            {/* Background Image Slider */}
+            {[
+              "/images/hero-img.webp",
+              "/images/hero-img-2.webp",
+              "/images/hero-img-3.webp"
+            ].map((src, index) => (
+              <div 
+                key={index}
+                className={`hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
+              >
+                <img 
+                  src={src} 
+                  alt={`Slide ${index + 1}`} 
+                  className="w-full h-full object-cover origin-center" 
+                  fetchpriority={index === 0 ? 'high' : 'low'}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                />
+              </div>
+            ))}
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
           <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between w-full mt-auto gap-8 pt-[200px]">

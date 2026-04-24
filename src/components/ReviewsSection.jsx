@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { reviewsData, reviewsHeaderData } from '../data/reviews';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
@@ -10,6 +10,31 @@ import 'swiper/css/navigation';
 
 const ReviewCard = ({ review }) => {
   const videoRef = useRef(null);
+  const cardRef = useRef(null);
+  // Lazy src: only set once the card scrolls into view (saves ~20MB on page load)
+  const [videoSrc, setVideoSrc] = useState(null);
+
+  useEffect(() => {
+    if (!review.videoUrl || !cardRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVideoSrc(review.videoUrl);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '400px' } // Load earlier so it's ready when user reaches it
+    );
+    observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, [review.videoUrl]);
+
+  // Ensure video plays even if source was set while hovering
+  useEffect(() => {
+    if (videoSrc && videoRef.current && cardRef.current?.matches(':hover')) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, [videoSrc]);
 
   const handleMouseEnter = () => {
     if (videoRef.current) {
@@ -25,6 +50,7 @@ const ReviewCard = ({ review }) => {
 
   return (
     <div 
+      ref={cardRef}
       className="bg-white rounded-[24px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col h-full relative transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-1 review-card overflow-hidden aspect-[3/4]"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -33,29 +59,30 @@ const ReviewCard = ({ review }) => {
       {review.videoUrl ? (
         /* VIDEO TESTIMONIAL LAYOUT */
         <div className="relative w-full h-full group/video bg-gray-100 flex items-center justify-center overflow-hidden">
-          {/* Video Preview - Persistent tag and src for immediate thumbnail */}
+          {/* Lazy video: src is only set once card enters viewport */}
           <video 
             ref={videoRef}
-            src={review.videoUrl} 
-            className="w-full h-full object-cover absolute inset-0"
+            src={videoSrc || undefined}
+            className="w-full h-full object-cover absolute inset-0 z-0"
             muted
             playsInline
             loop
-            preload="metadata"
+            preload="auto"
           />
           
-          <div className="absolute inset-0 bg-black/5 group-hover/video:bg-black/20 transition-colors pointer-events-none" />
+          <div className="absolute inset-0 bg-black/5 group-hover/video:bg-black/20 transition-colors pointer-events-none z-10" />
           
-          <a 
-            href={review.videoUrl} 
-            className="video-testimonial-item absolute inset-0 flex items-center justify-center z-20 group/play cursor-pointer"
-          >
-            <div className="w-16 h-16 bg-accent-red text-white rounded-full flex items-center justify-center shadow-2xl scale-90 group-hover/play:scale-110 transition-all duration-300">
+          {/* Play Button - Centered and clickable for Lightbox */}
+          <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+            <a 
+              href={review.videoUrl} 
+              className="video-testimonial-item w-16 h-16 bg-accent-red text-white rounded-full flex items-center justify-center shadow-2xl scale-90 hover:scale-110 transition-all duration-300 pointer-events-auto cursor-pointer"
+            >
                <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M4.516 2.104a.5.5 0 01.484.014l11 7a.5.5 0 010 .864l-11 7A.5.5 0 014 16.5v-13a.5.5 0 01.516-.396z"/>
                </svg>
-            </div>
-          </a>
+            </a>
+          </div>
         </div>
       ) : (
         /* TEXT TESTIMONIAL LAYOUT */

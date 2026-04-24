@@ -168,7 +168,18 @@
 }
 
 .animate-bounce-subtle {
-  animation: bounce-subtle 2s infinite ease-in-out;
+  /* Stops after 3 bounces — draws attention without infinite GPU repaints */
+  animation: bounce-subtle 2s ease-in-out 3;
+}
+
+/* Finite ping for decorative dots — stops after 3 pulses */
+@keyframes ping-finite {
+  0% { transform: scale(1); opacity: 0.3; }
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+.animate-ping-once {
+  animation: ping-finite 1.5s ease-out 3;
 }
 
 /* Optimization: Native CSS Reveal Animations */

@@ -132,7 +132,7 @@ export default function GallerySection({ fullPage = false, isHome = false }) {
                   </div>
 
                   {/* Decorative Elements */}
-                  <div className="absolute top-[15%] right-[10%] w-3 h-3 md:w-4 md:h-4 rounded-full bg-accent-red animate-ping opacity-30"></div>
+                  <div className="absolute top-[15%] right-[10%] w-3 h-3 md:w-4 md:h-4 rounded-full bg-accent-red animate-ping-once opacity-30"></div>
                   <div className="absolute bottom-[10%] left-[10%] w-[120px] h-1 bg-accent-red/20 rounded-full blur-sm"></div>
                 </div>
               </div>

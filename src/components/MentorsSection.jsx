@@ -190,7 +190,7 @@ export default function MentorsSection({ isFullGrid = false, noBg = false, class
             }}
             className="mentors-swiper !pb-4 !overflow-visible"
           >
-            {[...mentorsData, ...mentorsData, ...mentorsData].map((mentor, index) => (
+            {mentorsData.map((mentor, index) => (
               <SwiperSlide key={`${mentor.id}-${index}`} className="!h-auto px-2">
                 <MentorCard mentor={mentor} />
               </SwiperSlide>
