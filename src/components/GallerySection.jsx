@@ -16,8 +16,6 @@ const GalleryCard = ({ img, className = '', heightClass = 'h-full' }) => (
     <a 
       href={img.src} 
       className="gallery-item block relative overflow-hidden h-full"
-      data-title={img.caption}
-      data-description={img.category}
     >
       <img 
         src={img.src} 
