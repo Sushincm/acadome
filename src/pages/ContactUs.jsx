@@ -21,7 +21,7 @@ export default function ContactUs() {
         description="Get in touch with ACADOME. Visit our offices in Calicut or Kochi, or reach out via WhatsApp for course details and career counseling."
       />
       {/* Hero Banner */}
-      <section className="bg-primary-navy pt-[120px] pb-20 px-6 relative overflow-hidden text-center">
+      <section className="bg-primary-navy pt-32 pb-20 md:pt-[160px] md:pb-32 px-6 relative overflow-hidden text-center flex items-center justify-center min-h-[400px] md:min-h-[500px]">
         <div className="absolute inset-0 bg-primary-navy z-0">
            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-red/10 rounded-full blur-[120px]"></div>
            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px]"></div>

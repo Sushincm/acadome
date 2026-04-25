@@ -97,7 +97,7 @@ export default function OurCourses() {
       />
 
       {/* Main Courses Section - Re-designed to Grid */}
-      <section className="pt-[120px] md:pt-[160px] pb-0 px-6 bg-white overflow-hidden">
+      <section className="pt-32 pb-20 md:pt-[160px] md:pb-24 px-6 bg-white overflow-hidden flex items-center min-h-[400px] md:min-h-[550px]">
         <div className="container max-w-[1240px] mx-auto">
           <div className="text-center mb-16 md:mb-24 flex flex-col items-center">
             <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">

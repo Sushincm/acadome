@@ -111,8 +111,8 @@ export default function Home() {
   return (
     <>
       {/* HERO SECTION */}
-      <section id="home" className="relative pt-0 md:pt-[75px] px-4 md:px-6 w-full mx-auto min-h-screen flex items-center justify-center">
-        <div ref={heroContainerRef} className="relative w-full h-[80vh] min-h-[500px] md:min-h-[600px] rounded-3xl md:rounded-[48px] overflow-hidden flex flex-col justify-end p-6 md:p-14 lg:p-20 isolate bg-gray-900 shadow-2xl">
+      <section id="home" className="relative pt-6 md:pt-28 px-0 md:px-6 w-full mx-auto flex items-center justify-center">
+        <div ref={heroContainerRef} className="relative w-full min-h-[80vh] h-auto rounded-3xl md:rounded-[48px] overflow-hidden flex flex-col justify-end p-6 py-20 md:p-14 lg:p-20 isolate bg-gray-900 shadow-2xl">
           <div className="absolute inset-0 z-0">
             {/* Background Image Slider */}
             {[
@@ -135,7 +135,7 @@ export default function Home() {
             ))}
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
-          <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between w-full mt-auto gap-8 pt-[200px]">
+          <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between w-full mt-auto gap-8 pt-20 md:pt-[200px]">
             <div className="max-w-[750px]">
               <h1 ref={heroTitleRef} className="font-heading font-semibold text-[40px] md:text-[50px] lg:text-[55px] leading-[1.2] tracking-tight text-white m-0 whitespace-normal break-words max-w-[720px]">
                 {heroData.title}

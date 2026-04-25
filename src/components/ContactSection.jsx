@@ -36,38 +36,33 @@ export default function ContactSection({ showMap = true }) {
     e.preventDefault();
     setStatus('sending');
     
-    /* 
-      ACTION REQUIRED: For a real working form, replace the URL below with your 
-      Formspree endpoint (formspree.io) or your custom backend URL.
-    */
-    const FORM_ENDPOINT = ""; // e.g. "https://formspree.io/f/your_id"
+    // Google Form submission URL
+    const formId = "1FAIpQLSeqebPOUrSxEoKkFXb503elUXaaoBPenmdaahlVtt7_0KLdCA";
+    const url = `https://docs.google.com/forms/d/e/${formId}/formResponse`;
 
-    if (!FORM_ENDPOINT) {
-      // If no endpoint, we still simulate the success for now but with a warning
-      console.warn("ContactSection: No FORM_ENDPOINT defined. Submission is simulated.");
-      setTimeout(() => {
-        setStatus('success');
-        setFormData({ name: '', email: '', phone: '', course: '', message: '' });
-        setTimeout(() => setStatus('idle'), 3000);
-      }, 1500);
-      return;
-    }
+    // Map your form data to Google Form entry IDs
+    const formDataToSend = new URLSearchParams();
+    formDataToSend.append('entry.1669973568', formData.name);
+    formDataToSend.append('entry.1384495579', formData.email);
+    formDataToSend.append('entry.611186118', formData.phone);
+    formDataToSend.append('entry.19487114', formData.course); // Corrected ID for Course Interest
+    formDataToSend.append('entry.2064921584', formData.message);
 
     try {
-      const response = await fetch(FORM_ENDPOINT, {
+      // Using 'no-cors' mode because Google Forms doesn't support CORS for direct AJAX
+      await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(formData),
+        mode: "no-cors",
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formDataToSend.toString(),
       });
 
-      if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', phone: '', course: '', message: '' });
-        setTimeout(() => setStatus('idle'), 3000);
-      } else {
-        setStatus('error');
-        setTimeout(() => setStatus('idle'), 3000);
-      }
+      // Since we use no-cors, we can't check response.ok, so we assume success if no error is thrown
+      setStatus('success');
+      setFormData({ name: '', email: '', phone: '', course: '', message: '' });
+      setTimeout(() => setStatus('idle'), 3000);
     } catch (error) {
       console.error("Form error:", error);
       setStatus('error');
@@ -191,26 +186,17 @@ export default function ContactSection({ showMap = true }) {
                 {/* Course Interest */}
                 <div className="flex flex-col gap-2.5">
                   <label htmlFor="course" className="text-primary-navy font-sora text-[11px] uppercase tracking-[0.15em] font-bold ml-1 opacity-100">Course Interest</label>
-                  <div className="relative">
-                    <select
-                      id="course"
-                      name="course"
-                      value={formData.course}
-                      onChange={handleChange}
-                      disabled={status === 'sending'}
-                      className="bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-4 outline-none text-primary-navy font-body flex items-center transition-all focus:ring-2 focus:ring-accent-red/20 focus:border-accent-red/30 w-full appearance-none cursor-pointer text-[15px]"
-                      required
-                    >
-                      <option value="" disabled>Choose a program</option>
-                      <option value="CCAP">CCAP — Certified Comprehensive Accounting Program</option>
-                      <option value="DAFA">DAFA — Diploma in Advanced Financial Accounting</option>
-                      <option value="SAP">SAP FICO</option>
-                      <option value="Other">Other</option>
-                    </select>
-                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                      <FaArrowRight size={10} className="rotate-90" />
-                    </div>
-                  </div>
+                  <input
+                    type="text"
+                    id="course"
+                    name="course"
+                    value={formData.course}
+                    onChange={handleChange}
+                    placeholder="e.g. SAP FICO"
+                    disabled={status === 'sending'}
+                    className="bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-4 outline-none text-primary-navy font-body placeholder:text-gray-400 transition-all focus:ring-2 focus:ring-accent-red/20 focus:border-accent-red/30 w-full text-[15px]"
+                    required
+                  />
                 </div>
               </div>
 
