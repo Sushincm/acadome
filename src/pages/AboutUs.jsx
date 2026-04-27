@@ -98,13 +98,13 @@ export default function AboutUs() {
       <section className="pb-12 md:pb-24 lg:pb-44 px-6 bg-white">
         <div className="container max-w-[1240px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             <div ref={missionRef} className="p-10 md:p-14 rounded-3xl md:rounded-[32px] bg-gray-50 border border-gray-900/5 hover:shadow-xl transition-all duration-500 flex flex-col justify-center">
-               <span className="inline-block px-3 py-1 bg-accent-red/10 text-accent-red text-[11px] font-bold uppercase tracking-[0.2em] rounded-full mb-8 italic w-fit">Mission 01</span>
+               <span className="inline-block px-3 py-1 bg-accent-red/10 text-accent-red text-[11px] font-bold uppercase tracking-[0.2em] rounded-full mb-8 italic w-fit">Mission</span>
                <h3 className="font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] text-gray-900 mb-6">{aboutData.missionVision.mission.title}</h3>
                <p className="text-gray-500 leading-relaxed text-lg">{aboutData.missionVision.mission.content}</p>
             </div>
             <div className="p-10 md:p-14 rounded-3xl md:rounded-[32px] bg-[#0A1628] border border-white/5 text-white shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-center relative overflow-hidden group">
                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-1000"></div>
-               <span className="inline-block px-3 py-1 bg-white/10 text-white/50 text-[11px] font-bold uppercase tracking-[0.2em] rounded-full mb-8 italic w-fit">Vision 02</span>
+               <span className="inline-block px-3 py-1 bg-white/10 text-white/50 text-[11px] font-bold uppercase tracking-[0.2em] rounded-full mb-8 italic w-fit">Vision</span>
                <h3 className="font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] mb-6">{aboutData.missionVision.vision.title}</h3>
                <p className="text-white/60 leading-relaxed font-body text-lg">{aboutData.missionVision.vision.content}</p>
             </div>
