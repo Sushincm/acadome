@@ -25,7 +25,6 @@ export const galleryImages = [
   { id: 20, src: "/images/gallary/webp/gallery-20.webp", category: "Classroom", caption: "SAP Module Training", h: 400 },
   { id: 23, src: "/images/gallary/webp/gallery-23.webp", category: "Classroom", caption: "Peer Learning", h: 400 },
   { id: 25, src: "/images/gallary/webp/gallery-25.webp", category: "Classroom", caption: "Convocation Ceremony", h: 400 },
-  { id: 27, src: "/images/gallary/webp/gallery-27.webp", category: "Classroom", caption: "Resume Workshop", h: 400 },
   { id: 28, src: "/images/gallary/webp/gallery-28.webp", category: "Classroom", caption: "Entrance View", h: 400 },
   { id: 29, src: "/images/gallary/webp/gallery-29.webp", category: "Classroom", caption: "Focused Study", h: 400 },
   { id: 32, src: "/images/gallary/webp/gallery-32.webp", category: "Classroom", caption: "Certificate Pride", h: 400 },
