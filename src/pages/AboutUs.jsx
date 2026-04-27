@@ -31,7 +31,7 @@ export default function AboutUs() {
              <div className="max-w-[800px]">
                 <div className="flex items-center gap-4 mb-6 md:mb-8 lg:mb-10 opacity-60">
                    <span className="w-10 md:w-12 h-px bg-gray-400"></span>
-                   <span className="uppercase tracking-[0.4em] text-[10px] md:text-[11px] font-bold">Est. Since 2018</span>
+                   <span className="uppercase tracking-[0.4em] text-[10px] md:text-[11px] font-bold">Est. Since 2022</span>
                 </div>
                 <h1 className="font-heading font-semibold text-[36px] md:text-[48px] lg:text-[62px] leading-[1.1] md:leading-[1.02] tracking-tight text-gray-900 mb-0">
                    Redefining Financial <br/> <span className="text-gray-400 font-medium tracking-tight">Excellence.</span>
