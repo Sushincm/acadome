@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { placementFeatures, placementHeaderData, placementStats } from '../data';
 import { FaFileAlt, FaHandshake, FaGlobeAmericas, FaArrowRight } from 'react-icons/fa';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
+import { highlightBrand } from '../utils/textUtils';
 
 const getIcon = (iconId) => {
   switch (iconId) {
@@ -42,7 +43,7 @@ export default function PlacementSection() {
             {placementHeaderData.title}
           </h2>
           <p ref={subtextRef} className="text-gray-500 font-body text-[16px] md:text-[18px] leading-relaxed max-w-[600px]">
-            {placementHeaderData.subtext}
+            {highlightBrand(placementHeaderData.subtext)}
           </p>
         </div>
 
@@ -100,10 +101,10 @@ export default function PlacementSection() {
                 {getIcon(feature.icon)}
               </div>
               <h3 className="text-[#1B2A3B] font-heading font-semibold text-[20px] mb-4">
-                {feature.title}
+                {highlightBrand(feature.title)}
               </h3>
               <p className="text-gray-500 font-body text-[15px] leading-relaxed">
-                {feature.description}
+                {highlightBrand(feature.description)}
               </p>
             </div>
           ))}

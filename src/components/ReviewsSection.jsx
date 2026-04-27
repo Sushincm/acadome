@@ -7,6 +7,7 @@ import { setupSplitText, setupScrollReveal } from '../utils/animations';
 import useLightbox from '../hooks/useLightbox';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { highlightBrand } from '../utils/textUtils';
 
 const ReviewCard = ({ review }) => {
   const videoRef = useRef(null);
@@ -95,7 +96,7 @@ const ReviewCard = ({ review }) => {
           {/* Testimonial Text */}
           <div className="flex-1 overflow-y-auto no-scrollbar">
             <p className="text-primary-navy/80 font-body text-[15px] md:text-[16px] lg:text-[18px] leading-[1.7] italic">
-              "{review.quote}"
+              "{highlightBrand(review.quote)}"
             </p>
           </div>
 
@@ -164,7 +165,7 @@ export default function ReviewsSection() {
               {reviewsHeaderData.title}
             </h2>
             <p ref={subtextRef} className="text-gray-500 font-body text-[16px] mt-4 max-w-[500px]">
-              {reviewsHeaderData.subtext}
+              {highlightBrand(reviewsHeaderData.subtext)}
             </p>
           </div>
 

@@ -6,6 +6,7 @@ import { courseComparisonData, courseFaqs, coursesHeaderData, coursesTabsData } 
 import MarqueeSection from "../components/MarqueeSection";
 import SEO from "../components/SEO";
 import { FaChevronDown, FaClock, FaCheckCircle } from "react-icons/fa";
+import { highlightBrand } from "../utils/textUtils";
 
 const CourseCard = ({ course }) => (
   <div className="group bg-white rounded-[32px] overflow-hidden border border-gray-200 shadow-lg hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.15)] hover:border-accent-red/20 transition-all duration-500 flex flex-col h-full">
@@ -25,10 +26,10 @@ const CourseCard = ({ course }) => (
     
     <div className="p-8 md:p-10 flex flex-col flex-grow">
       <h3 className="font-heading font-bold text-[24px] md:text-[28px] text-primary-navy mb-4 leading-tight group-hover:text-accent-red transition-colors">
-        {course.title}
+        {highlightBrand(course.title)}
       </h3>
       <p className="text-gray-600 font-body text-[16px] leading-relaxed mb-8 flex-grow">
-        {course.description}
+        {highlightBrand(course.description)}
       </p>
       
       <div className="space-y-4 mb-10">
@@ -101,10 +102,10 @@ export default function OurCourses() {
         <div className="container max-w-[1240px] mx-auto">
           <div className="text-center mb-16 md:mb-24 flex flex-col items-center">
             <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
-              {coursesHeaderData.tag}
+              {highlightBrand(coursesHeaderData.tag)}
             </div>
             <h2 className="font-heading font-bold text-[32px] md:text-[44px] lg:text-[52px] text-primary-navy mb-6 tracking-tight leading-[1.1]">
-              {coursesHeaderData.title}
+              {highlightBrand(coursesHeaderData.title)}
             </h2>
             <p className="text-gray-500 max-w-2xl text-[17px] md:text-[19px] leading-relaxed">
               Explore our range of professional accounting programs, each tailored to specific career milestones and industry demands.

@@ -5,6 +5,7 @@ import { aboutData } from "../data";
 import MentorsSection from "../components/MentorsSection";
 import CertificationSection from "../components/CertificationSection";
 import SEO from "../components/SEO";
+import { highlightBrand } from "../utils/textUtils";
 
 export default function AboutUs() {
   const heroRef = useRef(null);
@@ -21,6 +22,10 @@ export default function AboutUs() {
 
   return (
     <div className="bg-white min-h-screen text-[#1A1A1A]">
+      <SEO 
+        title="About Us" 
+        description="Learn about ACADOME's mission to bridge the gap between academic theory and real-world corporate mastery. Expert-led accounting and finance training in India and GCC."
+      />
       {/* 
         IMMERSIVE HERO SECTION 
         Aligned with Home Page Typography & Spacing
@@ -63,7 +68,7 @@ export default function AboutUs() {
           <div className="w-full lg:w-[45%] lg:sticky lg:top-40 lg:pl-[10%]">
             <span className="text-accent-red font-heading text-[28px] md:text-[32px] lg:text-[40px] leading-tight mb-2 block font-medium">A little bit about</span>
             <h2 className="text-[#0A1628] font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-[1.1] mb-10 tracking-tight">
-              The ACADOME <br className="hidden lg:block"/> Experience
+              The {highlightBrand("ACADOME")} <br className="hidden lg:block"/> Experience
             </h2>
             <Link 
               to="/contact-us" 
@@ -82,11 +87,11 @@ export default function AboutUs() {
             </h3>
             <div className="flex flex-col gap-6 text-gray-500 text-[17px] md:text-[20px] leading-[1.8] font-body">
               <p>
-                {aboutData.story.content[0]}
+                {highlightBrand(aboutData.story.content[0])}
               </p>
               {aboutData.story.content.slice(1).map((p, i) => (
                 <p key={i}>
-                  {p}
+                  {highlightBrand(p)}
                 </p>
               ))}
             </div>
@@ -99,14 +104,14 @@ export default function AboutUs() {
         <div className="container max-w-[1240px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             <div ref={missionRef} className="p-10 md:p-14 rounded-3xl md:rounded-[32px] bg-gray-50 border border-gray-900/5 hover:shadow-xl transition-all duration-500 flex flex-col justify-center">
                <span className="inline-block px-3 py-1 bg-accent-red/10 text-accent-red text-[11px] font-bold uppercase tracking-[0.2em] rounded-full mb-8 italic w-fit">Mission</span>
-               <h3 className="font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] text-gray-900 mb-6">{aboutData.missionVision.mission.title}</h3>
-               <p className="text-gray-500 leading-relaxed text-lg">{aboutData.missionVision.mission.content}</p>
+               <h3 className="font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] text-gray-900 mb-6">{highlightBrand(aboutData.missionVision.mission.title)}</h3>
+               <p className="text-gray-500 leading-relaxed text-lg">{highlightBrand(aboutData.missionVision.mission.content)}</p>
             </div>
             <div className="p-10 md:p-14 rounded-3xl md:rounded-[32px] bg-[#0A1628] border border-white/5 text-white shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-center relative overflow-hidden group">
                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-1000"></div>
                <span className="inline-block px-3 py-1 bg-white/10 text-white/50 text-[11px] font-bold uppercase tracking-[0.2em] rounded-full mb-8 italic w-fit">Vision</span>
-               <h3 className="font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] mb-6">{aboutData.missionVision.vision.title}</h3>
-               <p className="text-white/60 leading-relaxed font-body text-lg">{aboutData.missionVision.vision.content}</p>
+               <h3 className="font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] mb-6">{highlightBrand(aboutData.missionVision.vision.title)}</h3>
+               <p className="text-white/60 leading-relaxed font-body text-lg">{highlightBrand(aboutData.missionVision.vision.content)}</p>
             </div>
         </div>
       </section>

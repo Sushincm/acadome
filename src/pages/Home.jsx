@@ -12,6 +12,7 @@ import ReviewsSection from "../components/ReviewsSection";
 import GallerySection from "../components/GallerySection";
 import MarqueeSection from "../components/MarqueeSection";
 import ContactSection from "../components/ContactSection";
+import { highlightBrand } from "../utils/textUtils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -138,11 +139,11 @@ export default function Home() {
           <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between w-full mt-auto gap-8 pt-20 md:pt-[200px]">
             <div className="max-w-[750px]">
               <h1 ref={heroTitleRef} className="font-heading font-semibold text-[40px] md:text-[50px] lg:text-[55px] leading-[1.2] tracking-tight text-white m-0 whitespace-normal break-words max-w-[720px]">
-                {heroData.title}
+                {highlightBrand(heroData.title)}
               </h1>
             </div>
             <div className="max-w-[420px] flex flex-col items-start text-left">
-              <p ref={heroDescRef} className="text-[16px] md:text-[17px] text-white/90 mb-0 leading-relaxed">{heroData.description}</p>
+              <p ref={heroDescRef} className="text-[16px] md:text-[17px] text-white/90 mb-0 leading-relaxed">{highlightBrand(heroData.description)}</p>
               <a 
                 ref={heroCtaRef}
                 href="https://wa.me/919778914198?text=Hi%20ACADOME%2C%20I'd%20like%20to%20get%20more%20details%20about%20your%20courses." 
@@ -165,7 +166,7 @@ export default function Home() {
       >
         <div className="container max-w-[1100px] flex flex-col items-center text-center">
           <div ref={aboutTagRef} className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-8 md:mb-10 uppercase tracking-widest shadow-sm">
-            {aboutData.tag}
+            {highlightBrand(aboutData.tag)}
           </div>
 
           <h2 ref={aboutTitleRef} className="font-body text-[26px] md:text-[40px] lg:text-[48px] xl:text-[52px] leading-[1.6] md:leading-[1.5] text-[#333333] font-normal tracking-[-0.02em] max-w-[1050px]">
@@ -183,7 +184,7 @@ export default function Home() {
                   />
                 </span>
               ) : (
-                <span key={index}>{part.text}</span>
+                <span key={index}>{highlightBrand(part.text)}</span>
               ),
             )}
           </h2>
@@ -247,7 +248,7 @@ export default function Home() {
                   ref={wwoTitleRef}
                   className="text-white font-heading font-semibold text-[32px] md:text-[2rem] lg:text-[2.5rem] leading-[1.15] tracking-tight whitespace-normal break-words"
                 >
-                  {wwoHeaderData.title}
+                  {highlightBrand(wwoHeaderData.title)}
                 </h2>
               </div>
             </div>
@@ -261,10 +262,10 @@ export default function Home() {
                   className="bg-white/15 rounded-2xl md:rounded-[24px] p-8 lg:p-10 border border-white/20 text-white transform hover:-translate-y-2 transition-transform duration-300"
                 >
                   <h3 className="text-[22px] md:text-[26px] font-semibold font-heading mb-4 text-white">
-                    {card.title}
+                    {highlightBrand(card.title)}
                   </h3>
                   <p className="text-[15px] md:text-[16px] text-white/80 leading-relaxed mb-8">
-                    {card.description}
+                    {highlightBrand(card.description)}
                   </p>
                   <Link
                     to={card.buttonLink}

@@ -1,5 +1,6 @@
 import { FaInstagram, FaLinkedinIn, FaFacebookF, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { highlightBrand } from '../utils/textUtils';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -121,7 +122,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-2">
           <p className="text-white/40 font-body text-[13px] tracking-wide uppercase font-medium text-center md:text-left">
-            &copy; {currentYear} ACADOME. ALL RIGHTS RESERVED.
+            &copy; {currentYear} {highlightBrand("ACADOME")}. ALL RIGHTS RESERVED.
           </p>
         </div>
       </div>

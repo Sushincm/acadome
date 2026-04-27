@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { certificationCards, certificationHeaderData } from '../data/courses';
 import { FaUniversity, FaAward, FaCertificate } from 'react-icons/fa';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
+import { highlightBrand } from '../utils/textUtils';
 
 const getIcon = (iconId, isLight = false) => {
   const colorClass = isLight ? "text-gray-400" : "text-white/70";
@@ -40,7 +41,7 @@ const CertificationCard = ({ card, isLight = false }) => {
       <div className="flex-1 flex flex-col">
         <span className="block text-accent-red text-[11px] font-bold uppercase tracking-[0.14em] mb-2.5">{card.issuer}</span>
         <h3 className={`font-heading font-semibold text-[22px] md:text-[24px] leading-[1.3] mb-4 ${isLight ? "text-gray-900" : "text-white"}`}>{card.title}</h3>
-        <p className={`font-body text-[15px] leading-relaxed ${isLight ? "text-gray-600" : "text-white/60"}`}>{card.description}</p>
+        <p className={`font-body text-[15px] leading-relaxed ${isLight ? "text-gray-600" : "text-white/60"}`}>{highlightBrand(card.description)}</p>
       </div>
     </div>
   );
@@ -71,7 +72,7 @@ export default function CertificationSection({ className = "", noBg = false, isL
             {certificationHeaderData.title}
           </h2>
           <p ref={subtextRef} className={`font-body text-base md:text-lg leading-relaxed max-w-[600px] mx-0 lg:mx-auto ${isLight ? "text-gray-600" : "text-white/60"}`}>
-            {certificationHeaderData.subtext}
+            {highlightBrand(certificationHeaderData.subtext)}
           </p>
         </div>
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">

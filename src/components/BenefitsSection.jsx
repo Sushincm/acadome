@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
 import { benefitsCards, benefitsHeaderData } from '../data';
 import { FaWrench, FaBookOpen, FaUserCheck, FaCalendarAlt } from 'react-icons/fa';
+import { highlightBrand } from '../utils/textUtils';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
@@ -35,10 +36,10 @@ function BenefitCard({ card }) {
       {/* Text Block */}
       <div>
         <h3 className="font-heading font-semibold text-[22px] text-[#111827] leading-[1.3] mb-4 group-hover:text-primary-navy transition-colors">
-          {card.title}
+          {highlightBrand(card.title)}
         </h3>
         <p className="font-body font-normal text-[15px] text-gray-500 leading-relaxed">
-          {card.description}
+          {highlightBrand(card.description)}
         </p>
       </div>
     </div>
@@ -96,12 +97,12 @@ export default function BenefitsSection() {
               {benefitsHeaderData.tag}
             </div>
             <h2 ref={titleRef} className="font-heading font-bold text-[36px] md:text-[44px] lg:text-[52px] leading-[1.1] text-white whitespace-normal break-words">
-              {benefitsHeaderData.title}
+              {highlightBrand(benefitsHeaderData.title)}
             </h2>
           </div>
           <div className="flex-1 md:max-w-[480px]">
             <p ref={descRef} className="font-body text-[16px] md:text-[18px] text-white/80 leading-relaxed">
-              {benefitsHeaderData.description}
+              {highlightBrand(benefitsHeaderData.description)}
             </p>
           </div>
         </div>

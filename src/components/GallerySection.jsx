@@ -7,6 +7,7 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import { galleryCategories, galleryHeaderData, galleryImages } from '../data/gallery';
 import { FaPlus } from 'react-icons/fa';
+import { highlightBrand } from '../utils/textUtils';
 
 const INITIAL_COUNT = 6;
 
@@ -94,13 +95,13 @@ export default function GallerySection({ fullPage = false, isHome = false }) {
             {/* Left Hand: Stylized Text */}
             <div className="w-full lg:w-[45%] text-left order-2 lg:order-1">
               <div ref={tagRef} className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
-                {galleryHeaderData.tag}
+                {highlightBrand(galleryHeaderData.tag)}
               </div>
               <h2 ref={titleRef} className="text-[#1B2A3B] font-heading font-bold text-[36px] md:text-[48px] lg:text-[56px] leading-[1.1] mb-8 tracking-tight whitespace-normal break-words max-w-full">
-                Glimpse of Academic Life
+                {highlightBrand("Glimpse of Academic Life")}
               </h2>
               <p ref={subtextRef} className="text-gray-500 font-body text-base md:text-lg leading-relaxed mb-10 max-w-[500px]">
-                {galleryHeaderData.subtext}
+                {highlightBrand(galleryHeaderData.subtext)}
               </p>
               
               <Link to="/gallery" className="group inline-flex items-center justify-center px-8 py-4 bg-primary-navy text-white font-body font-bold text-[16px] rounded-xl hover:bg-accent-red transition-all shadow-lg hover:shadow-accent-red/20 w-full sm:w-auto">
@@ -153,13 +154,13 @@ export default function GallerySection({ fullPage = false, isHome = false }) {
         {!fullPage && (
           <div className="text-center mb-12 md:mb-16 max-w-[800px] mx-auto flex flex-col items-center">
             <div ref={tagRef} className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-gray-50 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
-              {galleryHeaderData.tag}
+              {highlightBrand(galleryHeaderData.tag)}
             </div>
             <h2 ref={titleRef} className="text-[#1B2A3B] font-heading font-bold text-[32px] md:text-[44px] lg:text-[52px] leading-[1.15] mb-6 tracking-tight">
-              {galleryHeaderData.title}
+              {highlightBrand(galleryHeaderData.title)}
             </h2>
             <p ref={subtextRef} className="text-gray-500 font-body text-base md:text-lg leading-relaxed max-w-[600px]">
-              {galleryHeaderData.subtext}
+              {highlightBrand(galleryHeaderData.subtext)}
             </p>
           </div>
         )}
