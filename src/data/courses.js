@@ -13,7 +13,7 @@ export const coursesTabsData = [
       "A dynamic 2-month course to equip you with essential skills for a career in accounting.",
     topics: [
       "Manual Accounting",
-      "Zoho Books",
+      "Zoho books or Tally prime",
       "M.S Excel",
       "GST & TDS (Foundation Level)",
     ],
