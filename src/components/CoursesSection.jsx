@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { coursesHeaderData, coursesTabsData } from '../data/courses';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
+import { highlightBrand } from '../utils/textUtils';
 
 export default function CoursesSection() {
   const [activeTabId, setActiveTabId] = useState(coursesTabsData[0].id);
@@ -30,25 +31,27 @@ export default function CoursesSection() {
         {/* Header Strip & Title */}
         <div className="text-center w-full flex flex-col items-center mb-12 md:mb-16">
           <div ref={tagRef} className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-white border border-gray-100 text-[13px] font-medium text-gray-500 mb-6 uppercase tracking-widest shadow-sm">
-            {coursesHeaderData.tag}
+            {highlightBrand(coursesHeaderData.tag)}
           </div>
           <h2 ref={titleRef} className="font-heading text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] text-[#111827] font-semibold max-w-[800px]">
-            {coursesHeaderData.title}
+            {highlightBrand(coursesHeaderData.title)}
           </h2>
         </div>
 
         {/* Tabs Row */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-10 md:mb-16">
-          {coursesTabsData.map((tab) => {
+        <div className="flex flex-wrap items-center justify-center gap-0 mb-10 md:mb-16">
+          {coursesTabsData.map((tab, idx) => {
             const isActive = tab.id === activeTabId;
             return (
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab.id)}
-                className={`px-8 py-3.5 rounded-lg font-body font-medium text-[15px] transition-all duration-300 w-full sm:w-auto min-w-[160px] ${
+                className={`px-8 py-3.5 font-body font-medium text-[15px] transition-all duration-300 w-full sm:w-auto min-w-[160px] border ${
+                  idx === 0 ? 'sm:rounded-l-lg' : idx === coursesTabsData.length - 1 ? 'sm:rounded-r-lg' : ''
+                } ${
                   isActive
-                    ? 'bg-accent-red text-white shadow-md scale-[1.02] border border-accent-red'
-                    : 'bg-white text-gray-600 border border-gray-200 shadow-sm hover:bg-gray-50 hover:text-primary-navy hover:shadow-md'
+                    ? 'bg-accent-red text-white border-accent-red shadow-md z-10'
+                    : 'bg-white text-gray-600 border-gray-200 hover:bg-accent-red hover:text-white hover:border-accent-red'
                 }`}
               >
                 {tab.tabLabel}
@@ -68,15 +71,15 @@ export default function CoursesSection() {
               {/* Left Column (Text Info) */}
               <div className="flex flex-col items-start text-left w-full h-full justify-center order-2 lg:order-1">
                 <span className="inline-block px-3 py-1 bg-gray-100 text-gray-800 text-[13px] font-medium rounded-full mb-4 uppercase tracking-wider">
-                  {activeCourse.durationInfo}
+                  {highlightBrand(activeCourse.durationInfo)}
                 </span>
                 
                 <h3 className="font-heading font-semibold text-[26px] md:text-[32px] text-gray-900 leading-[1.3] mb-5">
-                  {activeCourse.title}
+                  {highlightBrand(activeCourse.title)}
                 </h3>
                 
                 <p className="font-body text-[16px] text-gray-600 leading-relaxed mb-6">
-                  {activeCourse.description}
+                  {highlightBrand(activeCourse.description)}
                 </p>
 
                 {activeCourse.topics && activeCourse.topics.length > 0 && (
@@ -86,7 +89,7 @@ export default function CoursesSection() {
                       {activeCourse.topics.map((topic, i) => (
                         <li key={i} className="flex items-start text-gray-600 font-body text-[14px]">
                           <span className="text-accent-red mr-2">•</span>
-                          {topic}
+                          {highlightBrand(topic)}
                         </li>
                       ))}
                     </ul>

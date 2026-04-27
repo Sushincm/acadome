@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
+import { highlightBrand } from '../utils/textUtils';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -91,13 +92,13 @@ export default function MentorsSection({ isFullGrid = false, noBg = false, class
         <div className={`${noBg ? "" : "container max-w-[1240px]"} mx-auto`}>
           <div className="text-left lg:text-center mb-12 md:mb-16 lg:mb-20 max-w-3xl lg:mx-auto flex flex-col items-start lg:items-center">
             <span ref={tagRef} className="text-accent-red font-sora font-bold text-[13px] uppercase tracking-[0.25em] mb-4 block">
-              {mentorsHeaderData.tag}
+              {highlightBrand(mentorsHeaderData.tag)}
             </span>
             <h2 ref={titleRef} className={`font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-[1.1] mb-6 tracking-tight ${isLight ? "text-gray-900" : "text-white"}`}>
               Our Expert Faculty
             </h2>
             <p ref={subRef} className={`font-body text-base md:text-lg leading-relaxed ${isLight ? "text-gray-600" : "text-white/60"}`}>
-              Meet the industry veterans who guide our students towards professional excellence.
+              {highlightBrand("Meet the industry veterans who guide our students towards professional excellence.")}
             </p>
           </div>
           
@@ -123,13 +124,13 @@ export default function MentorsSection({ isFullGrid = false, noBg = false, class
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 px-4 gap-8">
           <div className="flex flex-col text-left max-w-2xl">
             <span ref={tagRef} className="text-accent-red font-sora font-bold text-[13px] uppercase tracking-[0.25em] mb-4">
-              {mentorsHeaderData.tag}
+              {highlightBrand(mentorsHeaderData.tag)}
             </span>
             <h2 ref={titleRef} className={`font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-[1.1] mb-6 tracking-tight ${isLight ? "text-gray-900" : "text-white"}`}>
-              {mentorsHeaderData.title}
+              {highlightBrand(mentorsHeaderData.title)}
             </h2>
             <p ref={subRef} className={`font-body text-base md:text-lg leading-relaxed ${isLight ? "text-gray-600" : "text-white/60"}`}>
-              {mentorsHeaderData.subtext}
+              {highlightBrand(mentorsHeaderData.subtext)}
             </p>
           </div>
 

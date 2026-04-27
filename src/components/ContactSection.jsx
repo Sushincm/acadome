@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { contactData } from '../data';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaArrowRight, FaCheck } from 'react-icons/fa';
 import { setupSplitText, setupScrollReveal } from '../utils/animations';
+import { highlightBrand } from '../utils/textUtils';
 
 export default function ContactSection({ showMap = true }) {
   const [formData, setFormData] = useState({
@@ -92,7 +93,7 @@ export default function ContactSection({ showMap = true }) {
               {contactData.header.tag}
             </span>
             <h2 ref={titleRef} className="text-primary-navy font-sora font-bold text-[36px] md:text-[44px] lg:text-[48px] leading-[1.1] mb-10 whitespace-normal break-words max-w-full">
-              Connect with Our Expert Team
+              {highlightBrand("Connect with Our Expert Team")}
             </h2>
             
             {/* Contact Details List */}

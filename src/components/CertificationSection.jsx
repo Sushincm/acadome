@@ -69,7 +69,7 @@ export default function CertificationSection({ className = "", noBg = false, isL
             {certificationHeaderData.tag}
           </span>
           <h2 ref={titleRef} className={`font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] leading-[1.15] mb-6 tracking-tight ${isLight ? "text-gray-900" : "text-white"}`}>
-            {certificationHeaderData.title}
+            {highlightBrand(certificationHeaderData.title)}
           </h2>
           <p ref={subtextRef} className={`font-body text-base md:text-lg leading-relaxed max-w-[600px] mx-0 lg:mx-auto ${isLight ? "text-gray-600" : "text-white/60"}`}>
             {highlightBrand(certificationHeaderData.subtext)}

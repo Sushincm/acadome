@@ -5,6 +5,7 @@ import { setupScrollReveal } from "../utils/animations";
 import { videoGalleryData, testimonialVideos } from "../data/gallery";
 import useLightbox from "../hooks/useLightbox";
 import SEO from "../components/SEO";
+import { highlightBrand } from "../utils/textUtils";
 
 export default function Gallery() {
   const heroRef = useRef(null);
@@ -34,7 +35,7 @@ export default function Gallery() {
         </div>
         <div ref={heroRef} className="container max-w-[1240px] mx-auto relative z-10">
           <h1 className="font-heading font-semibold text-[40px] md:text-[64px] text-white mb-6 leading-tight">
-            Life at ACADOME
+            {highlightBrand("Life at ACADOME")}
           </h1>
           <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
             A visual journey through our practical training sessions, classroom activities, and vibrant campus life.
@@ -106,9 +107,15 @@ export default function Gallery() {
             <h3 className="font-heading font-bold text-[28px] md:text-[36px] lg:text-[42px] text-primary-navy mb-8">
                Want to be part of our next batch?
             </h3>
-            <Link to="/contact-us" className="inline-flex items-center justify-center px-10 py-5 bg-primary-navy text-white font-body font-bold text-[18px] rounded-2xl hover:bg-accent-red transition-all shadow-xl scale-100 hover:scale-105 active:scale-95">
-              Join ACADOME Now →
-            </Link>
+            <a
+              href={`https://wa.me/919778914198?text=${encodeURIComponent("I would like to inquire about the upcoming batch at ACADOME.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-10 py-4 font-body font-semibold text-[15px] rounded-lg bg-primary-navy text-white hover:bg-accent-red transition-all duration-300 shadow-md w-full md:w-auto text-center group"
+            >
+              Enroll Now
+              <span className="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </a>
          </div>
       </section>
     </div>

@@ -166,17 +166,19 @@ export default function GallerySection({ fullPage = false, isHome = false }) {
         )}
 
         {/* Filter Tabs */}
-        <div className={`flex flex-wrap items-center justify-center gap-3 mb-10 ${fullPage ? 'md:mb-12' : 'md:mb-16'}`}>
-          {galleryCategories.map((cat) => {
+        <div className={`flex flex-wrap items-center justify-center gap-0 mb-10 ${fullPage ? 'md:mb-12' : 'md:mb-16'}`}>
+          {galleryCategories.map((cat, idx) => {
             const isActive = activeCategory === cat;
             return (
               <button
                 key={cat}
                 onClick={() => handleFilterChange(cat)}
-                className={`px-8 py-3 rounded-lg font-body font-medium text-[15px] transition-all duration-300 border ${
+                className={`px-8 py-3 font-body font-medium text-[15px] transition-all duration-300 border ${
+                  idx === 0 ? 'rounded-l-lg' : idx === galleryCategories.length - 1 ? 'rounded-r-lg' : ''
+                } ${
                   isActive
-                    ? 'bg-[#1B2A3B] text-white border-[#1B2A3B] shadow-md scale-[1.02]'
-                    : 'bg-white text-gray-500 border-gray-200 shadow-sm hover:bg-gray-50 hover:text-primary-navy hover:shadow-md'
+                    ? 'bg-accent-red text-white border-accent-red shadow-md z-10'
+                    : 'bg-white text-gray-500 border-gray-200 hover:bg-accent-red hover:text-white hover:border-accent-red'
                 }`}
               >
                 {cat}

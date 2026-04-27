@@ -11,7 +11,11 @@ export const highlightBrand = (text) => {
   const parts = text.split(/(ACADOME)/i);
   return parts.map((part, i) => 
     part.toLowerCase() === 'acadome' 
-      ? React.createElement('span', { key: i, className: "text-accent-red" }, part)
+      ? React.createElement('span', { 
+          key: i, 
+          className: "text-accent-red",
+          style: { color: '#da2a3f' } // Forced color to ensure it overrides parent styles
+        }, part)
       : part
   );
 };
